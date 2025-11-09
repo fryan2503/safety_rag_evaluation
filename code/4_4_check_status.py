@@ -5,8 +5,8 @@ load_dotenv(override=True)
 client = OpenAI()
 
 batch_id = {
-  "file_id": "file-1kVnWo4YX6ZKE9Qs1ZD4tm",
-  "batch_id": "batch_690ae971d7048190a982f22185698051",
+  "file_id": "file-64GNFgTACfqgBk4kRJjpGg",
+  "batch_id": "batch_690e88e8fa1c8190a6d1d6f79f3740e9",
   "status": "validating"
 }
 

@@ -15,7 +15,7 @@ from openai import OpenAI
 load_dotenv(override=True)
 
 # Set these to whatever is convenient before running the script.
-BATCH_ID = os.environ.get("OPENAI_BATCH_ID") or "batch_690ae971d7048190a982f22185698051"
+BATCH_ID = os.environ.get("OPENAI_BATCH_ID") or "batch_690e88e8fa1c8190a6d1d6f79f3740e9"
 RAW_PATH = Path("results/4_5_batch_output.jsonl")
 JSON_PATH = Path("results/4_5_batch_output.json")
 
@@ -28,13 +28,16 @@ def _extract_text(body: Dict[str, Any]) -> str:
             text = (item.get("text") or "").strip()
             if text:
                 pieces.append(text)
-        elif item_type == "output_message":
+        elif item_type == "message":
             for part in item.get("content") or []:
                 if part.get("type") != "output_text":
                     continue
                 text = (part.get("text") or "").strip()
                 if text:
                     pieces.append(text)
+        # if item_type == "message":
+        #     for part in item.get("content"):
+                
     return "\n".join(pieces)
 
 
@@ -72,7 +75,7 @@ for record in raw_records:
     custom_id = record.get("custom_id")
     if not custom_id or "__" not in custom_id:
         continue
-    qa_id, judge_type = custom_id.split("__", 1)
+    qa_id, judge_type = custom_id.rsplit("__", 1)
     slot = pivot.setdefault(qa_id, {"qa_id": qa_id})
 
     if record.get("error"):

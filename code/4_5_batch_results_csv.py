@@ -24,7 +24,7 @@ JSON_PATH = RESULTS_DIR / "4_5_batch_output.json"
 CSV_PATH = RESULTS_DIR / "4_5_batch_output.csv"
 
 # Allow overriding the Batch ID via environment variables.
-DEFAULT_BATCH_ID = "batch_690ae971d7048190a982f22185698051"
+DEFAULT_BATCH_ID = "batch_690e88e8fa1c8190a6d1d6f79f3740e9"
 BATCH_ID = os.environ.get("OPENAI_BATCH_ID") or DEFAULT_BATCH_ID
 
 client = OpenAI()
@@ -83,7 +83,7 @@ def extract_boolean_answer(text: str | None, prefix_word: str) -> str | None:
 def extract_judge_type(custom_id: str | None) -> str | None:
     """Return the judge_type part from a custom_id like 'qa123__doc_relevance'."""
     if custom_id and "__" in custom_id:
-        _, judge_type = custom_id.split("__", 1)
+        _, judge_type = custom_id.rsplit("__", 1)
         return judge_type
     return None
 
