@@ -440,20 +440,20 @@ def run_experiment(
     print(f"Wrote results to {out_csv}")
     return out_csv
 
-
-# Example manual call
-out = run_experiment(
-    test_csv=Path("data/sample_test_questions.csv"),
-    num_replicates=3,
-    approaches=["openai_keyword"],
-    models=["gpt-5-mini-2025-08-07"],
-    max_tokens_list=[250],
-    efforts=["low"],
-    topk_list=[10],
-    ans_instr_A=_read_text("prompts/ans_instr_A.txt"),
-    ans_instr_B=None,
-    fewshot_A=_read_text("prompts/fewshot_A.txt"),
-    fewshot_B=None,
-    out_csv=Path("results/experiment_results_with_replicates_parrallel.csv"),
-    judge_model="gpt-5",
-)
+if __name__ == "__main__":
+    # Example manual call
+    out = run_experiment(
+        test_csv=Path("data/sample_test_questions.csv"),
+        num_replicates=3,
+        approaches=["openai_keyword"],
+        models=["gpt-5-mini-2025-08-07"],
+        max_tokens_list=[250],
+        efforts=["low"],
+        topk_list=[10],
+        ans_instr_A=_read_text("prompts/ans_instr_A.txt"),
+        ans_instr_B=None,
+        fewshot_A=_read_text("prompts/fewshot_A.txt"),
+        fewshot_B=None,
+        out_csv=Path("results/experiment_results_with_replicates_parrallel.csv"),
+        judge_model="gpt-5",
+    )
