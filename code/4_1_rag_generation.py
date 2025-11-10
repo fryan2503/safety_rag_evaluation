@@ -203,7 +203,6 @@ async def run_experiment_async(
                 "few_shot_id": fs_id,
                 "max_tokens": mtoks,
                 "effort": effort,
-                "question": q[:100]
             }
 
             row = {

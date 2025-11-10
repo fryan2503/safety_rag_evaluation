@@ -15,9 +15,9 @@ from openai import OpenAI
 load_dotenv(override=True)
 
 # Set these to whatever is convenient before running the script.
-BATCH_ID = os.environ.get("OPENAI_BATCH_ID") or "batch_690e88e8fa1c8190a6d1d6f79f3740e9"
-RAW_PATH = Path("results/4_5_batch_output.jsonl")
-JSON_PATH = Path("results/4_5_batch_output.json")
+BATCH_ID = os.environ.get("OPENAI_BATCH_ID")
+RAW_PATH = Path("results/minimum_batch_output.jsonl")
+JSON_PATH = Path("results/minimum_batch_output.json")
 
 
 def _extract_text(body: Dict[str, Any]) -> str:
