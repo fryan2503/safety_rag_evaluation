@@ -60,7 +60,7 @@ def _read_text(maybe_path: Optional[str]) -> str:
     return p.read_text(encoding="utf-8") if p.exists() else maybe_path
 
 
-def make_permutation_id(metadata: Dict[str, Any], question: Optional[str] = None) -> str:
+def make_permutation_id(metadata: Dict[str, Any]) -> str:
     """
     Create a reversible, URL-safe experiment ID with an integrity hash.
 
@@ -318,5 +318,5 @@ if __name__ == "__main__":
     #         out_csv=Path("results/rag_generation_perm.csv"),
     #         max_concurrent=5,
     #     ))
-    print(parse_permutation_id("eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX3NlbWFudGljIiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS1uYW5vLTIwMjUtMDgtMDciLCJxdWVzdGlvbiI6IldoYXQgaXMgUmVkdWNlZCBNb2RlPyBXaGVuIGlzIGl0IHVzZWQ_IiwicmVhc29uaW5nX2VmZm9ydCI6ImxvdyIsInRvcF9rIjo3fSwicnVuX3V1aWQiOiI2Y2QzMTE0NS01M2FkLTQyMmUtYjQyMi04ZjcxMzBhYjQxODMifWV4L38UvcTi", True))
+    print(parse_permutation_id("eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX2tleXdvcmQiLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LW1pbmktMjAyNS0wOC0wNyIsInJlYXNvbmluZ19lZmZvcnQiOiJtaW5pbWFsIiwicm93IjoxMTQsInRvcF9rIjo3fSwicnVuX3V1aWQiOiJlYzUwM2Q4Yy03MDIxLTQ2ZGQtYWJjNS00MmY0YTc5MjI4ZTMifQmwKVThBb5Q", True))
     # print(parse_permutation_id("eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX3NlbWFudGljIiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS1taW5pLTIwMjUtMDgtMDciLCJxdWVzdGlvbiI6IkhvdyBtYW55IHNhZmV0eSBtb2RlcyBkb2VzIHRoZSBhcm0gaGF2ZSwgYW5kIHdoYXQgYXJlIHRoZSBuYW1lcyBvZiBlYWNoPyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M319eQjdHbahqaw", True))
