@@ -175,7 +175,7 @@ Explain your reasoning in a step-by-step manner to ensure your reasoning and con
 # - The risk assessment covers how safety configuration settings (including password protection) mitigate hazards and other protective measures for the specific application. [004__L1__4._Risk_Assessment__pp33-36.pdf]"""
 # print(judge_with_langsmith(question="Why do I need to conduct a cybersecurity risk assessment?", answer=answer, gold=gold, judge_to_run="helpfulness")["helpfulness"])
 
-missing = pd.read_csv("./results/minimal/merged_output_missing.csv")
+missing = pd.read_csv("./results/minimal/merged_output_filled.csv")
 for (idx, row) in missing.iterrows():
     if pd.isna(row["text_correctness_vs_ref"]):
         print(f"Judged {idx+2} with correct")
@@ -191,4 +191,4 @@ for (idx, row) in missing.iterrows():
         gen_answer = row["generated_answer"]
         judge = judge_with_langsmith(question=question, answer=gen_answer, gold=gold_answer, judge_to_run="helpfulness")
         missing.loc[idx, "text_helpfulness"] = judge.get("helpfulness")
-missing.to_csv("./results/minimal/merged_output_missing_filled.csv")
+missing.to_csv("./results/minimal/merged_output_filled_final.csv")
