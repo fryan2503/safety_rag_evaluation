@@ -80,5 +80,5 @@ def process_permutation_ids(file_path, output_file):
     print(f"Processed CSV saved as '{output_file}'")
 
 # Example usage:
-merge_csvs('./results/4_6_batch_merge.csv', './results/gold_set_part_1_with_metrics.csv', './results/merged_output.csv', exclude_columns=["meta_hits_text"])
+merge_csvs('./results/minimal/batch_minimal_combined.csv', './results/rag_generation_all_approaches_minimal_renamed.csv', './results/minimal/merged_output.csv', exclude_columns=["meta_hits_text"])
 # process_permutation_ids("./results/merged_output.csv", "./results/merged_output_decoded.csv")

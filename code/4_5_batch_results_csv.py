@@ -18,10 +18,10 @@ load_dotenv(override=True)
 
 # Resolve the repo root regardless of where this script is executed from.
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-RESULTS_DIR = PROJECT_ROOT / "results"
-RAW_PATH = RESULTS_DIR / "4_5_batch_output.jsonl"
-JSON_PATH = RESULTS_DIR / "4_5_batch_output.json"
-CSV_PATH = RESULTS_DIR / "4_5_batch_output.csv"
+RESULTS_DIR = PROJECT_ROOT / "results/minimal"
+RAW_PATH = RESULTS_DIR / "batch_minimal.jsonl"
+JSON_PATH = RESULTS_DIR / "batch_minmal.json"
+CSV_PATH = RESULTS_DIR / "batch_minimal.csv"
 
 # Allow overriding the Batch ID via environment variables.
 DEFAULT_BATCH_ID = "batch_690e88e8fa1c8190a6d1d6f79f3740e9"

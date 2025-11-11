@@ -13,10 +13,10 @@ def printFields(filename, column_name):
     print(f"Number of empty '{column_name}' fields: {count}")
 
 
-printFields("./results/merged_output.csv", "judge_answer_correctness_vs_ref")
-printFields("./results/merged_output.csv", "text_correctness_vs_ref")
-printFields("./results/merged_output.csv", "judge_answer_helpfulness")
-printFields("./results/merged_output.csv", "text_helpfulness")
+printFields("./results/minimal/merged_output.csv", "judge_answer_correctness_vs_ref")
+printFields("./results/minimal/merged_output.csv", "text_correctness_vs_ref")
+# printFields("./results/minimal/merged_output.csv", "judge_answer_helpfulness")
+# printFields("./results/minimal/merged_output.csv", "text_helpfulness")
 
 
 
