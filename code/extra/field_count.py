@@ -12,14 +12,14 @@ def printFields(filename, column_name):
                 # print(idx+2)
                 # setList.append(idx+2)
                 setList.add(idx+2)
-    # print(f"Number of empty '{column_name}' fields: {count}")
+    print(f"Number of empty '{column_name}' fields: {count}")
     return setList
 
 
-# printFields("./results/minimal/merged_output.csv", "judge_answer_correctness_vs_ref")
-# printFields("./results/minimal/merged_output.csv", "text_correctness_vs_ref")
-# l1 = printFields("./results/minimal/merged_output.csv", "judge_answer_helpfulness")
-l2 = printFields("./results/minimal/merged_output.csv", "text_helpfulness")
-print(l2)
+printFields("./results/minimal/merged_output_filled.csv", "judge_answer_correctness_vs_ref")
+printFields("./results/minimal/merged_output_filled.csv", "text_correctness_vs_ref")
+printFields("./results/minimal/merged_output_filled.csv", "judge_answer_helpfulness")
+printFields("./results/minimal/merged_output_filled.csv", "text_helpfulness")
+
 
 
