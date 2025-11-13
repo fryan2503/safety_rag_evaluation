@@ -211,13 +211,13 @@ def main() -> None:
     parser.add_argument(
         "--csv",
         type=Path,
-        default=Path("results/gold_set_part_1.csv"),
+        default=Path("results/rag_generation_all_approaches_minimal.csv"),
         help="Path to the gold_set_part_1.csv produced by step 3.",
     )
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("results/4_3_batch_requests.jsonl"),
+        default=Path("results/rag_generation_all_approaches_minimal.jsonl"),
         help="Where to write the Batch-friendly JSONL payload.",
     )
     parser.add_argument(
@@ -232,10 +232,10 @@ def main() -> None:
     write_requests_jsonl(requests, args.output)
 
     print(f"Prepared {len(requests)} requests. JSONL written to {args.output}")
-    submission = submit_batch(requests)
-    print(json.dumps(submission, indent=2))
-    batch_id = submission.id
-    set_key("OPENAI_BATCH_ID", batch_id)
+    # submission = submit_batch(requests)
+    # print(json.dumps(submission, indent=2))
+    # batch_id = submission.id
+    # set_key("OPENAI_BATCH_ID", batch_id)
 
 
 

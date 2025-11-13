@@ -13,9 +13,9 @@ import pandas as pd
 
 # Resolve project locations regardless of working directory.
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-RESULTS_DIR = PROJECT_ROOT / "results"
-INPUT_CSV = RESULTS_DIR / "4_5_batch_output.csv"
-OUTPUT_CSV = RESULTS_DIR / "4_6_batch_merge.csv"
+RESULTS_DIR = PROJECT_ROOT / "results/minimal"
+INPUT_CSV = RESULTS_DIR / "batch_minimal.csv"
+OUTPUT_CSV = RESULTS_DIR / "batch_minimal_combined.csv"
 
 
 def load_judge_results() -> pd.DataFrame:
