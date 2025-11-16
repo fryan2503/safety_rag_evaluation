@@ -211,13 +211,13 @@ def main() -> None:
     parser.add_argument(
         "--csv",
         type=Path,
-        default=Path("results/gold_set_part_1.csv"),
+        default=Path("results/rag_generation_all_approaches_minimal_renamed.csv"),
         help="Path to the gold_set_part_1.csv produced by step 3.",
     )
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("results/4_3_batch_requests.jsonl"),
+        default=Path("results/rag_generation_all_approaches_minimal_renamed.jsonl"),
         help="Where to write the Batch-friendly JSONL payload.",
     )
     parser.add_argument(

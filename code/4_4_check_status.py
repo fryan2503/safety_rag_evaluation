@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 client = OpenAI()
 
+
 BATCH_ID = os.environ.get("OPENAI_BATCH_ID") 
 
 batch = client.batches.retrieve(BATCH_ID)
