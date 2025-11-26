@@ -30,7 +30,6 @@ class RAGExperimentRunner:
 
     def __init__(
         self,
-        input_csv: Path,
         num_replicates: int,
         approaches: Approaches,
         models: LLM,
@@ -48,7 +47,6 @@ class RAGExperimentRunner:
         self.max_concurrent = max_concurrent
         self.max_chars_per_content = max_chars_per_content
         self.min_words_for_subsplit = min_words_for_subsplit
-        self.input_csv = input_csv
         self.num_replicates = num_replicates
         self.approaches = approaches.to_str_list()
         self.models = models.to_str_list()
@@ -63,6 +61,7 @@ class RAGExperimentRunner:
 
     async def run(
         self,
+        input_csv: Path,
         out_csv: Path,
     ) -> pd.DataFrame:
         """
@@ -72,7 +71,7 @@ class RAGExperimentRunner:
         if self.num_replicates < 1:
             raise ValueError("num_replicates must be >= 1")
 
-        df = pd.read_csv(self.input_csv)
+        df = pd.read_csv(input_csv)
         assert {"question", "gold_answer"}.issubset(
             df.columns
         ), "CSV must include question and gold_answer."
@@ -225,7 +224,7 @@ if __name__ == "__main__":
     print("Class loaded. You can import RAGExperimentRunner elsewhere.")
     approaches = Approaches.GRAPH_EAGER | Approaches.GRAPH_MMR | Approaches.LC_BM25 | Approaches.OPENAI_KEYWORD | Approaches.OPENAI_SEMANTIC | Approaches.VANILLA
     llms = LLM.GPT_5_MINI_2025_08_07 | LLM.GPT_5_NANO_2025_08_07
-    test_runnner = RAGExperimentRunner(input_csv=Path("test_csv.csv"),
+    test_runnner = RAGExperimentRunner(
                                        num_replicates=1, 
                                        approaches=approaches, 
                                        llms=llms, 
@@ -235,4 +234,4 @@ if __name__ == "__main__":
                                        ans_instr_A=read_text("prompts/ans_instr_A.txt"), 
                                        fewshot_A=read_text("prompts/fewshot_A.txt"))
     
-    test_runnner.run(Path("results/rag_set.csv"))
+    test_runnner.run(input_csv=Path(""), out_csv=Path("results/rag_set.csv"))
