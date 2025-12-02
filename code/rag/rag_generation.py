@@ -16,6 +16,7 @@ from .approach_retrievers import ApproachRetrievers
 from ..utils.environment_config import EnvironmentConfig
 
 from ..utils import make_permutation_id, read_text, now_et
+from .rag_utils import retrieve_and_answer
 from .enums import LLM, Approaches
 
 class RAGExperimentRunner:
@@ -26,7 +27,7 @@ class RAGExperimentRunner:
 
     def __init__(
         self,
-        retrivers: ApproachRetrievers,
+        retrievers: ApproachRetrievers,
         num_replicates: int,
         approaches: Approaches,
         models: LLM,
@@ -41,6 +42,7 @@ class RAGExperimentRunner:
         max_chars_per_content: int = 25_000,
         min_words_for_subsplit: int = 3000,
     ):
+        self.retrievers = retrievers
         self.max_concurrent = max_concurrent
         self.max_chars_per_content = max_chars_per_content
         self.min_words_for_subsplit = min_words_for_subsplit
@@ -116,7 +118,7 @@ class RAGExperimentRunner:
                 start_et = now_et()
 
                 generated, hits, meta = retrieve_and_answer(
-                    retrievers=retrievers,
+                    retrievers=self.retrievers,
                     question=q,
                     approach=approach,
                     model=model,
