@@ -6,18 +6,20 @@ from openai import OpenAI
 from langchain_community.retrievers import BM25Retriever as LC_BM25Retriever
 from langchain_openai import OpenAIEmbeddings as LC_OpenAIEmbeddings
 
+from ..utils import EnvironmentConfig
+
 from langchain_astradb import AstraDBVectorStore
 from langchain_graph_retriever import GraphRetriever
 from graph_retriever.strategies import Eager, Mmr
 
 class ApproachRetrievers:
-    def __init__(self, VECTOR_STORE_ID, BM25_PKL, COLLECTION_NAME, ASTRA_DB_API_ENDPOINT, ASTRA_DB_APPLICATION_TOKEN, EMBED_MODEL):
-        self.VECTOR_STORE_ID = VECTOR_STORE_ID
-        self.BM25_PKL = BM25_PKL
-        self.COLLECTION_NAME = COLLECTION_NAME
-        self.ASTRA_DB_API_ENDPOINT = ASTRA_DB_API_ENDPOINT
-        self.ASTRA_DB_APPLICATION_TOKEN = ASTRA_DB_APPLICATION_TOKEN
-        self.EMBED_MODEL = EMBED_MODEL
+    def __init__(self, config: EnvironmentConfig):
+        self.VECTOR_STORE_ID = config.VECTOR_STORE_ID
+        self.BM25_PKL = config.BM25_PKL
+        self.COLLECTION_NAME = config.COLLECTION_NAME
+        self.ASTRA_DB_API_ENDPOINT = config.ASTRA_DB_API_ENDPOINT
+        self.ASTRA_DB_APPLICATION_TOKEN = config.ASTRA_DB_APPLICATION_TOKEN
+        self.EMBED_MODEL = config.EMBED_MODEL
 
     # -------------------------------------------------------------------
     # Retrieval implementations

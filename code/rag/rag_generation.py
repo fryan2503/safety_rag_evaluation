@@ -12,15 +12,11 @@ from typing import List, Optional
 
 import pandas as pd
 
+from .approach_retrievers import ApproachRetrievers
+from ..utils.environment_config import EnvironmentConfig
+
 from ..utils import make_permutation_id, read_text, now_et
 from .enums import LLM, Approaches
-
-# load the RAG retrieval function
-# Will not be needed once 
-namespace = {}
-with open("code/2_rag.py") as f:
-    exec(f.read(), namespace)
-retrieve_and_answer = namespace["retrieve_and_answer"]
 
 class RAGExperimentRunner:
     """
@@ -30,6 +26,7 @@ class RAGExperimentRunner:
 
     def __init__(
         self,
+        retrivers: ApproachRetrievers,
         num_replicates: int,
         approaches: Approaches,
         models: LLM,
@@ -119,6 +116,7 @@ class RAGExperimentRunner:
                 start_et = now_et()
 
                 generated, hits, meta = retrieve_and_answer(
+                    retrievers=retrievers,
                     question=q,
                     approach=approach,
                     model=model,
@@ -224,14 +222,17 @@ if __name__ == "__main__":
     print("Class loaded. You can import RAGExperimentRunner elsewhere.")
     approaches = Approaches.GRAPH_EAGER | Approaches.GRAPH_MMR | Approaches.LC_BM25 | Approaches.OPENAI_KEYWORD | Approaches.OPENAI_SEMANTIC | Approaches.VANILLA
     llms = LLM.GPT_5_MINI_2025_08_07 | LLM.GPT_5_NANO_2025_08_07
+    env = EnvironmentConfig()
+    rets = ApproachRetrievers(env)
     test_runnner = RAGExperimentRunner(
-                                       num_replicates=1, 
-                                       approaches=approaches, 
-                                       llms=llms, 
-                                       max_tokens_list=[5000], 
-                                       efforts=["low", "minimal"], 
-                                       topk_list=[3, 7], 
-                                       ans_instr_A=read_text("prompts/ans_instr_A.txt"), 
-                                       fewshot_A=read_text("prompts/fewshot_A.txt"))
+        retrivers=rets,
+        num_replicates=1, 
+        approaches=approaches,
+        llms=llms, 
+        max_tokens_list=[5000], 
+        efforts=["low", "minimal"], 
+        topk_list=[3, 7], 
+        ans_instr_A=read_text("prompts/ans_instr_A.txt"), 
+        fewshot_A=read_text("prompts/fewshot_A.txt"))
     
     test_runnner.run(input_csv=Path(""), out_csv=Path("results/rag_set.csv"))

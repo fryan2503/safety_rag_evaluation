@@ -9,6 +9,8 @@ from .math import CSVProcessor
 from .math import LangfairRunner
 from .math import LangfairMetricsCalculator
 
+from .approach_retrievers import ApproachRetrievers
+
 dotenv.load_dotenv(override=True)
 
 try:
