@@ -1,3 +1,12 @@
+"""
+Package initialization for the RAG experiment framework.
+
+This module:
+ Ensures environment variables are loaded from .env files
+ Ensures necessary NLTK resources are available
+ Imports the key experiment-running components
+"""
+
 import dotenv
 import nltk
 

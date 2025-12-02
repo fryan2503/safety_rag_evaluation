@@ -1,5 +1,20 @@
+"""
+Approaches - enum defining available retrieval strategies.
+
+Implemented as IntFlag so values can be OR'ed together to produce
+combinations of retrieval methods (bitwise composition).
+"""
+
 from enum import IntFlag, auto
+
 class Approaches(IntFlag):
+    """
+    Retrieval approach identifiers.
+
+    Each flag represents a distinct retrieval strategy used in RAG.
+    Multiple strategies can be OR'ed together:
+        Approaches.OPENAI_KEYWORD | Approaches.GRAPH_EAGER
+    """
     OPENAI_KEYWORD = auto()
     OPENAI_SEMANTIC = auto()
     LC_BM25 = auto()
@@ -8,6 +23,14 @@ class Approaches(IntFlag):
     VANILLA = auto()
     
     def to_str_list(self):
+        """
+        Converts the currently enabled flags into lowercase string identifiers
+        that match internal retrieval method routing.
+
+        Example:
+            Approaches.OPENAI_KEYWORD | Approaches.VANILLA
+            → ["openai_keyword", "vanilla"]
+        """
         gpt_list = [Approaches(x.value) for x in list(Approaches)]
         str_list = []
         for gpt in gpt_list:

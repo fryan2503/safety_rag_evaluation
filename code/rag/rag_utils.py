@@ -1,7 +1,15 @@
+"""
+Helper functions for performing retrieval + model answering.
 
-# -------------------------------------------------------------------
-# New: reusable helper for experiments
-# -------------------------------------------------------------------
+This module contains the glue logic connecting:
+ retrieval engines
+ prompt construction
+ model invocation
+ output normalization
+
+These functions allow RAGExperimentRunner to call a single method
+to perform the entire retrieval-and-generation process.
+"""
 import html
 from typing import Any, Dict, List, Tuple
 
@@ -14,7 +22,18 @@ from approach_retrievers import ApproachRetrievers
 # Helpers
 # -------------------------------------------------------------------
 def _format_sources_xml(hits: List[Dict[str, Any]], max_chars_per_content: int) -> str:
-    """Format retrieved documents as <sources> XML for model input."""
+    """
+    Convert retrieval results into a structured XML-like format
+    that is passed into the model's prompt.
+
+    Conceptually:
+    - Providing structured markup helps models avoid hallucination.
+    - Each retrieved chunk is formatted as:
+         <result filename='' file_id='' score=''>
+             <content> ... </content>
+         </result>
+    - Limiting text size ensures prompt remains within allowable limits.
+    """
     parts: List[str] = []
     for h in hits:
         filename = h.get("filename") or ""
@@ -45,7 +64,21 @@ def _ask_with_sources(
     few_shot_preamble: str,
     max_chars_per_content: int,
 ) -> Tuple[str, Dict[str, Any]]:
-    """Query the model with consistent prompt structure and source context."""
+    """
+    Invoke the LLM using a structured multi-message prompt:
+
+     System: few-shot examples and role structure
+     User: answer generation guidelines
+     User: actual query + retrieved sources
+
+     The model sees the retrieved content embedded directly in the prompt
+     The model is explicitly instructed to answer specifically WITHIN
+      the constraints defined by the sources.
+
+    Returns:
+     Final answer text
+     Metadata including usage stats, model ID, timestamps, etc.
+    """
     sources_xml = _format_sources_xml(hits, max_chars_per_content)
     resp = client.responses.create(
         model=model,
@@ -87,8 +120,17 @@ def retrieve_and_answer(
     few_shot_preamble: str,
 ) -> Tuple[str, List[Dict[str, Any]], Dict[str, Any]]:
     """
-    Run one retrieval method and return (answer, hits, meta), with no printing or file I/O.
-    This mirrors run_rag_router but is import-friendly for experiments.
+    Main single-run execution.
+
+    This is the end-to-end wrapper performing:
+       (1) retrieval based on selected strategy
+       (2) formatting sources for model input
+       (3) producing final model answer
+
+    It returns:
+       The generated answer
+       The retrieved document hits
+       The LLM metadata
     """
     client = OpenAI()
     approach = approach.lower().strip()

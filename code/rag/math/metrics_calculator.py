@@ -1,3 +1,15 @@
+"""
+LangfairMetricsCalculator - computes similarity metrics between
+model-generated answers and reference/gold text.
+
+Produces:
+ cosine similarity over TF-IDF embeddings
+ ROUGE-L score (coverage of longest common subsequence)
+ BLEU score (n-gram precision)
+
+These metrics provide complementary perspectives on answer quality.
+"""
+
 from __future__ import annotations
 from typing import Dict, Optional
 
@@ -11,11 +23,30 @@ class LangfairMetricsCalculator:
     """Computes similarity metrics between prediction and reference text."""
 
     def __init__(self):
+        """
+        Initializes reusable scorers and vectorizer.
+
+         BLEU requires smoothing for short sentences
+         ROUGE scorer is configured to use stemming for linguistic normalization
+         TF-IDF vectorizer generates document embeddings for cosine similarity
+        """
         self.smoothing = SmoothingFunction()
         self.rouge = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.vectorizer = TfidfVectorizer()
 
     def compute(self, pred: str, ref: str) -> Dict[str, Optional[float]]:
+        """
+        Compute BLEU, ROUGE-L, and cosine similarity for (pred, ref).
+
+        Steps:
+        1. Tokenize text
+        2. Compute BLEU (precision-weighted n-gram match)
+        3. Compute ROUGE-L (subsequence overlap)
+        4. Compute cosine similarity (distributional distance)
+
+        Returns:
+            Dict with three float scores.
+        """
         reference_tokens = nltk.word_tokenize(ref.lower())
         prediction_tokens = nltk.word_tokenize(pred.lower())
 

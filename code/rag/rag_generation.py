@@ -1,5 +1,14 @@
 """
 RAG Experiment Runner
+
+This module defines a high-level orchestration engine that performs
+systematic evaluation of multiple retrieval-and-generation strategies.
+
+This class:
+ Iterates over all combinations of models, retrieval methods, settings
+ Executes RAG queries against a set of questions
+ Records results and metadata
+ Manages batching & concurrency so experiments run efficiently
 """
 
 from __future__ import annotations
@@ -21,8 +30,14 @@ from .enums import LLM, Approaches
 
 class RAGExperimentRunner:
     """
-    Class-based experiment runner that encapsulates
-    async execution of RAG generation experiments.
+    Core experiment runner used to evaluate RAG configurations.
+
+    This object is configured with:
+     one retrieval engine instance
+     lists of models, retrieval approaches, prompt styles, etc.
+
+    It then iterates over every combination and executes RAG queries
+    over a dataset of input questions.
     """
 
     def __init__(
@@ -42,6 +57,11 @@ class RAGExperimentRunner:
         max_chars_per_content: int = 25_000,
         min_words_for_subsplit: int = 3000,
     ):
+        """
+        Stores experimental configuration and initializes runner.
+         View each possible setting as a dimension in an experiment grid.
+         The experiment will generate one output row for each permutation.
+        """
         self.retrievers = retrievers
         self.max_concurrent = max_concurrent
         self.max_chars_per_content = max_chars_per_content
@@ -64,7 +84,14 @@ class RAGExperimentRunner:
         out_csv: Path,
     ) -> pd.DataFrame:
         """
-        Main async experiment execution.
+        Main experiment execution.
+
+        Conceptually:
+        1. Load a dataset of (question, gold answer)
+        2. Iterate over all model & retrieval configurations
+        3. For each combination:
+            Perform retrieval + LLM answer generation
+            Record output and metadata into CSV
         """
 
         if self.num_replicates < 1:
@@ -109,8 +136,22 @@ class RAGExperimentRunner:
             fs_id: str,
             rep: int,
         ):
-            """Run one retrieval + eval combo asynchronously."""
+            """
+            Execute a single experiment trial.
+
+            This is one point in the configuration grid
+            Retrieves sources
+            Generates final answer
+            Returns a structured output record
+            """            
             def sync_task():
+                """
+                Synchronous execution body run inside a thread.
+
+                This ensures that any blocking operations
+                (HTTP API calls, model execution, etc.)
+                do not halt the entire asyncio event loop.
+                """
                 ans = self.ans_instr_A if ai_id == "A" else (self.ans_instr_B or "")
                 fs = self.fewshot_A if fs_id == "A" else (self.fewshot_B or "")
 

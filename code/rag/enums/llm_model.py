@@ -1,9 +1,29 @@
+"""
+LLM - enum representing available model choices.
+
+Like Approaches, this is implemented using IntFlag so that multiple
+models can be OR'ed together in an experiment configuration.
+"""
+
 from enum import IntFlag, auto
+
 class LLM(IntFlag):
+    """
+    Model identifiers for supported generation models.
+
+    Each entry corresponds to a specific model string reference,
+    usually resolvable via OpenAI model APIs.
+    """
     GPT_5_MINI_2025_08_07 = auto()
     GPT_5_NANO_2025_08_07 = auto()
     
     def to_str_list(self):
+        """
+        Converts enabled model flags into concrete model identifiers.
+
+        Example:
+            LLM.GPT_5_MINI_2025_08_07 => ["gpt-5-mini-2025-08-07"]
+        """
         gpt_list = [LLM(x.value) for x in list(LLM)]
         str_list = []
         for gpt in gpt_list:

@@ -1,3 +1,10 @@
+"""
+Initialization for Langfair evaluation module.
+
+This mainly ensures NLTK tokenizers are installed
+for token-based metrics such as BLEU and ROUGE.
+"""
+
 import nltk
 from csv_processor import CSVProcessor
 from langfair_runner import LangfairRunner

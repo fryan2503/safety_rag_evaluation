@@ -1,3 +1,14 @@
+"""
+ApproachRetrievers - abstractions for multiple retrieval methods used in the RAG system.
+Supports:
+ OpenAI vector store retrieval
+ BM25 keyword retrieval
+ Graph-based retrieval over AstraDB
+ Vanilla AstraDB similarity search
+
+This class provides modular retrieval methods that return standardized hit dictionaries.
+"""
+
 from __future__ import annotations
 import pickle
 from typing import Any, Dict, List
@@ -13,7 +24,16 @@ from langchain_graph_retriever import GraphRetriever
 from graph_retriever.strategies import Eager, Mmr
 
 class ApproachRetrievers:
+    """
+    Wraps different retrieval strategies into a unified interface.
+    Each retrieval method normalizes return format => List[Dict]
+    """
+    
     def __init__(self, config: EnvironmentConfig):
+        """
+        Loads and stores configuration values, typically from environment variables.
+        These are needed for connections and credentials.
+        """
         self.VECTOR_STORE_ID = config.VECTOR_STORE_ID
         self.BM25_PKL = config.BM25_PKL
         self.COLLECTION_NAME = config.COLLECTION_NAME
@@ -31,7 +51,11 @@ class ApproachRetrievers:
         top_k: int,
         rewrite_query: bool,
     ) -> List[Dict[str, Any]]:
-        """Query an OpenAI vector store."""
+        """
+        Query OpenAI's vector store retrieval.
+        rewrite_query=True enables semantic query rewriting by OpenAI,
+        rewrite_query=False allows raw lexical matching.
+        """
         if not self.VECTOR_STORE_ID:
             raise ValueError("OPENAI_VECTOR_STORE_ID is not set in the .env file.")
         res = client.vector_stores.search(
@@ -58,7 +82,10 @@ class ApproachRetrievers:
 
 
     def _retrieve_langchain_bm25(self, question: str, top_k: int) -> List[Dict[str, Any]]:
-        """Query the BM25 retriever built by 1_preprocess.py."""
+        """
+        Performs keyword lexical retrieval using BM25.
+        Requires a BM25 retriever file previously built using 1_preprocess.py.
+        """
         if not self.BM25_PKL.exists():
             raise FileNotFoundError(f"BM25 retriever not found at {self.BM25_PKL}. Run 1_preprocess.py first.")
         with self.BM25_PKL.open("rb") as f:
@@ -79,7 +106,10 @@ class ApproachRetrievers:
     # AstraDB Loader
     # -------------------------------------------------------------------
     def _load_astradb_vector_store(self) -> AstraDBVectorStore:
-        """Load the AstraDB vector store."""
+        """
+        Creates a vector store object configured with OpenAI embeddings.
+        Used by graph- and vanilla-retrieval methods.
+        """
         embeddings = LC_OpenAIEmbeddings(model=self.EMBED_MODEL)
         
         vector_store = AstraDBVectorStore(
@@ -92,7 +122,12 @@ class ApproachRetrievers:
 
 
     def _retrieve_graph_retriever(self, question: str, top_k: int, strategy: str) -> List[Dict[str, Any]]:
-        """Graph RAG over AstraDB using GraphRetriever with Eager or Mmr traversal."""
+        """
+        Performs graph-based retrieval on AstraDB.
+        Available strategies:
+            - EAGER: expands breadth-first aggressively
+            - MMR: maximal marginal relevance balancing diversity vs. similarity
+        """
         vector_store = self._load_astradb_vector_store()
         edges = [("source", "source")]
         
@@ -120,7 +155,10 @@ class ApproachRetrievers:
 
 
     def _retrieve_vanilla_astradb(self, question: str, top_k: int) -> List[Dict[str, Any]]:
-        """Vanilla similarity search over the AstraDB vector store."""
+        """
+        Standard nearest-neighbor retrieval using AstraDB
+        with no graph semantics - purely vector similarity.
+        """
         vector_store = self._load_astradb_vector_store()
         retriever = vector_store.as_retriever(search_kwargs={"k": top_k})
         docs = retriever.invoke(question)
