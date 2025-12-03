@@ -44,7 +44,7 @@ async def main():
         )
     # await metrics_runner.run(q_a_csv=Path("./data/localtesting/gold_set_part_1_done.csv"), out_csv=None)
     
-    analyze_csv(csv_input=Path("data/localtesting/merged_output_missing_filled.csv"), output_dir=Path("data/localtesting/out"))
+    analyze_csv(csv_input=Path("data/localtesting/merged_output_filled_final.csv"), output_dir=Path("data/localtesting/out"))
     
     
 
