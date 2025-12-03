@@ -8,5 +8,5 @@ instead of:
     from enums.llm_model import LLM
 """
 
-from approaches import Approaches
-from llm_model import LLM
+from .approaches import Approaches
+from .llm_model import LLM

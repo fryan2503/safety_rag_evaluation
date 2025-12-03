@@ -14,8 +14,8 @@ import asyncio
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 
-from metrics_calculator import LangfairMetricsCalculator
-from csv_processor import CSVProcessor
+from .metrics_calculator import LangfairMetricsCalculator
+from .csv_processor import CSVProcessor
 
 
 class LangfairRunner:

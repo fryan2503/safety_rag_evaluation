@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Tuple
 
 from openai import OpenAI
 
-from approach_retrievers import ApproachRetrievers
+from .approach_retrievers import ApproachRetrievers
 
 
 # -------------------------------------------------------------------

@@ -1,3 +1,6 @@
 .env
 code/tests/__pycache__/
 venv/
+localtesting/
+localtesting/*
+__pycache__

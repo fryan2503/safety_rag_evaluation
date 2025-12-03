@@ -32,3 +32,5 @@ nltk
 rouge-score
 scikit-learn
 
+seaborn
+matplotlib
