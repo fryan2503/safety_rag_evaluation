@@ -24,30 +24,23 @@ import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler  # type: ignore
 import datetime
 
-
-# # ---------------------------------------------------------------------------
-# # Data structures
-# # ---------------------------------------------------------------------------
-
-# @dataclass
-# class AnalysisResults:
-#     """Container for results returned by analyze_csv.
-
-#     All important outputs are also written to disk in ``output_dir``.
-#     """
-#     df_raw: pd.DataFrame
-#     df_agg: pd.DataFrame
-#     output_dir: Path
-#     summary_text_path: Path
-#     full_report_path: Path
-#     artifacts: Dict[str, Path]
-
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
+@dataclass
+class AnalysisResults:
+    """
+    Container for results returned by analyze_csv.
+    All important outputs are also written to disk in "output_dir".
+    """
+    df_raw: pd.DataFrame
+    df_agg: pd.DataFrame
+    output_dir: Path
+    summary_text_path: Path
+    artifacts: Dict[str, Path]
 
 def _ensure_output_dir(path: Union[str, Path]) -> Path:
+    """
+    Ensures that the directory for outputing files exists.
+    If it doesn't exist it is made, and the path returned.
+    """
     p = Path(path)
     p.mkdir(parents=True, exist_ok=True)
     return p
@@ -66,11 +59,12 @@ def _parse_seconds(x: Any) -> Optional[float]:
 def _compute_price(row: pd.Series) -> float:
     """
     Compute cost (in USD) based on model type and total tokens.
+    Might not be accurate.
 
-    Prices per 1M tokens (rough approximation based on the notebook comments):
-      - models whose name contains 'nano': 0.40 USD
-      - models whose name contains 'mini': 2.00 USD
-      - otherwise: 1.00 USD (fallback)
+    Prices per 1M tokens (rough approximation):
+        models whose name contains 'nano': 0.40 USD
+        models whose name contains 'mini': 2.00 USD
+        otherwise: 1.00 USD (fallback)
     """
     tokens = row.get("meta_total_tokens", 0) or 0
     try:
@@ -89,42 +83,8 @@ def _compute_price(row: pd.Series) -> float:
 
     return (tokens / 1_000_000.0) * price_per_million
 
-
-def _df_to_markdown_table(df: pd.DataFrame, max_rows: int = 20) -> str:
-    """Convert a DataFrame to a GitHub-flavoured markdown table."""
-    if df.empty:
-        return "_(no rows)_\n"
-
-    df = df.head(max_rows)
-    # Convert floats to 4 decimal places for readability
-    df = df.copy()
-
-    def _fmt(x):
-        try:
-            if pd.isna(x):
-                return ""
-            return f"{float(x):.4f}"
-        except Exception:
-            return str(x)
-
-    for col in df.select_dtypes(include="number").columns:
-        df[col] = df[col].apply(_fmt)
-
-    header = "| " + " | ".join(str(c) for c in df.columns) + " |"
-    sep = "| " + " | ".join("---" for _ in df.columns) + " |"
-    rows = [
-        "| " + " | ".join(str(v) for v in row) + " |"
-        for row in df.itertuples(index=False)
-    ]
-    return "\n".join([header, sep, *rows]) + "\n"
-
-
-# ---------------------------------------------------------------------------
-# Core analysis
-# ---------------------------------------------------------------------------
-
 def _prepare_dataframe(df: pd.DataFrame) -> pd.DataFrame:
-    """Clean and enrich the raw dataframe similarly to the notebook."""
+    """Clean and enrich the raw dataframe."""
     df = df.copy()
 
     # Strip whitespace from column names
@@ -160,7 +120,7 @@ def _prepare_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _aggregate_metrics(df: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate metrics by (approach, model, top_k) like in the notebook."""
+    """Aggregate metrics by (approach, model, top_k)"""
     required_group_cols = ["approach", "model", "top_k"]
     group_cols = [c for c in required_group_cols if c in df.columns]
     if len(group_cols) < 2:
@@ -222,7 +182,7 @@ def _aggregate_metrics(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _add_scores(agg_df: pd.DataFrame) -> pd.DataFrame:
-    """Add ranking scores & combined score, roughly matching the notebook."""
+    """Add ranking scores"""
     agg_df = agg_df.copy()
 
     score_cols: list[str] = []
@@ -374,66 +334,6 @@ def _generate_figures(agg_df: pd.DataFrame, output_dir: Path) -> Dict[str, Path]
 # ---------------------------------------------------------------------------
 # Reporting
 # ---------------------------------------------------------------------------
-
-def _write_text_summary(
-    df_raw: pd.DataFrame,
-    agg_df: pd.DataFrame,
-    output_dir: Path,
-) -> Path:
-    """Write a plain-text high level summary."""
-    path = output_dir / "summary.txt"
-
-    num_rows, num_cols = df_raw.shape
-    num_combos = len(agg_df)
-    
-
-    lines = []
-    lines.append("Model Evaluation Summary")
-    lines.append("=" * 80)
-    lines.append(f"Generated: {datetime.datetime.now().isoformat(timespec='seconds')}")
-    lines.append("")
-    lines.append(f"Raw rows: {num_rows}")
-    lines.append(f"Raw columns: {num_cols}")
-    lines.append(f"Unique (approach, model, top_k) combinations: {num_combos}")
-    lines.append(str(agg_df))
-    lines.append("")
-
-    if "pct_correctness_true" in agg_df.columns:
-        best_corr = agg_df.sort_values("pct_correctness_true", ascending=False).head(5)
-        lines.append("Top 5 combinations by % Correctness TRUE:")
-        for _, row in best_corr.iterrows():
-            lines.append(
-                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
-                f"| top_k={row.get('top_k', '?')} -> "
-                f"{row['pct_correctness_true']:.2f}% correctness"
-            )
-        lines.append("")
-
-    if "pct_helpfulness_true" in agg_df.columns:
-        best_help = agg_df.sort_values("pct_helpfulness_true", ascending=False).head(5)
-        lines.append("Top 5 combinations by % Helpfulness TRUE:")
-        for _, row in best_help.iterrows():
-            lines.append(
-                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
-                f"| top_k={row.get('top_k', '?')} -> "
-                f"{row['pct_helpfulness_true']:.2f}% helpfulness"
-            )
-        lines.append("")
-
-    if "combined_score" in agg_df.columns:
-        best_combined = agg_df.sort_values("combined_score", ascending=False).head(5)
-        lines.append("Top 5 combinations by combined score:")
-        for _, row in best_combined.iterrows():
-            lines.append(
-                f"  - rank {int(row['rank'])}: {row.get('approach', '?')} | "
-                f"{row.get('model', '?')} | top_k={row.get('top_k', '?')} -> "
-                f"combined_score={row['combined_score']:.4f}"
-            )
-        lines.append("")
-
-    path.write_text("\n".join(lines), encoding="utf-8")
-    return path
-
 def _write_text_summary_mod(
     df_raw: pd.DataFrame,
     agg_df: pd.DataFrame,
@@ -555,106 +455,6 @@ def _write_text_summary_mod(
     path.write_text("\n".join(lines), encoding="utf-8")
     return path
 
-def _write_full_report_markdown(
-    df_raw: pd.DataFrame,
-    agg_df: pd.DataFrame,
-    output_dir: Path,
-    artifacts: Dict[str, Path],
-) -> Path:
-    """Write a single markdown document summarizing everything."""
-    path = output_dir / "full_report.md"
-
-    num_rows, num_cols = df_raw.shape
-    num_combos = len(agg_df)
-
-    lines: list[str] = []
-    lines.append("# Model Evaluation Report")
-    lines.append("")
-    lines.append(
-        f"_Generated: {datetime.datetime.now().isoformat(timespec='seconds')}_"
-    )
-    lines.append("")
-    lines.append("## Dataset Overview")
-    lines.append("")
-    lines.append(f"- Raw rows: **{num_rows}**")
-    lines.append(f"- Raw columns: **{num_cols}**")
-    lines.append(f"- Unique (approach, model, top_k) combinations: **{num_combos}**")
-    lines.append("")
-
-    # Overall aggregate snapshot
-    lines.append("## Aggregated Metrics (Top 20 by Combined Score)")
-    lines.append("")
-    if not agg_df.empty:
-        if "combined_score" in agg_df.columns:
-            top = agg_df.sort_values("combined_score", ascending=False).head(20)
-        else:
-            top = agg_df.head(20)
-        cols = [
-            c
-            for c in [
-                "rank",
-                "approach",
-                "model",
-                "top_k",
-                "pct_correctness_true",
-                "pct_helpfulness_true",
-                "avg_price_usd",
-                "avg_latency_sec",
-                "avg_meta_total_tokens",
-                "avg_cosine",
-                "avg_rougeL",
-                "avg_bleu",
-                "combined_score",
-            ]
-            if c in top.columns
-        ]
-        lines.append(_df_to_markdown_table(top[cols]))
-    else:
-        lines.append("_(no aggregated data)_")
-    lines.append("")
-
-    # Best combinations by individual metrics
-    def add_metric_section(col: str, title: str):
-        if col not in agg_df.columns:
-            return
-        lines.append(f"## {title}")
-        lines.append("")
-        best = agg_df.sort_values(col, ascending=False).head(10)
-        cols_local = [
-            c
-            for c in [
-                "rank",
-                "approach",
-                "model",
-                "top_k",
-                col,
-                "pct_correctness_true",
-                "pct_helpfulness_true",
-                "avg_price_usd",
-                "avg_latency_sec",
-            ]
-            if c in best.columns
-        ]
-        lines.append(_df_to_markdown_table(best[cols_local]))
-        lines.append("")
-
-    add_metric_section("pct_correctness_true", "Top Combinations by Correctness")
-    add_metric_section("pct_helpfulness_true", "Top Combinations by Helpfulness")
-    add_metric_section("combined_score", "Top Combinations by Combined Score")
-
-    # Artifacts section
-    if artifacts:
-        lines.append("## Figures")
-        lines.append("")
-        for name, p in artifacts.items():
-            rel_name = p.name
-            lines.append(f"- **{name}** – `{rel_name}`")
-        lines.append("")
-
-    path.write_text("\n".join(lines), encoding="utf-8")
-    return path
-
-
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
@@ -662,15 +462,15 @@ def _write_full_report_markdown(
 def analyze_csv(
     csv_input: Union[str, Path, pd.DataFrame],
     output_dir: Union[str, Path] = "results",
-) -> None:
+) -> AnalysisResults:
     """
     Analyze a CSV (or DataFrame) and write results to ``output_dir``.
 
     Parameters
     ----------
     csv_input:
-        - Path to a CSV file, or
-        - A pandas DataFrame with the expected columns.
+        Path to a CSV file, or
+        A pandas DataFrame with the expected columns.
     output_dir:
         Directory where all artifacts (CSVs, images, reports) will be written.
 
@@ -711,11 +511,11 @@ def analyze_csv(
     artifacts["summary_txt"] = summary_path
     # artifacts["full_report_md"] = full_report_path
 
-    # return AnalysisResults(
-    #     df_raw=df_prepared,
-    #     df_agg=agg_scored,
-    #     output_dir=out_dir,
-    #     summary_text_path=summary_path,
-    #     # full_report_path=full_report_path,
-    #     artifacts=artifacts,
-    # )
+    return AnalysisResults(
+        df_raw=df_prepared,
+        df_agg=agg_scored,
+        output_dir=out_dir,
+        summary_text_path=summary_path,
+        # full_report_path=full_report_path,
+        artifacts=artifacts,
+    )
