@@ -4,3 +4,4 @@ venv/
 localtesting/
 localtesting/*
 __pycache__
+*.pyc

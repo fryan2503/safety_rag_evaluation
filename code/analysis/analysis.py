@@ -25,22 +25,22 @@ from sklearn.preprocessing import MinMaxScaler  # type: ignore
 import datetime
 
 
-# ---------------------------------------------------------------------------
-# Data structures
-# ---------------------------------------------------------------------------
+# # ---------------------------------------------------------------------------
+# # Data structures
+# # ---------------------------------------------------------------------------
 
-@dataclass
-class AnalysisResults:
-    """Container for results returned by analyze_csv.
+# @dataclass
+# class AnalysisResults:
+#     """Container for results returned by analyze_csv.
 
-    All important outputs are also written to disk in ``output_dir``.
-    """
-    df_raw: pd.DataFrame
-    df_agg: pd.DataFrame
-    output_dir: Path
-    summary_text_path: Path
-    full_report_path: Path
-    artifacts: Dict[str, Path]
+#     All important outputs are also written to disk in ``output_dir``.
+#     """
+#     df_raw: pd.DataFrame
+#     df_agg: pd.DataFrame
+#     output_dir: Path
+#     summary_text_path: Path
+#     full_report_path: Path
+#     artifacts: Dict[str, Path]
 
 
 # ---------------------------------------------------------------------------
@@ -252,8 +252,8 @@ def _add_scores(agg_df: pd.DataFrame) -> pd.DataFrame:
         agg_df["score_helpfulness"] = scaled_df["pct_helpfulness_true"]
     if "avg_price_usd" in scaled_df.columns:
         agg_df["score_price"] = 1.0 - scaled_df["avg_price_usd"]
-    if "avg_latency_sec" in scaled_df.columns:
-        agg_df["score_latency"] = 1.0 - scaled_df["avg_latency_sec"]
+    # if "avg_latency_sec" in scaled_df.columns:
+    #     agg_df["score_latency"] = 1.0 - scaled_df["avg_latency_sec"]
 
     score_components = [
         col
@@ -266,8 +266,8 @@ def _add_scores(agg_df: pd.DataFrame) -> pd.DataFrame:
         if col in agg_df.columns
     ]
 
-    if score_components:
-        agg_df["combined_score"] = agg_df[score_components].mean(axis=1)
+    # if score_components:
+        # agg_df["combined_score"] = agg_df[score_components].mean(axis=1)
 
     # Sort & add rank (1 = best)
     if "combined_score" in agg_df.columns:
@@ -434,6 +434,126 @@ def _write_text_summary(
     path.write_text("\n".join(lines), encoding="utf-8")
     return path
 
+def _write_text_summary_mod(
+    df_raw: pd.DataFrame,
+    agg_df: pd.DataFrame,
+    output_dir: Path,
+) -> Path:
+    """Write a plain-text high level summary (NO column truncation)."""
+    path = output_dir / "summary.txt"
+
+    num_rows, num_cols = df_raw.shape
+    num_combos = len(agg_df)
+
+    # --- Disable truncation for the DataFrame string ---
+    with pd.option_context(
+        "display.max_rows", None,
+        "display.max_columns", None,
+        "display.width", None,
+        "display.max_colwidth", None,
+    ):
+        agg_as_text = agg_df.to_string(index=False)
+    
+    with pd.option_context(
+        "display.max_rows", None,
+        "display.max_columns", None,
+        "display.width", None,
+        "display.max_colwidth", None,
+    ):
+        ranked_help = agg_df.sort_values("score_helpfulness", ascending=False).assign(help_rank=lambda d: range(1, len(d) + 1))
+        agg_as_text_help = ranked_help.to_string(index=False)
+        # agg_as_text_help = agg_df.to_string(index=False)
+
+    with pd.option_context(
+        "display.max_rows", None,
+        "display.max_columns", None,
+        "display.width", None,
+        "display.max_colwidth", None,
+    ):
+        ranked_help = agg_df.sort_values("score_correctness", ascending=False).assign(help_rank=lambda d: range(1, len(d) + 1))
+        agg_as_text_correct = ranked_help.to_string(index=False)
+
+    with pd.option_context(
+        "display.max_rows", None,
+        "display.max_columns", None,
+        "display.width", None,
+        "display.max_colwidth", None,
+    ):
+        ranked_help = agg_df.sort_values("avg_latency_sec", ascending=True).assign(help_rank=lambda d: range(1, len(d) + 1))
+        agg_as_text_latency = ranked_help.to_string(index=False)
+
+    lines = []
+    lines.append("Model Evaluation Summary")
+    lines.append("=" * 80)
+    lines.append(f"Generated: {datetime.datetime.now().isoformat(timespec='seconds')}")
+    lines.append("")
+    lines.append(f"Raw rows: {num_rows}")
+    lines.append(f"Raw columns: {num_cols}")
+    lines.append(f"Unique (approach, model, top_k) combinations: {num_combos}")
+    lines.append("")
+    lines.append("Full Aggregated Table:")
+    lines.append(agg_as_text)
+    lines.append("=" * 80)
+    lines.append("Helpfulness Ranked Table:")
+    lines.append(agg_as_text_help)
+    lines.append("=" * 80)
+    lines.append("Correctness Ranked Table:")
+    lines.append(agg_as_text_correct)
+    lines.append("=" * 80)
+    lines.append("Latency Ranked Table:")
+    lines.append(agg_as_text_latency)
+    lines.append("=" * 80)
+    lines.append("")
+
+    if "pct_correctness_true" in agg_df.columns:
+        # best_corr = agg_df.sort_values("pct_correctness_true", ascending=False).head(5)
+        best_corr = agg_df.sort_values("pct_correctness_true", ascending=False)
+        lines.append("Top combinations by % Correctness TRUE:")
+        for _, row in best_corr.iterrows():
+            lines.append(
+                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
+                f"| top_k={row.get('top_k', '?')} -> "
+                f"{row['pct_correctness_true']:.2f}% correctness"
+            )
+        lines.append("")
+
+    if "pct_helpfulness_true" in agg_df.columns:
+        # best_help = agg_df.sort_values("pct_helpfulness_true", ascending=False).head(5)
+        best_help = agg_df.sort_values("pct_helpfulness_true", ascending=False)
+        lines.append("Top combinations by % Helpfulness TRUE:")
+        for _, row in best_help.iterrows():
+            lines.append(
+                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
+                f"| top_k={row.get('top_k', '?')} -> "
+                f"{row['pct_helpfulness_true']:.2f}% helpfulness"
+            )
+        lines.append("")
+
+    if "avg_latency_sec" in agg_df.columns:
+        # best_help = agg_df.sort_values("pct_helpfulness_true", ascending=False).head(5)
+        best_help = agg_df.sort_values("avg_latency_sec", ascending=True)
+        lines.append("Top combinations by avg_latency_sec:")
+        for _, row in best_help.iterrows():
+            lines.append(
+                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
+                f"| top_k={row.get('top_k', '?')} -> "
+                f"{row['avg_latency_sec']:.2f} secs latency"
+            )
+        lines.append("")
+
+    if "combined_score" in agg_df.columns:
+        best_combined = agg_df.sort_values("combined_score", ascending=False).head(5)
+        lines.append("Top 5 combinations by combined score:")
+        for _, row in best_combined.iterrows():
+            lines.append(
+                f"  - rank {int(row['rank'])}: {row.get('approach', '?')} | "
+                f"{row.get('model', '?')} | top_k={row.get('top_k', '?')} -> "
+                f"combined_score={row['combined_score']:.4f}"
+            )
+        lines.append("")
+
+    path.write_text("\n".join(lines), encoding="utf-8")
+    return path
 
 def _write_full_report_markdown(
     df_raw: pd.DataFrame,
@@ -542,7 +662,7 @@ def _write_full_report_markdown(
 def analyze_csv(
     csv_input: Union[str, Path, pd.DataFrame],
     output_dir: Union[str, Path] = "results",
-) -> AnalysisResults:
+) -> None:
     """
     Analyze a CSV (or DataFrame) and write results to ``output_dir``.
 
@@ -580,21 +700,22 @@ def analyze_csv(
     artifacts = _generate_figures(agg_scored, out_dir)
 
     # Text summary & full report
-    summary_path = _write_text_summary(df_prepared, agg_scored, out_dir)
-    full_report_path = _write_full_report_markdown(
-        df_prepared, agg_scored, out_dir, artifacts
-    )
+    # summary_path = _write_text_summary(df_prepared, agg_scored, out_dir)
+    summary_path = _write_text_summary_mod(df_prepared, agg_scored, out_dir)
+    # full_report_path = _write_full_report_markdown(
+    #     df_prepared, agg_scored, out_dir, artifacts
+    # )
 
     # Collect all artifact paths
     artifacts["aggregated_metrics"] = agg_path
     artifacts["summary_txt"] = summary_path
-    artifacts["full_report_md"] = full_report_path
+    # artifacts["full_report_md"] = full_report_path
 
-    return AnalysisResults(
-        df_raw=df_prepared,
-        df_agg=agg_scored,
-        output_dir=out_dir,
-        summary_text_path=summary_path,
-        full_report_path=full_report_path,
-        artifacts=artifacts,
-    )
+    # return AnalysisResults(
+    #     df_raw=df_prepared,
+    #     df_agg=agg_scored,
+    #     output_dir=out_dir,
+    #     summary_text_path=summary_path,
+    #     # full_report_path=full_report_path,
+    #     artifacts=artifacts,
+    # )
