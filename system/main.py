@@ -2,13 +2,14 @@
 
 from importlib.resources import read_text
 from pathlib import Path
-from code.rag import LLM, Approaches, RAGExperimentRunner, CSVProcessor, LangfairMetricsCalculator, LangfairRunner, ApproachRetrievers
-from code.utils import EnvironmentConfig, read_text
-from code.analysis import analyze_csv
+from .rag import LLM, Approaches, RAGExperimentRunner, CSVProcessor, LangfairMetricsCalculator, LangfairRunner, ApproachRetrievers
+from .utils import EnvironmentConfig, read_text
+from .analysis import analyze_csv
 import asyncio
 
 async def main():
     env = EnvironmentConfig()
+    env.COLLECTION_NAME = "ur5_manual"
     rets = ApproachRetrievers(env)
     # test_runnner = RAGExperimentRunner(
     #     retrivers=rets,
@@ -37,11 +38,11 @@ async def main():
     
     # await test_runnner.run(Path("./data/localtesting/gold_set_part_1.csv"), Path("./data/localtesting/gold_set_part_1_done.csv"))
     
-    metrics_runner = LangfairRunner(
-            calculator=LangfairMetricsCalculator(),
-            processor=CSVProcessor(),
-            max_concurrent=500,
-        )
+    # metrics_runner = LangfairRunner(
+    #         calculator=LangfairMetricsCalculator(),
+    #         processor=CSVProcessor(),
+    #         max_concurrent=500,
+    #     )
     # await metrics_runner.run(q_a_csv=Path("./data/localtesting/gold_set_part_1_done.csv"), out_csv=None)
     
     analyze_csv(csv_input=Path("data/localtesting/merged_output_filled_final.csv"), output_dir=Path("data/localtesting/out"))
