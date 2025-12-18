@@ -1,0 +1,15 @@
+question,gold_answer
+What are the 5 main categories of safety labeling used in the manual of the bridgeport mill?,"DANGER
+DANGER indicates a hazardous situation that, if not avoided, will result in death or serious injury.
+
+WARNING
+WARNING indicates a hazardous situation that, if not avoided, could result in death or serious injury.
+
+CAUTION
+CAUTION indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.
+
+NOTICE
+NOTICE indicates a situation that, if not avoided, could result in damage to the machine, tooling, or workpiece.
+
+NOTES
+Notes contain supplemental information."

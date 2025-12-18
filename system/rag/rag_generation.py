@@ -212,6 +212,9 @@ class RAGExperimentRunner:
             return await loop.run_in_executor(executor, sync_task)
 
         # Iterate over configs
+        # counter = 1898
+        # counter = 1918
+        # index = 1918
         index = 0
         for approach, model, mtoks, effort, topk, ai_id, fs_id in itertools.product(
             self.approaches,
@@ -228,6 +231,9 @@ class RAGExperimentRunner:
                 gold = str(r["gold_answer"]) if pd.notna(r["gold_answer"]) else None
 
                 for rep in range(1, int(self.num_replicates) + 1):
+                    # counter = counter - 1
+                    # if (counter > 0):
+                    #     continue
                     tasks.append(
                         process_one(
                             q,
@@ -242,8 +248,10 @@ class RAGExperimentRunner:
                             rep,
                         )
                     )
-
+            # tasks = tasks[1897:]
+            # return
             # Run in batches
+            # if range(0, len(tasks), self.max_concurrent).count is 
             for i in range(0, len(tasks), self.max_concurrent):
                 batch = tasks[i : i + self.max_concurrent]
                 results = await asyncio.gather(*batch)

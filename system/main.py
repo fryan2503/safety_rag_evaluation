@@ -29,6 +29,76 @@ from .evaluation import (
 )
 import asyncio
 
+def merge_bridge_and_haas_and_arm(env_config: EnvironmentConfig) -> None:
+    # pdf_config = PDFPreprocessConfig(
+    #     input_pdf=Path("data/input/input_pdfs/UR5e_Universal_Robots User Manual.pdf"),
+    #     split_dir=Path("data/preprocessed/pdfs/Arm_splits"),
+    #     cropped_dir=Path("data/preprocessed/pdfs/Arm_crops"),
+    #     summary_csv_initial=Path("data/results/csvs/Arm_pdf_word_counts.csv"),
+    #     summary_csv_updated=Path(
+    #         "data/results/csvs/Arm_pdf_word_counts_after_subsplit.csv"
+    #     ),
+    #     summary_csv_final=Path("data/results/csvs/Arm_pdf_word_counts_final.csv"),
+    #     document_label="Robot Arm Doc",
+    # )
+    # PDFPreprocessor(pdf_config).run()
+
+    # env_config = EnvironmentConfig()
+    # env_config.STORE_DIR = Path("./data/preprocessed/vstore/haas/docs")
+    # env_config.BM25_PKL = Path("./data/preprocessed/vstore/haas/PKL")
+    corpus_config = CorpusBuilderConfig(
+        pdf_dir=Path("data/preprocessed/pdfs/combined"),
+        docs_jsonl=env_config.STORE_DIR / "docs.jsonl",
+        bm25_path=env_config.BM25_PKL,
+        collection_name=env_config.COLLECTION_NAME,
+        embed_model=env_config.EMBED_MODEL,
+        astra_db_api_endpoint=env_config.ASTRA_DB_API_ENDPOINT,
+        astra_db_application_token=env_config.ASTRA_DB_APPLICATION_TOKEN,
+        top_k=10,
+    )
+    builder = CorpusBuilder(corpus_config)
+    # ret = builder.build_bm25_retriever()
+    # print(ret._get_relevant_documents("Version of manual"))
+    # Testing non-api calling retriever
+    store = builder.build_vector_store()
+    builder.build_graph_retrievers(store)
+    builder.build_vanilla_retriever(store)
+
+def preprocess_robot_arm(env_config: EnvironmentConfig) -> None:
+    pdf_config = PDFPreprocessConfig(
+        input_pdf=Path("data/input/input_pdfs/UR5e_Universal_Robots User Manual.pdf"),
+        split_dir=Path("data/preprocessed/pdfs/Arm_splits"),
+        cropped_dir=Path("data/preprocessed/pdfs/Arm_crops"),
+        summary_csv_initial=Path("data/results/csvs/Arm_pdf_word_counts.csv"),
+        summary_csv_updated=Path(
+            "data/results/csvs/Arm_pdf_word_counts_after_subsplit.csv"
+        ),
+        summary_csv_final=Path("data/results/csvs/Arm_pdf_word_counts_final.csv"),
+        document_label="Robot Arm Doc",
+    )
+    PDFPreprocessor(pdf_config).run()
+
+    # env_config = EnvironmentConfig()
+    # env_config.STORE_DIR = Path("./data/preprocessed/vstore/haas/docs")
+    # env_config.BM25_PKL = Path("./data/preprocessed/vstore/haas/PKL")
+    corpus_config = CorpusBuilderConfig(
+        pdf_dir=pdf_config.cropped_dir,
+        docs_jsonl=env_config.STORE_DIR / "docs.jsonl",
+        bm25_path=env_config.BM25_PKL,
+        collection_name=env_config.COLLECTION_NAME,
+        embed_model=env_config.EMBED_MODEL,
+        astra_db_api_endpoint=env_config.ASTRA_DB_API_ENDPOINT,
+        astra_db_application_token=env_config.ASTRA_DB_APPLICATION_TOKEN,
+        top_k=10,
+    )
+    builder = CorpusBuilder(corpus_config)
+    # ret = builder.build_bm25_retriever()
+    # print(ret._get_relevant_documents("Version of manual"))
+    # Testing non-api calling retriever
+    # store = builder.build_vector_store()
+    # builder.build_graph_retrievers(store)
+    # builder.build_vanilla_retriever(store)
+
 def preprocess_bridgeport_lathe(env_config: EnvironmentConfig) -> None:
     pdf_config = PDFPreprocessConfig(
         crop_percent = 0.05,
@@ -58,14 +128,13 @@ def preprocess_bridgeport_lathe(env_config: EnvironmentConfig) -> None:
         top_k=10,
     )
     builder = CorpusBuilder(corpus_config)
-    ret = builder.build_bm25_retriever()
+    # ret = builder.build_bm25_retriever()
     # print(ret._get_relevant_documents("Version of manual"))
     # Testing non-api calling retriever
     # store = builder.build_vector_store()
     # builder.build_graph_retrievers(store)
     # builder.build_vanilla_retriever(store)
     
-
 def preprocess_haas_lathe(env_config: EnvironmentConfig) -> None:
     pdf_config = PDFPreprocessConfig(
         crop_percent = 0.05,
@@ -79,7 +148,7 @@ def preprocess_haas_lathe(env_config: EnvironmentConfig) -> None:
         summary_csv_final=Path("data/results/csvs/haas_lathe_pdf_word_counts_final.csv"),
         document_label="HAAS Lathe Doc",
     )
-    # PDFPreprocessor(pdf_config).run()
+    PDFPreprocessor(pdf_config).run()
 
     # env_config = EnvironmentConfig()
     # env_config.STORE_DIR = Path("./data/preprocessed/vstore/haas/docs")
@@ -95,14 +164,13 @@ def preprocess_haas_lathe(env_config: EnvironmentConfig) -> None:
         top_k=10,
     )
     builder = CorpusBuilder(corpus_config)
-    # ret = builder.build_bm25_retriever()
+    ret = builder.build_bm25_retriever()
     # print(ret._get_relevant_documents("Version of manual"))
     # Testing non-api calling retriever
     # store = builder.build_vector_store()
     # builder.build_graph_retrievers(store)
     # builder.build_vanilla_retriever(store)
     
-
 def preprocess_legacy_manual() -> None:
     pdf_config = PDFPreprocessConfig(
         input_pdf=Path("data/input/input_pdfs/UR5e_Universal_Robots User Manual.pdf"),
@@ -137,7 +205,6 @@ def preprocess_legacy_manual() -> None:
     # builder.build_graph_retrievers(store)
     # builder.build_vanilla_retriever(store)
 
-
 def build_judge_batch_example() -> None:
     csv_path = Path("results/rag_generation_all_approaches_minimal_renamed.csv")
     if not csv_path.exists():
@@ -161,7 +228,6 @@ def build_judge_batch_example() -> None:
         f"(submitted={result['submitted']})"
     )
 
-
 def convert_batch_results_example() -> None:
     csv_config = BatchResultsConfig(
         batch_id="example_batch_id",  # replace with real batch ID
@@ -180,7 +246,6 @@ def convert_batch_results_example() -> None:
     merger.run(merge_config)
     print("JudgeMergeConfig prepared:", merge_config)
 
-
 async def main():
     # env_config = EnvironmentConfig()
     # env_config.STORE_DIR = Path("./data/preprocessed/vstore/haas/docs")
@@ -188,18 +253,50 @@ async def main():
     # env_config.COLLECTION_NAME = "HAAS_Manual"
     # preprocess_haas_lathe(env_config=env_config)
     
-    env_config_lathe = EnvironmentConfig()
-    env_config_lathe.STORE_DIR = Path("./data/preprocessed/vstore/lathe/docs")
-    env_config_lathe.BM25_PKL = Path("./data/preprocessed/vstore/lathe/PKL")
-    env_config_lathe.COLLECTION_NAME = "BRIDGEPORT_LATHE_Manual"
-    preprocess_bridgeport_lathe(env_config=env_config_lathe)
+    # env_config_lathe = EnvironmentConfig()
+    # env_config_lathe.STORE_DIR = Path("./data/preprocessed/vstore/lathe/docs")
+    # env_config_lathe.BM25_PKL = Path("./data/preprocessed/vstore/lathe/PKL")
+    # env_config_lathe.COLLECTION_NAME = "BRIDGEPORT_LATHE_Manual"
+    # preprocess_bridgeport_lathe(env_config=env_config_lathe)
     
-    # rets = ApproachRetrievers(env_config_lathe)
+    # env_config_arm = EnvironmentConfig()
+    # env_config_arm.STORE_DIR = Path("./data/preprocessed/vstore/arm/docs")
+    # env_config_arm.BM25_PKL = Path("./data/preprocessed/vstore/arm/PKL")
+    # env_config_arm.COLLECTION_NAME = "ROBOT_ARM_Manual"
+    # preprocess_robot_arm(env_config=env_config_arm)
+    
+    env_config_combined = EnvironmentConfig()
+    env_config_combined.STORE_DIR = Path("./data/preprocessed/vstore/combined/docs")
+    env_config_combined.BM25_PKL = Path("./data/preprocessed/vstore/combined/PKL")
+    env_config_combined.COLLECTION_NAME = "COMBINED_ARM_HAAS_LATHE_MANUALS"
+    # merge_bridge_and_haas_and_arm(env_config_combined)
+    
+    # rets = ApproachRetrievers(env_config_combined)
     # returnVal = rets._retrieve_vanilla_astradb("Test", 1)
     # returnVal = rets._retrieve_graph_retriever("test", 1, "EAGER")
     # print(returnVal)
 
-    
+    rets = ApproachRetrievers(env_config_combined)
+    test_runnner = RAGExperimentRunner(
+        retrievers=rets,
+        num_replicates=1,
+        approaches=
+          Approaches.LC_BM25 
+        | Approaches.GRAPH_EAGER 
+        | Approaches.GRAPH_MMR 
+        | Approaches.OPENAI_KEYWORD 
+        | Approaches.OPENAI_SEMANTIC 
+        | Approaches.VANILLA,
+        models=LLM.GPT_5_NANO_2025_08_07 | LLM.GPT_5_MINI_2025_08_07,
+        max_tokens_list=[5000],
+        efforts=["low", "minimal"],
+        topk_list=[3, 7],
+        ans_instr_A=read_text("data/prompts/ans_instr_A.txt"),
+        fewshot_A=read_text("data/prompts/fewshot_A.txt"),
+        max_concurrent=5,
+        )
+    # await test_runnner.run(Path("data/QA/Final HAAS Lathe QA.csv"), Path("data/results/RAG_Output/HAAS_RAG_OUTPUT.csv"))
+    await test_runnner.run(Path("data/QA/MILL/Mill Feedback Accepted.csv"), Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT.csv"))
     
     # preprocess_legacy_manual()
     
