@@ -29,6 +29,79 @@ from .evaluation import (
 )
 import asyncio
 
+def preprocess_bridgeport_lathe(env_config: EnvironmentConfig) -> None:
+    pdf_config = PDFPreprocessConfig(
+        crop_percent = 0.05,
+        input_pdf=Path("data/input/input_pdfs/Bridgeport Series 1 Milling manual with schematics.pdf"),
+        split_dir=Path("data/preprocessed/pdfs/BRIDGEPORT_lathe_splits"),
+        cropped_dir=Path("data/preprocessed/pdfs/BRIDGEPORT_lathe_crops"),
+        summary_csv_initial=Path("data/results/csvs/BRIDGEPORT_lathe_pdf_word_counts.csv"),
+        summary_csv_updated=Path(
+            "data/results/csvs/BRIDGEPORT_lathe_pdf_word_counts_after_subsplit.csv"
+        ),
+        summary_csv_final=Path("data/results/csvs/BRIDGEPORT_lathe_pdf_word_counts_final.csv"),
+        document_label="BRIDGEPORT Lathe Doc",
+    )
+    PDFPreprocessor(pdf_config).run()
+
+    # env_config = EnvironmentConfig()
+    # env_config.STORE_DIR = Path("./data/preprocessed/vstore/haas/docs")
+    # env_config.BM25_PKL = Path("./data/preprocessed/vstore/haas/PKL")
+    corpus_config = CorpusBuilderConfig(
+        pdf_dir=pdf_config.cropped_dir,
+        docs_jsonl=env_config.STORE_DIR / "docs.jsonl",
+        bm25_path=env_config.BM25_PKL,
+        collection_name=env_config.COLLECTION_NAME,
+        embed_model=env_config.EMBED_MODEL,
+        astra_db_api_endpoint=env_config.ASTRA_DB_API_ENDPOINT,
+        astra_db_application_token=env_config.ASTRA_DB_APPLICATION_TOKEN,
+        top_k=10,
+    )
+    builder = CorpusBuilder(corpus_config)
+    ret = builder.build_bm25_retriever()
+    # print(ret._get_relevant_documents("Version of manual"))
+    # Testing non-api calling retriever
+    # store = builder.build_vector_store()
+    # builder.build_graph_retrievers(store)
+    # builder.build_vanilla_retriever(store)
+    
+
+def preprocess_haas_lathe(env_config: EnvironmentConfig) -> None:
+    pdf_config = PDFPreprocessConfig(
+        crop_percent = 0.05,
+        input_pdf=Path("data/input/input_pdfs/HAAS_LATHE_OUTLINED.pdf"),
+        split_dir=Path("data/preprocessed/pdfs/haas_lathe_splits"),
+        cropped_dir=Path("data/preprocessed/pdfs/haas_lathe_crops"),
+        summary_csv_initial=Path("data/results/csvs/haas_lathe_pdf_word_counts.csv"),
+        summary_csv_updated=Path(
+            "data/results/csvs/haas_lathe_pdf_word_counts_after_subsplit.csv"
+        ),
+        summary_csv_final=Path("data/results/csvs/haas_lathe_pdf_word_counts_final.csv"),
+        document_label="HAAS Lathe Doc",
+    )
+    # PDFPreprocessor(pdf_config).run()
+
+    # env_config = EnvironmentConfig()
+    # env_config.STORE_DIR = Path("./data/preprocessed/vstore/haas/docs")
+    # env_config.BM25_PKL = Path("./data/preprocessed/vstore/haas/PKL")
+    corpus_config = CorpusBuilderConfig(
+        pdf_dir=pdf_config.cropped_dir,
+        docs_jsonl=env_config.STORE_DIR / "docs.jsonl",
+        bm25_path=env_config.BM25_PKL,
+        collection_name=env_config.COLLECTION_NAME,
+        embed_model=env_config.EMBED_MODEL,
+        astra_db_api_endpoint=env_config.ASTRA_DB_API_ENDPOINT,
+        astra_db_application_token=env_config.ASTRA_DB_APPLICATION_TOKEN,
+        top_k=10,
+    )
+    builder = CorpusBuilder(corpus_config)
+    # ret = builder.build_bm25_retriever()
+    # print(ret._get_relevant_documents("Version of manual"))
+    # Testing non-api calling retriever
+    # store = builder.build_vector_store()
+    # builder.build_graph_retrievers(store)
+    # builder.build_vanilla_retriever(store)
+    
 
 def preprocess_legacy_manual() -> None:
     pdf_config = PDFPreprocessConfig(
@@ -109,10 +182,31 @@ def convert_batch_results_example() -> None:
 
 
 async def main():
+    # env_config = EnvironmentConfig()
+    # env_config.STORE_DIR = Path("./data/preprocessed/vstore/haas/docs")
+    # env_config.BM25_PKL = Path("./data/preprocessed/vstore/haas/PKL")
+    # env_config.COLLECTION_NAME = "HAAS_Manual"
+    # preprocess_haas_lathe(env_config=env_config)
+    
+    env_config_lathe = EnvironmentConfig()
+    env_config_lathe.STORE_DIR = Path("./data/preprocessed/vstore/lathe/docs")
+    env_config_lathe.BM25_PKL = Path("./data/preprocessed/vstore/lathe/PKL")
+    env_config_lathe.COLLECTION_NAME = "BRIDGEPORT_LATHE_Manual"
+    preprocess_bridgeport_lathe(env_config=env_config_lathe)
+    
+    # rets = ApproachRetrievers(env_config_lathe)
+    # returnVal = rets._retrieve_vanilla_astradb("Test", 1)
+    # returnVal = rets._retrieve_graph_retriever("test", 1, "EAGER")
+    # print(returnVal)
+
+    
+    
+    # preprocess_legacy_manual()
+    
     # preprocess_legacy_manual()
     # build_judge_batch_example()
     # convert_batch_results_example()
-    print(read_text("./data/prompts/ans_instr_A.txt"))
+    # print(read_text("./data/prompts/ans_instr_A.txt"))
     # print(read_text("./data/prompts/fewshot_A.txt"))
     # env = EnvironmentConfig()
     # # env.COLLECTION_NAME = "ur5_manual"

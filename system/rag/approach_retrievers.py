@@ -90,7 +90,9 @@ class ApproachRetrievers:
             raise FileNotFoundError(f"BM25 retriever not found at {self.BM25_PKL}. Run 1_preprocess.py first.")
         with self.BM25_PKL.open("rb") as f:
             retriever: LC_BM25Retriever = pickle.load(f)
-        results = retriever.invoke(question, k=top_k)
+        # results = retriever.invoke(question, k=top_k)
+        retriever.k = top_k
+        results = retriever.invoke(question)
         return [
             {
                 "filename": (d.metadata or {}).get("source") or (d.metadata or {}).get("filename", ""),

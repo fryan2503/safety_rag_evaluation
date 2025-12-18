@@ -34,3 +34,5 @@ scikit-learn
 
 seaborn
 matplotlib
+
+pymupdf
