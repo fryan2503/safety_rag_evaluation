@@ -18,6 +18,7 @@ import json
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
+import sys
 from typing import Any, Dict, Iterable, List, Optional
 from zoneinfo import ZoneInfo
 
@@ -41,6 +42,7 @@ HELPFULNESS_INSTRUCTIONS = """You are a teacher grading a quiz. You will be give
 Relevance:
 A relevance value of True means that the student's answer meets all of the criteria.
 A relevance value of False means that the student's answer does not meet all of the criteria.
+Say the relevance value in the format: 'Relevance: True' or 'Relevance: False'
 
 Explain your reasoning in a step-by-step manner to ensure your reasoning and conclusion are correct. Avoid simply stating the correct answer at the outset."""
 
@@ -51,6 +53,7 @@ CORRECTNESS_INSTRUCTIONS = """You are a teacher grading a quiz. You will be give
 Correctness:
 A correctness value of True means that the student's answer meets all of the criteria.
 A correctness value of False means that the student's answer does not meet all of the criteria.
+Say the correctness value in the format: 'Correctness: True' or 'Correctness: False'
 
 Explain your reasoning in a step-by-step manner to ensure your reasoning and conclusion are correct. Avoid simply stating the correct answer at the outset."""
 
@@ -206,6 +209,7 @@ def load_judge_inputs_from_csv(csv_path: Path) -> List[JudgeInput]:
     The CSV already contains everything needed to construct judge requests, so we
     simply map columns onto the ``JudgeInput`` fields and metadata.
     """
+    csv.field_size_limit(sys.maxsize)
     records: List[JudgeInput] = []
     with csv_path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
@@ -263,7 +267,7 @@ class JudgeBatchBuilder:
             submission = self.submit_batch(requests)
             result["submitted"] = True
             result["submission"] = submission
-
+            print(submission["batch_id"])
             env_file = self.config.env_file
             if env_file:
                 set_key(str(env_file), "OPENAI_BATCH_ID", submission["batch_id"])

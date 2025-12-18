@@ -276,52 +276,44 @@ async def main():
     # returnVal = rets._retrieve_graph_retriever("test", 1, "EAGER")
     # print(returnVal)
 
-    rets = ApproachRetrievers(env_config_combined)
-    test_runnner = RAGExperimentRunner(
-        retrievers=rets,
-        num_replicates=1,
-        approaches=
-          Approaches.LC_BM25 
-        | Approaches.GRAPH_EAGER 
-        | Approaches.GRAPH_MMR 
-        | Approaches.OPENAI_KEYWORD 
-        | Approaches.OPENAI_SEMANTIC 
-        | Approaches.VANILLA,
-        models=LLM.GPT_5_NANO_2025_08_07 | LLM.GPT_5_MINI_2025_08_07,
-        max_tokens_list=[5000],
-        efforts=["low", "minimal"],
-        topk_list=[3, 7],
-        ans_instr_A=read_text("data/prompts/ans_instr_A.txt"),
-        fewshot_A=read_text("data/prompts/fewshot_A.txt"),
-        max_concurrent=5,
-        )
-    # await test_runnner.run(Path("data/QA/Final HAAS Lathe QA.csv"), Path("data/results/RAG_Output/HAAS_RAG_OUTPUT.csv"))
-    await test_runnner.run(Path("data/QA/MILL/Mill Feedback Accepted.csv"), Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT.csv"))
-    
-    # preprocess_legacy_manual()
-    
-    # preprocess_legacy_manual()
-    # build_judge_batch_example()
-    # convert_batch_results_example()
-    # print(read_text("./data/prompts/ans_instr_A.txt"))
-    # print(read_text("./data/prompts/fewshot_A.txt"))
-    # env = EnvironmentConfig()
-    # # env.COLLECTION_NAME = "ur5_manual"
-    # rets = ApproachRetrievers(env)
+    # rets = ApproachRetrievers(env_config_combined)
     # test_runnner = RAGExperimentRunner(
     #     retrievers=rets,
     #     num_replicates=1,
-    #     approaches=Approaches.LC_BM25,
-    #     models=LLM.GPT_5_NANO_2025_08_07,
+    #     approaches=
+    #       Approaches.LC_BM25 
+    #     | Approaches.GRAPH_EAGER 
+    #     | Approaches.GRAPH_MMR 
+    #     | Approaches.OPENAI_KEYWORD 
+    #     | Approaches.OPENAI_SEMANTIC 
+    #     | Approaches.VANILLA,
+    #     models=LLM.GPT_5_NANO_2025_08_07 | LLM.GPT_5_MINI_2025_08_07,
     #     max_tokens_list=[5000],
-    #     efforts=["low"],
-    #     topk_list=[3],
+    #     efforts=["low", "minimal"],
+    #     topk_list=[3, 7],
     #     ans_instr_A=read_text("data/prompts/ans_instr_A.txt"),
     #     fewshot_A=read_text("data/prompts/fewshot_A.txt"),
-    #     max_concurrent=1,
+    #     max_concurrent=5,
     #     )
-
-    # await test_runnner.run(Path("./data/localtesting/gold_set_part_1.csv"), Path("./data/localtesting/gold_set_part_1_done.csv"))
+    # await test_runnner.run(Path("data/QA/Final HAAS Lathe QA.csv"), Path("data/results/RAG_Output/HAAS_RAG_OUTPUT.csv"))
+    # await test_runnner.run(Path("data/QA/MILL/Mill Feedback Accepted.csv"), Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT.csv"))
+    
+    config = JudgeBatchConfig(
+        csv_path=Path("data/results/RAG_Output/HAAS/HAAS_RAG_OUTPUT-DONE-Batch-Single-Test.csv"),
+        output_jsonl=Path(
+            "data/results/batchprocess/HAAS_BATCH.jsonl"
+        ),
+        judge_model="gpt-5",
+        completion_window="24h",
+        submit_to_openai=True,
+        env_file=None,
+    )
+    builder = JudgeBatchBuilder(config)
+    result = builder.run()
+    print(
+        f"[judge-batch] Prepared {result['num_requests']} requests at {result['payload_path']} "
+        f"(submitted={result['submitted']})"
+    )
 
     # metrics_runner = LangfairRunner(
     #         calculator=LangfairMetricsCalculator(),
