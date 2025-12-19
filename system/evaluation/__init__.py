@@ -4,3 +4,4 @@ from .judge_batch import JudgeInput, JudgeBatchConfig, JudgeBatchBuilder, build_
 from .batch_fetcher import BatchFetchConfig, BatchFetchRunner
 from .batch_results_parser import BatchResultsConfig, BatchResultsExporter
 from .judge_results_merger import JudgeMergeConfig, JudgeResultsMerger
+from .csv_column_merger import CSVColumnMergeConfig, CSVColumnMerger

@@ -42,6 +42,26 @@ class BatchResultsExporter:
                     rows.append(json.loads(line))
         return rows
 
+    @staticmethod
+    def _load_json(path: Path) -> List[Dict[str, Any]]:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+        if not isinstance(data, list):
+            raise SystemExit(f"Expected {path} to contain a JSON list.")
+        return data
+
+    @staticmethod
+    def load_local_records(
+        raw_jsonl_path: Path | None = None, json_path: Path | None = None
+    ) -> List[Dict[str, Any]]:
+        raw_path = Path(raw_jsonl_path) if raw_jsonl_path else None
+        json_out = Path(json_path) if json_path else None
+        if raw_path and raw_path.exists():
+            return BatchResultsExporter._load_jsonl(raw_path)
+        if json_out and json_out.exists():
+            return BatchResultsExporter._load_json(json_out)
+        raise SystemExit("Provide an existing --raw-jsonl or --json file to load batch results.")
+
     def download_records(self, config: BatchResultsConfig) -> List[Dict[str, Any]]:
         batch = self.client.batches.retrieve(config.batch_id).model_dump()
         if batch.get("status") != "completed":
@@ -100,7 +120,8 @@ class BatchResultsExporter:
             return judge_type
         return None
 
-    def build_rows(self, records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    @classmethod
+    def build_rows(cls, records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         mapping_judge_type_key = {
             "doc_relevance": "Relevance",
             "correctness_vs_ref": "Correctness",
@@ -109,10 +130,10 @@ class BatchResultsExporter:
         }
         rows: List[Dict[str, Any]] = []
         for record in records:
-            rec = self.extract_record_info(record)
+            rec = cls.extract_record_info(record)
             custom_id = rec.get("custom_id")
-            judge_type = self.extract_judge_type(custom_id)
-            judge_answer = self.extract_boolean_answer(
+            judge_type = cls.extract_judge_type(custom_id)
+            judge_answer = cls.extract_boolean_answer(
                 rec.get("text"), mapping_judge_type_key.get(judge_type, "")
             )
             rows.append(

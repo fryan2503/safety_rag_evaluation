@@ -26,6 +26,8 @@ from .evaluation import (
     BatchResultsExporter,
     JudgeMergeConfig,
     JudgeResultsMerger,
+    CSVColumnMergeConfig, 
+    CSVColumnMerger
 )
 import asyncio
 
@@ -298,32 +300,76 @@ async def main():
     # await test_runnner.run(Path("data/QA/Final HAAS Lathe QA.csv"), Path("data/results/RAG_Output/HAAS_RAG_OUTPUT.csv"))
     # await test_runnner.run(Path("data/QA/MILL/Mill Feedback Accepted.csv"), Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT.csv"))
     
-    config = JudgeBatchConfig(
-        csv_path=Path("data/results/RAG_Output/HAAS/HAAS_RAG_OUTPUT-DONE-Batch-Single-Test.csv"),
-        output_jsonl=Path(
-            "data/results/batchprocess/HAAS_BATCH.jsonl"
-        ),
-        judge_model="gpt-5",
-        completion_window="24h",
-        submit_to_openai=True,
-        env_file=None,
-    )
-    builder = JudgeBatchBuilder(config)
-    result = builder.run()
-    print(
-        f"[judge-batch] Prepared {result['num_requests']} requests at {result['payload_path']} "
-        f"(submitted={result['submitted']})"
-    )
+    # config = JudgeBatchConfig(
+    #     csv_path=Path("data/results/RAG_Output/HAAS/HAAS_RAG_OUTPUT-DONE.csv"),
+    #     output_jsonl=Path(
+    #         "data/results/batchprocess/HAAS_BATCH.jsonl"
+    #     ),
+    #     judge_model="gpt-5",
+    #     completion_window="24h",
+    #     submit_to_openai=True,
+    #     env_file=None,
+    # )
+    # builder = JudgeBatchBuilder(config)
+    # result = builder.run()
+    # print(
+    #     f"[judge-batch] Prepared {result['num_requests']} requests at {result['payload_path']} "
+    #     f"(submitted={result['submitted']})"
+    # )
+    
+    # config = JudgeBatchConfig(
+    #     csv_path=Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT.csv"),
+    #     output_jsonl=Path(
+    #         "data/results/batchprocess/MILL_BATCH.jsonl"
+    #     ),
+    #     judge_model="gpt-5",
+    #     completion_window="24h",
+    #     submit_to_openai=True,
+    #     env_file=None,
+    # )
+    # builder = JudgeBatchBuilder(config)
+    # result = builder.run()
+    # print(
+    #     f"[judge-batch] Prepared {result['num_requests']} requests at {result['payload_path']} "
+    #     f"(submitted={result['submitted']})"
+    # )
 
     # metrics_runner = LangfairRunner(
     #         calculator=LangfairMetricsCalculator(),
     #         processor=CSVProcessor(),
     #         max_concurrent=500,
     #     )
-    # await metrics_runner.run(q_a_csv=Path("./data/localtesting/gold_set_part_1_done.csv"), out_csv=None)
+    # await metrics_runner.run(q_a_csv=Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT.csv"), out_csv=None)
 
+    # metrics_runner = LangfairRunner(
+    #         calculator=LangfairMetricsCalculator(),
+    #         processor=CSVProcessor(),
+    #         max_concurrent=500,
+    #     )
+    # await metrics_runner.run(q_a_csv=Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT.csv"), out_csv=None)
     # analyze_csv(csv_input=Path("data/localtesting/merged_output_filled_final.csv"), output_dir=Path("data/localtesting/out"))
+    # config = CSVColumnMergeConfig(
+    #     left_csv=Path("data/results/RAG_Output/HAAS/HAAS_RAG_OUTPUT-DONE_with_metrics.csv"),
+    #     right_csv=Path("data/results/batchprocess/haas_batch_output_wide.csv"),
+    #     output_csv=Path("data/results/final_merged/haas.csv"),
+    #     on="permutation_id",
+    #     how="left",
+    #     exclude_columns=["q", "retrieved_files", "meta_hits_text"],
+    # )
+    # CSVColumnMerger().run(config)
+    # config = CSVColumnMergeConfig(
+    #     left_csv=Path("data/results/RAG_Output/Mill/MILL_RAG_OUTPUT_with_metrics.csv"),
+    #     right_csv=Path("data/results/batchprocess/mill_batch_output_wide.csv"),
+    #     output_csv=Path("data/results/final_merged/mill.csv"),
+    #     on="permutation_id",
+    #     how="left",
+    #     exclude_columns=["q", "retrieved_files", "meta_hits_text"],
+    # )
+    # CSVColumnMerger().run(config)
+    analyze_csv(csv_input=Path("data/results/final_merged/haas.csv"), output_dir=Path("data/results/final_merged/analysis_haas/"))
+    analyze_csv(csv_input=Path("data/results/final_merged/mill.csv"), output_dir=Path("data/results/final_merged/analysis_mill/"))
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+    

@@ -103,6 +103,21 @@ def _prepare_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                     .isin(["true", "1", "yes"])
                 )
 
+    # Normalize effort column for downstream grouping
+    if "effort" in df.columns:
+        effort_source = "effort"
+    elif "reasoning_effort" in df.columns:
+        effort_source = "reasoning_effort"
+    else:
+        effort_source = None
+
+    if effort_source:
+        df["effort"] = (
+            df[effort_source]
+            .astype("string")
+            .str.strip()
+        )
+
     # Numerics
     numeric_cols = ["meta_total_tokens", "cosine", "rougeL", "bleu"]
     for col in numeric_cols:
@@ -120,14 +135,21 @@ def _prepare_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _aggregate_metrics(df: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate metrics by (approach, model, top_k)"""
-    required_group_cols = ["approach", "model", "top_k"]
-    group_cols = [c for c in required_group_cols if c in df.columns]
-    if len(group_cols) < 2:
+    """Aggregate metrics by (approach, model, effort, top_k) when available."""
+    required_group_cols = ["approach", "model"]
+    optional_group_cols = ["effort", "top_k"]
+
+    missing = [c for c in required_group_cols if c not in df.columns]
+    if missing:
         raise ValueError(
             "Not enough grouping columns found in the CSV. "
-            "Expected at least 'approach' and 'model', optionally 'top_k'."
+            "Expected at least 'approach' and 'model'. "
+            f"Missing: {', '.join(missing)}"
         )
+
+    group_cols = required_group_cols + [
+        c for c in optional_group_cols if c in df.columns
+    ]
 
     agg_dict: Dict[str, Any] = {}
 
@@ -344,6 +366,17 @@ def _write_text_summary_mod(
 
     num_rows, num_cols = df_raw.shape
     num_combos = len(agg_df)
+    combo_cols = [
+        c for c in ["approach", "model", "effort", "top_k"] if c in agg_df.columns
+    ]
+
+    def _combo_label(row: pd.Series) -> str:
+        parts = [str(row.get("approach", "?")), str(row.get("model", "?"))]
+        if "effort" in row.index:
+            parts.append(f"effort={row.get('effort', '?')}")
+        if "top_k" in row.index:
+            parts.append(f"top_k={row.get('top_k', '?')}")
+        return " | ".join(parts)
 
     # --- Disable truncation for the DataFrame string ---
     with pd.option_context(
@@ -389,7 +422,8 @@ def _write_text_summary_mod(
     lines.append("")
     lines.append(f"Raw rows: {num_rows}")
     lines.append(f"Raw columns: {num_cols}")
-    lines.append(f"Unique (approach, model, top_k) combinations: {num_combos}")
+    combo_desc = ", ".join(combo_cols) if combo_cols else "approach, model"
+    lines.append(f"Unique ({combo_desc}) combinations: {num_combos}")
     lines.append("")
     lines.append("Full Aggregated Table:")
     lines.append(agg_as_text)
@@ -411,8 +445,7 @@ def _write_text_summary_mod(
         lines.append("Top combinations by % Correctness TRUE:")
         for _, row in best_corr.iterrows():
             lines.append(
-                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
-                f"| top_k={row.get('top_k', '?')} -> "
+                f"  - {_combo_label(row)} -> "
                 f"{row['pct_correctness_true']:.2f}% correctness"
             )
         lines.append("")
@@ -423,8 +456,7 @@ def _write_text_summary_mod(
         lines.append("Top combinations by % Helpfulness TRUE:")
         for _, row in best_help.iterrows():
             lines.append(
-                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
-                f"| top_k={row.get('top_k', '?')} -> "
+                f"  - {_combo_label(row)} -> "
                 f"{row['pct_helpfulness_true']:.2f}% helpfulness"
             )
         lines.append("")
@@ -435,8 +467,7 @@ def _write_text_summary_mod(
         lines.append("Top combinations by avg_latency_sec:")
         for _, row in best_help.iterrows():
             lines.append(
-                f"  - {row.get('approach', '?')} | {row.get('model', '?')} "
-                f"| top_k={row.get('top_k', '?')} -> "
+                f"  - {_combo_label(row)} -> "
                 f"{row['avg_latency_sec']:.2f} secs latency"
             )
         lines.append("")
@@ -446,8 +477,7 @@ def _write_text_summary_mod(
         lines.append("Top 5 combinations by combined score:")
         for _, row in best_combined.iterrows():
             lines.append(
-                f"  - rank {int(row['rank'])}: {row.get('approach', '?')} | "
-                f"{row.get('model', '?')} | top_k={row.get('top_k', '?')} -> "
+                f"  - rank {int(row['rank'])}: {_combo_label(row)} -> "
                 f"combined_score={row['combined_score']:.4f}"
             )
         lines.append("")
