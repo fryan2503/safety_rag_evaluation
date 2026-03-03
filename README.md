@@ -6,89 +6,117 @@ A Python-based retrieval-augmented generation (RAG) system for evaluating differ
 
 This project implements and compares multiple retrieval strategies for answering safety questions about industrial robotics equipment. It processes technical documentation, builds multiple retrieval indexes, and evaluates their effectiveness using various RAG approaches.
 
+### Overview
+
+This project implements a full **PDF → Preprocess → RAG → Evaluation → Analysis** pipeline that supports:
+
+- Multi-stage PDF preprocessing (OCR, TOC splitting, chunking, embedding)
+- Multiple retrieval strategies (BM25, semantic, graph, vanilla RAG, etc.)
+- Batch + concurrent evaluation workflows
+- Modular & extensible evaluation framework (LLM-as-a-judge metriccs)
+- Deterministic pipelines with row-count validation
+- Automated analysis for model-to-model and approach-to-approach comparison
+
 ## Project Structure
 
 ```
 safety_rag_evaluation/
-├── code/                       # Python scripts for processing and retrieval
-│   ├── 0_ur5e_multiple_pdfs.py    # PDF splitting and preprocessing
-│   ├── 1_preprocess.py            # Document indexing and retriever setup
-│   ├── 2_rag.py                   # RAG query router and evaluation
-│   └── 3_rag_exp_with_evals.py    # Experiment runner with automated evaluation
-├── pdfs/                       # Source documents
-│   └── UR5e_Universal_Robots User Manual.pdf
-├── data/                       # Test datasets
-│   └── sample_test_questions.csv  # Test questions with gold answers
-├── prompts/                    # Prompt templates for experiments
-│   ├── ans_instr_A.txt            # Answer instruction variant A (you should add a B version for A/B testing)
-│   └── fewshot_A.txt              # Few-shot preamble variant A  (you should add a B version for A/B testing)
-├── results/                    # Output files
-│   ├── csvs/                      # Word count summaries
-│   ├── pdfs/                      # Split and cropped PDF sections
-│   │   ├── ur5_splits/
-│   │   └── ur5_splits_cropped/
-│   ├── rag_results.csv            # RAG evaluation results
-│   └── experiment_results.csv     # Automated evaluation results
-├── retrieval_store/            # Serialized retrievers
-│   ├── bm25/                      # BM25 retriever files
-│   │   └── bm25_retriever.pkl
-│   └── docs.jsonl                # Processed documents
-├── figs/                       # Documentation figures
-│   └── openai_vectorstore_settings.png
-├── .env                        # Environment variables (not in repo)
-└── requirements.txt            # Python dependencies
+├── code/
+│   ├── analysis/                # Reporting, plots, summaries
+│   ├── evaluation/              # Batch + concurrent evals (extensible)
+│   ├── preprocess/              # PDF → OCR → chunk → embed
+│   ├── pre_process/             # (Legacy) — to be merged into preprocess/
+│   ├── rag/                     # Retrieval logic, prompt assembly
+│   └── utils/                   # Logging, config, helpers, validation
+│
+├── data/
+│   ├── input/                   # Raw PDFs
+│   ├── preprocessed/
+│   │   ├── pdfs/
+│   │   ├── tests_csvs/          # Ground-truth QA test sets
+│   │   └── vstore/              # Vector store embeddings + index
+│   │
+│   └── results/
+│       ├── batchprocess/        # Raw batch outputs, multi-run
+│       ├── eval/                # Post-eval JSONL (scores)
+│       ├── rag/                 # Raw RAG retrieval outputs
+│       ├── summary/             # Aggregated evaluation metrics
+│
+├── prompts/                     # Prompt templates (system, judge, few-shot)
+│
+├── venv/                        # Virtual environment (ignored in repo)
+│
+├── .env                         # API keys
+├── requirements.txt             # Dependencies
+├── README.md                    # Project documentation
+└── LICENSE                      # License info
 ```
 
-## Features
+# Pipeline Overview
 
-### PDF Processing (`0_ur5e_multiple_pdfs.py`)
-- Splits source PDF using table of contents at configurable levels
-- Crops pages to remove repeated margins and headers
-- Automatically sub-splits large sections based on word count thresholds
-- Generates word count statistics for each section
-- Creates three CSV reports tracking processing stages
+## **1. PDF → Preprocess (`code/preproces/`)**
 
-### Document Preprocessing (`1_preprocess.py`)
-- Loads and indexes processed PDF sections
-- Builds multiple retrieval systems:
-  - **BM25 Retriever**: Traditional keyword-based search
-  - **AstraDB Vector Store**: Semantic embeddings with OpenAI text-embedding-3-small
-  - **Graph RAG**: Document graph with EAGER and MMR traversal strategies
-  - **Vanilla RAG**: Standard similarity search
-- Saves retrievers for reuse
+Handles all document preparation:
 
-### RAG Query Router (`2_rag.py`)
-- Unified interface for comparing retrieval approaches:
-  - `openai_semantic`: OpenAI file search with query rewriting
-  - `openai_keyword`: OpenAI file search without rewriting
-  - `lc_bm25`: LangChain BM25 retriever
-  - `graph_eager`: Graph retrieval with eager traversal
-  - `graph_mmr`: Graph retrieval with maximum marginal relevance
-  - `vanilla`: Standard vector similarity search
-- Safety-focused prompting with few-shot examples
-- Logs results with retrieval scores, snippets, and token usage
+- Something
+-
+---
 
-### Experiment Runner with Evaluations (`3_rag_exp_with_evals.py`)
-- Automated experiment framework for systematic RAG evaluation
-- Sweeps multiple experimental factors:
-  - Retrieval approaches (all supported methods)
-  - Models (GPT-5-mini, GPT-5-nano, etc.)
-  - Token limits and reasoning effort levels
-  - Top-k retrieval parameters
-  - A/B testing for answer instructions and few-shot templates
-- Computes automated similarity metrics, inspired by [langfair `AutoEval()`](https://python.langchain.com/docs/integrations/providers/langfair/):
-  - Cosine similarity (TF-IDF based)
-  - ROUGE-L F-measure
-  - BLEU score with smoothing
-- LLM-as-judge evaluation (configurable judge model), templates based on [Langsmith's RAG Evaluation Tutorial](https://docs.langchain.com/langsmith/evaluate-rag-tutorial#heres-a-consolidated-script-with-all-the-above-code):
-  - Document relevance (retrieval quality)
-  - Faithfulness (groundedness/hallucination check)
-  - Helpfulness (answer relevance)
-  - Correctness vs reference answer
-- Incremental CSV output with full provenance tracking
-- Integrates with LangSmith for experiment tracing
+## **2. Retrieval Layer (`code/rag/`)**
 
-## Installation
+Implements multiple RAG retrieval types:
+
+- **BM25** keyword search  
+- **Semantic RAG** via embedding similarity  
+- **Graph RAG** with EAGER / MMR traversal  
+- more 
+- 
+---
+
+## **3. Evaluation Engine (`code/evals/`)**
+
+A fully modular evaluation subsystem with:
+
+###  Batch or concurrent evaluation
+- Sequential mode for if you want to see evalation for a smalll set of examples   
+- Concurrent mode for scaling thousands of samples
+
+###  Built-in metrics
+- Cosine similarity  
+- ROUGE-L  
+- BLEU  
+
+###  LLM-as-judge evaluation
+Configurable judge prompts and models for:
+
+- Helpfulness  
+- Correctness vs. gold answer  
+
+### ✔ Extensibility requirement
+**The evaluation module is intentionally designed to be extensible:**
+
+- Register new evaluators simply by dropping in new Python modules  
+- Supports multiple judge models  
+- Enables rapid experimentation  
+
+Example structure:
+Something 
+### Validation & Row-count Guarantees
+Checks include:
+
+- Row count alignment across:
+  - Raw RAG results  
+  - Model outputs  
+  - Pre-eval JSON  
+  - Post-eval JSON  
+  - Merged runs  
+- Key presence validation  
+- Duplicate detection  
+- Schema consistency  
+
+---
+
+## Installation(Need Update)
 
 1. Clone the repository:
 ```bash
@@ -113,7 +141,7 @@ LANGSMITH_API_KEY=your_langsmith_api_key
 LANGSMITH_TRACING=true
 ```
 
-## Configuration
+## Configuration(Need update )
 
 Key parameters in `CONFIG` (code/1_preprocess.py and code/2_rag.py):
 - `model`: OpenAI model (default: gpt-5-nano-2025-08-07)
@@ -123,7 +151,7 @@ Key parameters in `CONFIG` (code/1_preprocess.py and code/2_rag.py):
 - `top_k`: Number of documents to retrieve (default: 10)
 - `max_chars_per_content`: Character limit per retrieved chunk (default: 25000)
 
-## Usage
+## Usage(Need update)
 
 ### Step 1: Process the PDF
 ```bash
