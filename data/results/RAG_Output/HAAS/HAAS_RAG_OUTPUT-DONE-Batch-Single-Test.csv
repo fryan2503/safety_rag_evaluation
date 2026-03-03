@@ -1,0 +1,1363 @@
+permutation_id,time_started,time_ended,total_elapsed_time,min_words_for_subsplit,approach,model,max_tokens,reasoning_effort,top_k,answer_instructions_id,few_shot_id,replicate,question,gold_answer,generated_answer,retrieved_files,meta_hits_text,meta_resp_id,meta_model,meta_status,meta_created,meta_input_tokens,meta_output_tokens,meta_total_tokens,meta_reason
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX2tleXdvcmQiLCJlZmZvcnQiOiJsb3ciLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LW1pbmktMjAyNS0wOC0wNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiNmZjZTAxMmMtYTk0ZS00OTIwLTgyMzQtY2JlOTM3NDRlNjUxIn0mLRJPpWzoWg,2025-12-17 23:35:01 EST,2025-12-17 23:35:07 EST,5.40 Seconds,3000,openai_keyword,gpt-5-mini-2025-08-07,5000,low,3,A,A,1,"In the event a person or article of clothing is trapped in the HAAS Lathe, what should be done?",The [Emergency Stop] knob should be depressed and the person/object removed.,"If a person is trapped inside the machine, immediately depress the emergency stop button and remove the person. If the person is pinched or entangled, power the machine off; then the machine axes can be moved by use of a large external force in the direction required to free the person. [001__L1__Chapter_1_Safety__pp23-40__L2__01__1.1_General_Safety_Notes__pp23-29.pdf]",001__L1__Chapter_1_Safety__pp23-40__L2__01__1.1_General_Safety_Notes__pp23-29.pdf;013__L1__13._Emergency_Events__pp181-189.pdf;003__L1__Safety_Recommendations__pp3-8.pdf,"<sources><result file_id='file-3hkrvVZo1YyjHzk2B9hijP' filename='001__L1__Chapter_1_Safety__pp23-40__L2__01__1.1_General_Safety_Notes__pp23-29.pdf' score='0.8155'><content>Safety 
+
+1
+
+Chapter 1: Safety
+1.1 General Safety Notes
+
+CAUTION: Only authorized and trained personnel may operate this equipment.
+You must always act in accordance with the Operator&#x27;s manual, safety
+decals, safety procedures, and instructions for safe machine
+operation. Untrained personnel present a hazard to themselves and
+the machine.
+
+IMPORTANT: Do not operate this machine until you have read all warnings, cautions,
+and instructions.
+
+CAUTION: The sample programs in this manual have been tested for accuracy,
+but they are for illustrative purposes only. The programs do not define
+tools, offsets, or materials. They do not describe workholding or other
+fixturing. If you choose to run a sample program on your machine, do
+so in Graphics mode. Always follow safe machining practices when
+you run an unfamiliar program.
+
+All CNC machines contain hazards from rotating work, loosely clamped parts, belts and
+pulleys, high voltage electricity, noise, and compressed air. You must always follow basic
+safety precautions to reduce the risk of personal injury and mechanical damage.
+
+The work area must be adequately illuminated to allow clear view and safe operation of the
+machine. This includes the operator work area and all areas of the machine that might be
+accessed during maintenance or cleaning. Adequate illumination is the responsibility of the
+user.
+
+Cutting tools, workholding, workpiece and coolant are beyond the scope and control of
+Haas Automation, Inc. Each of these potential hazards associated with it (sharp edges,
+heavy lifting considerations, chemical composition, etc) and it is the responsibility of the
+user to take appropriate action (PPE, training, etc).
+
+Cleaning of the machine is required during normal use and prior to maintenance or repair.
+Optional equipment is available to aid cleaning such as washdown hoses, chip conveyors
+and chip augers. Safe use of this equipment requires training and might require appropriate
+PPE and is the responsibility of the user.
+
+This operator’s manual is intended as a reference guide and is not to be the sole source of
+training. Complete operator training is available from the authorized Haas distributor.
+
+
+
+General Safety Notes 
+
+2
+
+1.1.1 Summary of Types of Operation for Haas Automation 
+Machine Tools
+Haas CNC Lathes are intended for cutting and shaping of metals and other hard materials.
+They are general purpose in nature and a list of all of those materials and types of cutting
+would never be complete. Almost all cutting and shaping is performed by a rotating part
+clamped in a chuck. The tools are held on a turret. Some cutting operations require liquid
+coolant. That coolant is also an option depending on the type of cutting.
+
+Operations of Haas Lathes are separated into three areas. They are: Operations,
+Maintenance, and Service. Operations and Maintenance are intended to be performed by
+a trained and qualified machine operator. This Operator&#x27;s Manual contains some of the
+information necessary to operate the machine. All other machine operations are to be
+considered Service. Service is only to be performed by specially trained service personnel.
+
+Operation of this machine consists of the following:
+
+1. Machine Setup
+
+• Machine setup is done to initially set up the tools, offsets, and fixtures required 
+to perform a repetitive function that later is called machine operation. Some 
+machine setup functions can be done with the door open but are limited to 
+“hold to run”.
+
+2. Machine operating in Automatic Mode
+
+• Automatic operation is initiated with Cycle-Start and can only be done with the 
+doors closed.
+
+3. Operator loading and unloading of materials (parts)
+
+• Parts loading and unloading is what precedes and follows an automatic 
+operation. This must be done with the doors open and all machine automatic 
+motion is stopped when the door is open.
+
+4. Operator loading and unloading of cutting tools
+
+• Tool loading and unloading is done less often than setup. It is often required 
+when a tool has become worn and must be replaced.
+
+Maintenance only consists of the following:
+
+1. Adding and maintaining condition of coolant
+
+• Adding coolant and maintaining coolant concentration is required at regular 
+intervals. This is a normal operator function and is either done from a safe 
+location outside of the work enclosure or with the doors open and the machine 
+stopped.
+
+
+
+Safety 
+
+3
+
+2. Adding lubricants
+
+• Adding lubricants for spindle and axes is required at regular intervals. These 
+are often months or years in length. This is a normal operator function and is 
+always done from a safe location outside of the work enclosure.
+
+3. Cleaning chips out of the machine
+
+• Cleaning out of chips is required at intervals dictated by the type of machining 
+performed. This is a normal operator function. It is performed with the doors 
+open and all of the machine operation is stopped.
+
+Service only consists of the following:
+
+1. Repairing of a machine that is not operating correctly
+
+• Any machine that is not operating correctly requires service by factory trained 
+personnel. This is never an operator function. It is not considered 
+maintenance. Installation and service instructions are provided separately 
+from the Operator’s Manual.
+
+2. Machine moving, unpacking, and installation
+
+• Haas machines are shipped to a user’s location almost ready to operate. They 
+still require a trained service person to complete the installation. Installation 
+and service instructions are provided separately from the Operator’s Manual.
+
+3. Machine packing
+
+• Machine packing for shipment requires the same packing material supplied by 
+Haas in the original shipment. Packing requires a trained service person to 
+complete the installation. Shipping instructions are provided separately from 
+the Operator’s Manual.
+
+4. Decommission, dismantle and disposal
+
+• Machine is not expected to be disassembled for shipment; it can be moved in 
+its entirety in the same manner in which it was installed. Machine can be 
+returned to the manufacturer’s distributor for disposal; manufacturer accepts 
+any/all components for recycling per Directive 2002/96/EC.
+
+5. End-of-life disposal
+
+• End-of-life disposal must conform to the laws and regulations in the region the 
+machine is located. This is a jointly the responsibility of the owner and seller of 
+the machine. The risk analysis does not address this phase.
+
+
+
+General Safety Notes 
+
+4
+
+1.1.2 Read Before Operating
+
+DANGER: Do not enter the machining area any time the machine is in motion, or
+at any time that machine motion is possible. Severe injury or death
+may result. Motion is possible when the power is on and the machine
+is not in [EMERGENCY STOP].
+
+Basic safety:
+
+• This machine can cause severe bodily injury.
+• This machine is automatically controlled and may start at any time.
+• Consult your local safety codes and regulations before you operate the machine.
+
+Contact your dealer if you have questions about safety issues.
+• It is the machine owner’s responsibility to make sure that everyone who is involved
+
+in installing and operating the machine is fully acquainted with the operation and
+safety instructions provided with the machine, BEFORE they work with the machine.
+The ultimate responsibility for safety rests with the machine owner and the individuals
+who work with the machine.
+
+• Use appropriate eye and ear protection when you operate the machine.
+• Use appropriate gloves to remove processed material and to clean the machine.
+• Replace windows immediately if they are damaged or severely scratched.
+
+Electrical safety:
+
+• The electrical power must meet the required specifications. Attempting to run the
+machine from any other source can cause severe damage and will void the warranty.
+
+• The electrical panel should be closed and the key and latches on the control cabinet
+should be secured at all times, except during installation and service. At those times,
+only qualified electricians should have access to the panel. When the main circuit
+breaker is on, there is high voltage throughout the electrical panel (including the
+circuit boards and logic circuits) and some components operate at high
+temperatures; therefore, extreme caution is required. Once the machine is installed,
+the control cabinet must be locked, with the key available only to qualified service
+personnel.
+
+• Do not reset a circuit breaker until the reason for the fault is investigated and
+understood. Only Haas-trained service personnel should troubleshoot and repair
+Haas equipment.
+
+• Do not press [POWER UP] on the control pendant before the machine is fully
+installed.
+
+
+
+Safety 
+
+5
+
+Operation Safety:
+
+• Do not operate the machine unless the doors are closed and the door interlocks are
+functioning correctly.
+
+• Check for damaged parts and tools before you operate the machine. Any part or tool
+that is damaged should be properly repaired or replaced by authorized personnel. Do
+not operate the machine if any component does not appear to be functioning
+correctly.
+
+• When a program runs, the tool turret can move rapidly at any time.
+• Improperly clamped parts machined at high speeds/feeds may be ejected and
+
+puncture the enclosure. It is not safe to machine oversized or marginally clamped
+parts.
+
+Release of person trapped in the machine:
+
+• No person should ever be located inside the machine during operation.
+• In the unlikely event that a person is trapped inside the machine the emergency stop
+
+button should be immediately be depressed and the person removed.
+• If the person is pinched or entangled the machine should be powered off; then the
+
+machine axes can be moved by use of a large external force in the direction required
+to free the person.
+
+Recover from a jam or blockage:
+
+• Of the chip conveyor - Follow the cleaning instructions on the Work on Your Haas (go
+to www.haascnc.com click on the OWNERS link). If necessary, close the doors and
+reverse the conveyor so the jammed part or material is accessible, and remove. Use
+lifting equipment or get assistance for lifting heavy and awkward parts.
+
+• Of a tool and material/part - Close the doors, press [RESET] to clear and displayed
+alarms. Jog the axis so the tool and material are clear.
+
+• If the alarms do not reset or you are unable to clear a blockage, contact your Haas
+Factory Outlet (HFO) for assistance.
+
+Follow these guidelines when you work with the machine:
+
+• Normal operation - Keep the door closed and guards in place (for non-enclosed
+machines) while the machine operates.
+
+• Part loading and unloading – An operator opens the door, completes the task, closes
+the door, and then presses [CYCLE START] (starting automatic motion).
+
+• Machining job set-up – When set-up is complete, turn the set-up key to lock out
+set-mode and remove the key.
+
+• Maintenance / Machine Cleaner– Press [EMERGENCY STOP] or [POWER OFF] on
+the machine before you enter the enclosure.
+
+• Tool loading or unloading – A machinist enters the machining area to load or unload
+tools. Exit the area completely before automatic movement is commanded (for
+example, [NEXT TOOL], [TURRET FWD], [TURRET REV]).
+
+
+
+General Safety Notes 
+
+6
+
+Chuck safety:
+
+DANGER: Improperly clamped parts or oversized parts may be ejected with
+deadly force.
+
+• Do not exceed the chuck’s rated speed. Higher speeds reduce chuck clamping force.
+• Unsupported barstock must not extend outside the drawtube.
+• Grease the chuck weekly. Follow the chuck manufacturer’s instructions for regular
+
+service.
+• Chuck jaws must not protrude beyond the diameter of the chuck.
+• Do not machine parts larger than the chuck.
+• Follow all of the chuck manufacturer’s warnings regarding the chuck and workholding
+
+procedures.
+• Hydraulic pressure must be set correctly to securely hold the work piece without
+
+distortion.
+• Improperly clamped parts at high velocity may puncture the safety door. You must
+
+reduce the spindle speed to protect the operator when performing dangerous
+operations (e.g. turning oversized or marginally clamped parts).
+
+Periodic maintenance of machine safety features:
+
+• Inspect door interlock mechanism for proper fit and function.
+• Inspect safety windows and enclosure for damage or leaks.
+• Verify all enclosure panels are in place.
+
+Door Safety Interlock maintenance:
+
+• Inspect the door interlock, verify the door interlock key is not bent, misaligned, and
+that all fasteners are installed.
+
+• Inspect the door interlock itself for any signs of obstruction or misalignment.
+• Immediately replace an components of the Door Safety Interlock system that do not
+
+meet this criteria.
+
+Door Safety Interlock testing:
+
+• With the machine in run mode, close the machine door, run the spindle at 100 RPM,
+pull the door and verify the door does not open.
+
+Machine Enclosure and Safety Glass maintenance and testing:
+
+Routine Maintenance:
+
+• Visually inspect the enclosure and safety glass for any signs of distortion, breakage
+or other damage.
+
+• Replace the Lexan windows after 7 years or if they are damaged or severely
+scratched.
+
+
+
+Safety 
+
+7
+
+• Keep all safety glass and machine windows clean to allow proper viewing of the
+machine during operations.
+
+• A daily visual inspection of the machine enclosure to verify all panels are in place
+should be performed.
+
+Testing of machine enclosure:
+
+• No testing of the machine enclosure is necessary.
+
+1.1.3 Machine Environmental Limits
+This table list the environmental limits for safe operation:
+
+T1.1: Environmental Limits (Indoor Use Only)
+
+CAUTION: Do not operate the machine in explosive atmospheres (explosive
+vapors and/ or particulate matter).
+
+Minimum Maximum
+
+Operating Temperature 41 °F (5.0 °C) 122 °F (50.0 °C)
+
+Storage Temperature -4 °F (-20.0 °C) 158 °F (70.0 °C)
+
+Ambient Humidity 20% relative, non-condensing 90% relative, non-condensing
+
+Altitude Sea Level 6,000 ft. (1,829 m)</content></result><result file_id='file-8i37d9zxCTmvxgnMidtQrQ' filename='013__L1__13._Emergency_Events__pp181-189.pdf' score='0.5793'><content>13. Emergency Events
+Description Follow the instructions here to handle emergency situations, such as activating the
+
+emergency stop using the red push-button. This section also describes how to manually
+move the system without power.
+
+13.1. Emergency Stop
+
+Description The Emergency Stop or E-stop is the red push-button located on the Teach Pendant.
+Press the emergency stop push-button to stop all robot motion. Activating the
+emergency stop push-button causes a stop category one (IEC 60204-1).
+Emergency stops are not safeguards (ISO 12100).
+
+Emergency stops are complementary protective measures that do not prevent injury.
+The risk assessment of the robot application determines if additional emergency stop
+push-buttons are required. The emergency stop function and the actuating device must
+comply with ISO 13850.
+After an emergency stop is actuated, the push-button latches in that setting. As such,
+each time an emergency stop is activated, it must be manually reset at the push-button
+that initiated the stop.
+Before resetting the emergency stop push-button, you must visually identify and assess
+the reason the E-stop was first activated. Visual assessment of all the equipment in the
+application is required. Once the problem is solved, reset the emergency stop push-
+button.
+
+To reset the emergency stop push-button
+
+1. Hold the push-button and twist clockwise until the latching disengages.
+
+You should feel when the latching is disengaged, indicating the push-button is
+reset.
+
+2. Verify the situation and whether to reset the emergency stop.
+
+3. After resetting the emergency stop, restore power to the robot and resume
+operation.
+
+User Manual 182 UR5e
+
+13. Emergency Events
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+13.2. MovementWithout Drive Power
+
+Description In the unlikely event of an emergency, when powering the robot is either impossible or
+unwanted, you can use forced back-driving to move the robot arm.
+
+To perform forced back-driving you must push, or pull, the robot arm hard to move the
+joint. Each joint brake has a friction clutch that enables movement during high forced
+torque.
+
+Performing forced back-driving requires high force and cannot be performed by one
+person alone. In clamping situations, two or more people are required to do the forced
+back-driving. In some situations, two or more people are required to disassemble the
+robot arm.
+
+See the Service Manual for information about how to disassemble the robot.
+
+WARNING
+
+Risks due to an unsupported robot arm breaking or falling can cause
+injury or death.
+
+• Support the robot arm before removing power.
+
+NOTICE
+
+Moving the robot arm manually is intended for emergency and service
+purposes only. Unnecessary moving of the robot arm can lead to
+property damage.
+
+• Do not move the joint more than 160 degrees, to ensure the
+robot can find its original physical position.
+
+• Do not move any joint more than necessary.
+
+UR5e 183 User Manual
+
+13. Emergency Events
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+13.3. Modes
+
+Description You access and activate different modes using Teach Pendant or the Dashboard
+Server. If an external mode selector is integrated, it control the modes - not PolyScope or
+the Dashboard Server.
+
+Automatic Mode Once activated, the robot can only execute a program of pre-defined
+tasks. You cannot modify or save programs and installations.
+Manual Mode Once activated, you can program the robot. You can modify and save
+programs and installations.
+
+High Speed Manual Mode can be used. It allows both tool speed and elbow speed to
+temporarily exceed 250 mm/s, while a hold-to-run is used.
+Hold-to-run is performed by continuous contact with the Speed Slider.
+
+The robot performs a Safeguard Stop in Manual mode, if a Three-Position Enabling
+Device is configured, and either released (not pressed) or it is fully compressed.
+
+Switching between Automatic mode to Manual mode requires the Three-Position
+Enabling Device to be fully released and pressed again to allow the robot to move.
+When using High Speed Manual Mode, use safety joint limits (see Joint Limits) or safety
+planes (see Safety Planes) to restrict the robot’s moving space.
+
+Mode
+switching
+
+Operational mode Manual Automatic
+
+Freedrive x *
+Move robot with arrows on Move Tab x *
+Edit &amp; save program &amp; installation x
+
+Execute Programs
+Reduced
+speed**
+
+*
+
+Start program from selected node x
+*Only when no Three-Position Enabling Device is configured.
+** If a Three-Position Enabling Device is configured, the robot operates at Manual
+Reduced Speed unless High Speed Manual Mode is activated.
+
+User Manual 184 UR5e
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+Notice when
+switching
+mode
+
+NOTICE
+• Some UR robot sizes might not be equipped with a Three-Position
+Enabling Device. If the risk assessment requires the enabling
+device, a 3PE Teach Pendant must be used.
+
+WARNING
+• Any suspended safeguards must be returned to full functionality
+before selecting Automatic Mode.
+
+• Wherever possible, Manual Mode shall only be used with all
+persons located outside the safeguarded space.
+
+• If an external mode selector is used, it must be placed outside the
+safeguarded space.
+
+• No-one is to enter, or be within, the safeguarded space in Automatic
+Mode, unless safeguarding is used or the collaborative application
+is validated for power and force limiting (PFL).
+
+To Switch
+Modes: PolyScope
+
+1. In the Header, select the profile icon.
+
+• Automatic indicates the operational mode of the robot is set to
+Automatic.
+
+• Manual indicates the operational mode of the robot is set to Manual.
+
+Using the
+Dashboard
+Server
+
+1. Connect to the Dashboard server.
+
+2. Use the Set Operational Mode commands.
+
+• Set Operational Mode Automatic
+
+• Set Operational Mode Manual
+
+• Clear Operational Mode
+
+Three-Position
+Enabling
+Device
+
+When a Three-Position Enabling Device is used and the robot is in Manual Mode,
+movement requires pressing the Three-Position Enabling Device to the center-on
+position. The Three-Position Enabling Device has no effect in Automatic Mode.
+
+A 3PE Teach Pendant is recommended for programming. If another person can be within
+the safeguarded space when in Manual Mode, an additional device can be integrated and
+configured for the additional person&#x27;s use.
+
+UR5e 185 User Manual
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+13.3.1. RecoveryMode
+
+Description When a safety limit is exceeded, Recovery Mode is automatically activated, allowing the
+robot arm to be moved. Recovery Mode is a type of Manual Mode .
+You cannot run robot programs when Recovery Mode is active.
+
+During Recovery Mode, the robot arm is moved to be within joint limits, using either
+Freedrive or the Move tab in PolyScope.
+
+Safety limits
+of Recovery
+Mode
+
+Safety Function Limit
+
+Joint Speed Limit 30 °/s
+Speed Limit 250 mm/s
+Force Limit 100 N
+Momentum Limit 10 kg m/s
+Power Limit 80 W
+
+The safety system issues a Stop Category 0 if a violation of these limits appears.
+
+WARNING
+
+Failure to use caution when moving the robot arm in recovery mode can
+lead to hazardous situations.
+
+• Use caution when moving the robot arm back within the limits, as
+limits for the joint positions, the safety planes, and the tool/end
+effector orientation are all disabled in recovery.
+
+13.3.2. Backdrive
+
+Description Backdrive is a Manual Mode used to force specific joints to a desired position without
+releasing all brakes in the robot arm.
+This is sometimes necessary if the robot arm is close to collision and the vibrations that
+accompany a full restart are not desired.
+The robot joints feel heavy to move, while Backdrive is in use.
+
+You can use any of the following sequences to enable Backdrive:
+
+• 3PE Teach Pendant
+
+• 3PE device/switch
+
+• Freedrive on robot
+
+User Manual 186 UR5e
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+3PE Teach
+Pendant
+
+To use the 3PE TP button to backdrive the robot arm.
+
+1. On the Initialize screen, tap ON to start the power up sequence.
+
+2. When the robot state is Teach Pendant 3PE Stop, light-press, then light-press-
+and-hold, the 3PE TP button.
+The robot state changes to Backdrive.
+
+3. Now you can apply significant pressure to release the brake in a desired joint to
+move the robot arm.
+As long as light-press is maintained on the 3PE button, Backdrive is enabled,
+allowing the arm to move. 
+
+3PE
+device/switch
+
+To use a 3PE device/switch to backdrive the robot arm.
+
+1. On the Initialize screen, tap ON to start the power up sequence.
+
+2. When the robot state is Teach Pendant 3PE Stop, light-press, then light-press-
+and-hold, the 3PE TP button.
+The robot state changes to System 3PE Stop.
+
+3. Press and hold the 3PE device/switch.
+The robot state changes to Backdrive.
+
+4. Now you can apply significant pressure to release the brake in a desired joint to
+move the robot arm.
+As long as the hold is maintained on both the 3PE device/switch and the 3PE TP
+button, Backdrive is enabled, allowing the arm to move. 
+
+Freedrive on
+robot
+
+To use Freedrive on robot to backdrive the robot arm.
+
+1. On the Initialize screen, tap ON to start the power up sequence.
+
+2. When the robot state is Teach Pendant 3PE Stop, press and hold the Freedrive
+on robot.
+The robot state changes to Backdrive.
+
+3. Now you can apply significant pressure to release the brake in a desired joint to
+move the robot arm.
+As long as the hold is maintained on the Freedrive on robot, Backdrive is enabled,
+allowing the arm to move. 
+
+UR5e 187 User Manual
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+Backdrive Inspection
+
+Description If the robot is close to colliding with something, you can use Backdrive to move the robot
+arm to a safe position before initializing.
+
+3PE Teach Pendant
+
+User Manual 188 UR5e
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+Enable
+Backdrive
+
+1. Press ON to enable power. Status changes to Robot Active
+
+2. Press and hold Freedrive. Status changes to Backdrive
+
+3. Move robot as in Freedrive mode. Joint brakes are released where needed once
+the Freedrive button is activated.
+
+NOTICE
+
+In Backdrive Mode the robot is “heavy” to move around.
+
+MANDATORY ACTION
+
+You must test Backdrive mode on all joints.
+
+Safety
+settings
+
+Verify the robot safety settings comply with the robot installation risk assessment.
+
+Additional
+safety inputs
+and outputs
+are still
+functioning
+
+Check which safety inputs and outputs are active and that they can be triggered via
+PolyScope or external devices.
+
+UR5e 189 User Manual
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.
+
+
+
+User Manual 190 UR5e
+
+C
+op
+yr
+ig
+ht
+©
+20
+09
+–2
+02
+4
+by
+
+U
+ni
+ve
+rs
+al
+ R
+ob
+ot
+s 
+A
+/S
+.A
+
+ll
+rig
+ht
+s
+re
+se
+rv
+ed
+.</content></result><result file_id='file-LoJAjULh5bADgBvW4NSk3u' filename='003__L1__Safety_Recommendations__pp3-8.pdf' score='0.5305'><content>SAFETY
+
+To prevent serious bodily injury, you should observe the following basic safety precautions when
+installing, operating or servicing the milling machine.
+
+1. Follow all instructions in the manual.
+
+2. Wear approved industrial safety glasses and safety shoes.
+
+3. Do not wear gloves, long sleeves, long hair, rings, watches, jewelry or other items that
+could become caught in moving parts.
+
+4. Keep all parts of your body away from moving parts (belts, cutters, gears, etc.)
+
+5. Use proper point of operation safeguarding.
+
+These and other safety precautions are discussed in the American National Standard Institute
+standard entitled safety requirements for the construction, care, and use of drilling, milling, and
+boring machines (ANSI B11-8-1983).
+
+This publication is available from:
+
+American National Standards Institute
+25 West 43rd Street, 4th floor
+
+New York, NY 10036
+
+Safeguarding for protection at the point of operation can only be designed and constructed when
+the parameters of the particular operation have been determined. As a result, ANSI B11.8-1983,
+Section 5.1, states that “it shall be the responsibility of the employer to provide, and ensure use of, a
+guard, guarding device, awareness barrier, awareness device, or shield…”
+
+To assist machine users in designing point of operation safeguarding for their specific machine
+applications, the Occupational Safety And Health Administration has published a booklet entitled
+Concepts and Techniques of Machine Safeguarding (O.S.H.A. Publication No. 3067).
+
+This publication is available from:
+
+The Publication Office – O.S.H.A.
+U.S. Department of Labor
+
+200 Constitution Avenue, NW
+Washington, D.C. 20210
+
+The general purpose point of operation shield provided with this machine and shown in certain
+illustrations throughout this manual may not be appropriate and cannot be utilized for all possible
+applications of the machine. Use additional or alternate safeguarding where this shield is not
+appropriate or cannot be utilized. Note that for purposes of display, the shield has been removed in
+certain other illustrations in this manual.
+
+M-450 i
+Revised: August 29, 2005
+
+
+
+WARNINGS, CAUTIONS, AND NOTES
+
+- WARNING -
+
+Warning notices are used in this publication to emphasize that hazardous
+mechanical conditions, voltages, currents, or temperatures exist in this
+equipment which could cause serious personal injury and/or damage to the
+equipment.
+
+- CAUTION -
+
+Caution notices are used where equipment might be damaged if care is not
+taken.
+
+In situations where inattention could cause either personal injury or damage to the equipment, a
+warning notice is used.
+
+- NOTE -
+
+Notes merely call attention to information that is especially significant in under-
+standing and operating the equipment.
+
+This document is intended for the use of those who install, operate and maintain the milling
+machine. Although reasonable care has been exercised in the preparation of this manual to make it
+complete and accurate, this manual does not purport to cover all conceivable problems or
+applications pertaining to this machine.
+
+ii M-450
+Revised: August 29, 2005
+
+
+
+SAFETY RECOMMENDATIONS
+
+DO NOT OPERATE EQUIPMENT until you have read and understood the appropriate opera-
+tor and safety maintenance manuals.
+
+DO NOT OPERATE EQUIPMENT until you have read and understood all machine and con-
+trol key signs.
+
+DO NOT OPERATE EQUIPMENT for the first time without a qualified instructor. Consult your
+supervisor when in doubt as to the correct way to perform an operation.
+
+DO NOT OPERATE EQUIPMENT unless proper maintenance has been regularly performed
+and the equipment is known to be in good working order.
+
+DO NOT ALLOW the operation or repair of equipment by untrained personnel.
+
+WARNING or INSTRUCTION TAGS are mounted on the equipment for your safety and infor-
+mation. Do not remove them.
+
+DO NOT OPERATE EQUIPMENT if any unusual or excessive heat, noise, smoke, or vibra-
+tion occurs. Report any excessive or unusual vibration, sounds, smoke, or heat as well as any
+damaged parts.
+
+WEAR SAFETY GLASSES with side shields and SAFETY SHOES with steel toes and oil-re-
+sistant soles at all times. When necessary, wear respirator, helmet, and ear muffs or plugs.
+
+DO NOT OPERATE ANY MACHINE while wearing rings, watches, jewelry, loose clothing,
+neckties, or long hair not contained by a net or shop cap.
+
+DO NOT WEAR GLOVES while operating equipment. Gloves are easily caught in moving
+parts.
+
+REMOVE ANY LOOSE PARTS OR TOOLS left on machine or in the work area before oper-
+ating the machine. Always check the machine and work area for loose tools and parts, espe-
+cially after work has been completed by maintenance personnel.
+
+REMOVE CHUCK WRENCHES before starting the machine.
+
+NEVER OPERATE A MACHINE after taking strong medication, using non-prescription drugs
+or consuming alcoholic beverages.
+
+SAFEGUARD THE CUTTING ZONE (“point of operation”). Use standard, general purpose
+safeguards when possible. Use special safeguards when required.
+
+PROTECT YOUR HANDS. Stop the spindle completely before changing tools.
+
+PROTECT YOUR HANDS. Stop the spindle completely before loading or unloading a
+workpiece.
+
+DO NOT REMOVE CHIPS with hands. Use a hook or similar device and make certain that all
+machine movements have ceased.
+
+DO NOT ADJUST tooling, workpieces or coolant hoses while the machine is running.
+
+PROTECT YOUR HANDS. Stop the spindle completely before taking measurements.
+
+PROTECT YOUR HANDS. Stop the spindle completely before opening safeguards or covers.
+
+NEVER REACH around a safeguard.
+
+M-450 iii
+Revised: August 29, 2005
+
+
+
+PROTECT YOUR HANDS. Stop the machine before changing or adjusting belts, pulleys or
+gears.
+
+PROTECT YOUR HANDS. Keep hands and arms clear of spindle start switch when changing
+tools.
+
+PROTECT YOUR EYES AND THE MACHINE. Never use a compressed air hose to remove
+chips.
+
+KEEP WORK AREA WELL LIGHTED. ask for additional light if needed.
+
+DON’T SLIP. Keep your work area clean and dry. Remove chips, oil and obstacles.
+
+NEVER LEAN ON your machine. Stand away when the machine is running.
+
+MAKE CERTAIN that you are clear of any “pinch points” created by moving slides before
+starting the machine.
+
+PREVENT OBJECTS from flying loose. Securely clamp and locate workpiece. Use stop
+blocks where necessary. Keep clamps clear of cutter path.
+
+PREVENT CUTTER BREAKAGE. Use correct table feed and spindle speed for the job. Re-
+duce feed and speed if you notice unusual noise or vibration.
+
+PREVENT CUTTER BREAKAGE. Rotate spindle in clockwise direction for right-hand tools,
+counterclockwise for left-hand tools. Use the correct tool for the job.
+
+PREVENT WORKPIECE and cutter damage. Never start the machine when the cutter is in
+contact with the workpiece.
+
+DO NOT USE worn or defective tools. Use the proper size and type of tool for the task at
+hand.
+
+KEEP ROTATING CRANKS AND HANDWHEELS well lubricated and maintained. Do not re-
+move safety springs.
+
+CERTAIN MATERIALS, such as magnesium, are highly flammable in dust and chip form. See
+your supervisor before working with these materials.
+
+PREVENT FIRE. Keep flammable liquids and materials away from work area and hot chips.
+
+PREVENT MACHINE from moving unexpectedly. Disengage power feed when not being used
+(manual machines only).
+
+PREVENT MACHINE from moving unexpectedly. Always start machine in manual mode.
+
+UNLESS OTHERWISE NOTED, all operating and maintenance procedures are to be per-
+formed by one person. To avoid injury to yourself and others, be sure that all personnel are
+clear of the machine when opening or closing the coolant guard door and any access covers.
+
+iv M-450
+Revised: August 29, 2005
+
+
+
+INSTALLATION AND USE OF SAFEGUARDS
+
+Both American National Standard B11.8 and OSHA Section 1910.212 assign responsibility for
+point of operation safeguarding of milling machines to the employer/user. Therefore, to prevent
+serious injury resulting from the rotating cutter, flying chips, or splashing coolant, point of operation
+safeguarding should be used on milling machines to the greatest extent practicable.
+
+This booklet provides basic information for the installation and use of the general purpose
+safeguard. It also contains the names of several manufacturers of other types of point of operation
+safeguarding for vertical milling machines.
+
+Remember, point of operation safeguarding is your responsibility as the employer/user. You are in
+the best position to evaluate your safeguarding needs and ensure that the proper safeguards are
+installed and used.
+
+- CAUTION -
+
+A safety shield is supplied for protection from chips and coolant with every
+machine.
+
+The chip and coolant shields have been designed and are custom manufac-
+tured with the highest clear impact material commercially available:
+polycarbonate (G.E. Lexan). It has an impact strength 5 to 10 times greater
+than acrylic (plexiglass) or butyrate (UVEX) materials, thereby offering the
+greatest protection for our customers.
+Some of the new “easy to dispose of” coolants and/or cutting oils contain
+chemicals harmful to polycarbonate. These chemicals are:
+Mono-ethanolamine, Di-ethanolamine, Tri-ethanolamine and the combination
+thereof. These chemicals may significantly reduce the impact strength of the
+shield within days, and could destroy the entire shield in weeks.
+
+Use of use of coolants and/or cutting oils containing these chemicals will
+void the warranty on your safety shield, and could cause injury to your work-
+ers.
+
+- WARNING -
+
+This safeguard DOES NOT take the place of any other safety practice or
+safety equipment.
+
+YOU MUST ALWAYS wear safety glasses and safety shoes.
+
+YOU MUST ALWAYS stop the spindle of the machine completely before
+changing or adjusting the workpiece, fixture, or tool.
+
+YOU MUST NEVER wear gloves, long sleeves, long hair, rings, watches,
+neckties, jewelry or other loose items.
+
+M-450 v
+Revised: August 29, 2005
+
+
+
+GENERAL PURPOSE SAFEGUARDS
+
+There is no single safeguard which can match the versatility of the Series I machine. As a result,
+you will find that the general purpose safeguard, Figure I.I, like all safeguards, will be suitable for
+some operations, but not for others. Carefully analyze the operation to be performed before deciding
+whether this safeguard is suitable. Adjust the safeguard to suit your special requirements. If you find
+that it is not suitable for a particular application, you should use an alternate form of protection.
+
+Installation for Machines with R-8 Spindle
+Taper
+
+If your Series I standard milling machine was
+manufactured on or after January 1, 1983, the
+manufacturer has drilled and tapped two holes in the
+nose cap of the spindle to be used for mounting the
+guard (the two untapped holes serve to remove the
+nose cap with a spanner wrench).
+
+1. Place mounting ring “B” underneath top of
+guard “D”.
+
+2. Place two socket head cap screws “A”
+through the holes in ring, and hand-start
+them into the threaded holes in the nose cap
+until hand tight.
+
+3. Align guard to be square with table of ma-
+chine (unless angular mounting is desired).
+
+4. Tighten screws with a 3/16” Allen wrench.
+
+Retrofits
+
+If your Series I standard machine was manufactured prior to January 1, 1983, you must retrofit as
+follows:
+
+1. Manually tap the existing spanner wrench holes with a .250”-20 bottoming tap.
+
+- CAUTION -
+
+There is no need to drill new holes, nor deepen the existing holes. Attempts
+at either practice may result in spindle damage.
+
+2. Proceed to mount the guard as indicated above.
+
+vi M-450
+Revised: August 29, 2005
+
+Figure I.I - General Purpose Safeguard
+Assembly
+
+E
+
+B
+K
+
+J
+C
+
+I
+
+L
+
+A
+
+D
+
+H
+
+F G
+
+TP5262</content></result></sources>",resp_0694a50870e1c4ee0069438478115c819d967e7a358cf049b8,gpt-5-mini-2025-08-07,completed,1766032504,9017,166,9183,
