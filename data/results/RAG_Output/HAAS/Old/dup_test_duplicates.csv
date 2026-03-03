@@ -1,0 +1,1173 @@
+permutation_id,time_started,time_ended,total_elapsed_time,min_words_for_subsplit,approach,model,max_tokens,reasoning_effort,top_k,answer_instructions_id,few_shot_id,replicate,question,gold_answer,generated_answer,retrieved_files,meta_hits_text,meta_resp_id,meta_model,meta_status,meta_created,meta_input_tokens,meta_output_tokens,meta_total_tokens,meta_reason
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoidmFuaWxsYSIsImVmZm9ydCI6Im1pbmltYWwiLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LW5hbm8tMjAyNS0wOC0wNyIsInJlYXNvbmluZ19lZmZvcnQiOiJtaW5pbWFsIiwidG9wX2siOjd9LCJydW5fdXVpZCI6Ijc1ZmM5YWZlLTYwNGQtNDhkNi1iOTdkLWZmODBjMTkyMDEyZCJ9X092E8JDckU,2025-12-18 01:50:53 EST,2025-12-18 01:50:57 EST,3.97 Seconds,3000,vanilla,gpt-5-nano-2025-08-07,5000,minimal,7,A,A,1,What are the three typical parts of a CNC program on a HAAS Lathe?,"Preparation, cutting, and completion","The sources do not explicitly list three typical parts of a CNC program for a Haas lathe. From the provided excerpts, there is no direct statement identifying three parts. [All provided files]",006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf;009__L1__Chapter_9_Settings__pp387-450__L2__09__10.4_Toolroom_Lathe__pp449-449.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__02__7.2_More_Information_Online__pp363-364.pdf;002__L1__Chapter_2_Introduction__pp41-88__L2__01__2.1_Lathe_Overview__pp41-46.pdf;004__L1__Chapter_4_Operation__pp103-138__L2__15__4.14_More_Information_Online__pp137-138.pdf;006__L1__Chapter_6_Options_Programming__pp193-278__L2__11__6.10_Y_Axis__pp272-275.pdf;005__L1__Chapter_5_Programming__pp139-192__L2__03__5.3_Tips_and_Tricks__pp147-150.pdf,"<sources><result file_id='' filename='006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf'><content>(G54 X0 Y0 is at the center of rotation) ;
+(Z0 is on face of the part) ;
+(T1 is an end mill) ;
+(BEGIN PREPARATION BLOCKS) ;
+T101 (Select tool and offset 1) ;
+G00 G18 G20 G40 G80 G99 (Safe startup) ;
+G19 (Call YZ plane) ;
+G98 (Feed per min) ;
+M154 (Engage C-Axis) ;
+G00 G54 X4. C90. Y0. Z0.1 ;
+(Rapid to clear position) ;
+M14 (Spindle brake on) ;
+P1500 M133 (Live tool CW at 1500 RPM) ;
+M08 (Coolant on) ;
+(BEGIN CUTTING BLOCKS) ;
+G00 X3.25 Y-1.75 Z0. (Rapid move) ;
+G00 X2.25 (Rapid approach) ;
+G01 Y1.75 F22. (Linear feed) ;
+G00 X3.25 (Rapid retract) ;
+G00 Y-1.75 Z-0.375 (Rapid move) ;
+G00 X2.25 (Rapid approach) ;
+G01 Y1.75 F22. (Linear feed) ;
+G00 X3.25 (Rapid retract) ;
+G00 Y-1.75 Z-0.75 (Rapid move) ;
+G00 X2.25 (Rapid approach) ;
+G01 Y1.75 F22. (Linear feed) ;
+(BEGIN COMPLETION BLOCKS) ;
+G00 X3.25 M09 (Rapid retract, Coolant off) ;
+M15 (Spindle brake off) ;
+M155 (Disengage C axis) ;
+M135 (Live tool off) ;
+G18 (Return to XZ plane) ;
+G53 X0 Y0 (X &amp; Y Home) ;
+G53 Z0 (Z Home) ;
+M30 (End program) ;
+6.11
+More Information Online
+You can find programming information for other optional equipment in the online WORK ON
+YOUR HAAS section, including:
+•
+High Pressure Coolant (HPC)
+•
+Automatic Tool Setting Probe
+•
+Servo Auto Door
+To access the site, go to www.HaasCNC.com and select Owners.
+
+You can also scan this QR code with your mobile device to go directly to the options
+programming section of the Resource Center.</content></result><result file_id='' filename='009__L1__Chapter_9_Settings__pp387-450__L2__09__10.4_Toolroom_Lathe__pp449-449.pdf'><content>Chapter 10: Other Equipment
+10.1
+Chucker Lathe
+The Haas Chucker Lathe is ideal for dedicated small-part production, second-op parts, or
+short runs and prototyping. The 8-station tool turret provides fast tool changes for short
+cycle times.
+10.2
+Dual-Spindle Lathes
+The DS-30Y Y-axis turning center combines dual-spindle turning with Y axis, C axis, and
+live tooling to create a powerful “done-in-one” machining solution for any shop. Off-center
+milling, drilling, and tapping operations are possible for increased machining capabilities. It
+comes standard with a 12-station BMT65 turret and synchronized C axis for versatile 4-axis
+capability. The opposed spindles support fully synchronized turning, and allow on-the-fly
+part pass-off to reduce cycle times. The DS-30Y has a medium footprint, yet provides a
+generous work envelope. This machine offers the best performance for the money – the
+best value – in it’s class.
+10.3
+Haas Bar feeder
+The Haas Bar Feeder provides a simple and efficient way to automate part production on
+Haas lathes. It features a heavy-duty, compact design that boosts productivity and
+streamlines turning operations
+10.4
+Toolroom Lathe
+The Toolroom Lathe includes features aimed at a machinist used to a manually positioned
+lathe. The lathe uses familiar manual handles, while giving full CNC capabilities.</content></result><result file_id='' filename='007__L1__Chapter_7_G-codes__pp279-364__L2__02__7.2_More_Information_Online__pp363-364.pdf'><content>(BEGIN CUTTING BLOCKS) ;
+G249 X2.1 Y0.125 Z-1.3 C35. R4. P1.35 F20. ;
+(Bore to X2.1) ;
+X1.85 Y-0.255 Z-0.865 C-75. P1.65 (next position) ;
+(BEGIN COMPLETION BLOCKS) ;
+G00 Z1. M09 (Rapid retract, Coolant off) ;
+M155 (Disengage C Axis) ;
+M135 (Live tool off) ;
+G53 X0 Y0 (X &amp; Y home) ;
+G53 Z0 (Z home) ;
+M30 (End program) ;
+%
+7.2
+More Information Online
+For updated and supplemental information, including tips, tricks, maintenance procedures,
+and more, visit the Haas Service page at www.HaasCNC.com. You can also scan the code
+below with your mobile device to go directly to the Haas Service page:</content></result><result file_id='' filename='002__L1__Chapter_2_Introduction__pp41-88__L2__01__2.1_Lathe_Overview__pp41-46.pdf'><content>Chapter 2: Introduction
+2.1
+Lathe Overview
+These figures show some of the standard and optional features of your Haas lathe. Some
+of the features shown are highlighted in their appropriate sections. Note that these figures
+are representative only; your machine’s appearance may vary depending on the model and
+installed options.
+F2.1:
+Lathe Features (front view)
+1.
+2X High Intensity Lights (Optional)
+2.
+Work Light (2X)
+3.
+Chip Conveyor (Optional)
+4.
+Oil Drain Container
+5.
+Chip Container
+6.
+Air Gun
+7.
+Foot Pedal
+8.
+Parts Catcher (Optional)
+9. Hydraulic Power Unit (HPU)
+10. Coolant Collector
+11. Spindle Motor
+12. Servo Auto Door (Optional)
+A. Control Pendant
+B. Lubrication Panel Assembly
+C. Coolant Tank
+1
+2
+B
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+A
+C
+
+F2.2:
+Lathe Features (front view with covers removed)
+1.
+Spindle Motor
+2.
+Tool Turret Assembly
+3.
+Tailstock (Optional)
+4.
+Parts Catcher (Optional)
+5.
+LTP Arm (Optional)
+6. Chuck
+7. C-Axis Drive Assembly (Optional)
+8. Hydraulic Power Unit (HPU)
+9. Spindle Head Assembly
+A Control Cabinet
+B Control Cabinet Side Panel
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+F2.3:
+Lathe Features (front view) Detail A - Control Pendant with Cabinet
+1.
+Work Beacon
+2.
+Clipboard
+3.
+Operator’s Manual and Assembly Data (stored 
+behind pendant)
+4.
+Side panel Controls
+5.
+Tool Holder (also shown, tool holder for thin 
+pendant)
+6.
+Storage Tray
+7.
+G- and M-code Reference List
+8.
+Remote Jog Handle
+2
+1
+3
+6
+8
+5
+7
+4
+
+F2.4:
+Lathe Features Detail B - Lubrication Panel Example
+1.
+Min Lubrication Grease Solenoid
+2.
+Air Pressure Gauge
+3.
+Air Relief Valve
+4.
+Rotary Table Air Supply
+5.
+Air/Water Separator
+6.
+Air Shut Off Valve
+7.
+Purge Solenoid
+8.
+Air Inlet Port
+9.
+Spindle Lubrication Reservoir
+10. Spindle Lubrication Sight Glass (2)
+11. Axis Lubrication Grease Reservoir
+12. Grease Pressure Gauge
+NOTE:
+More details are shown on the 
+decals inside of the access door.
+1
+2
+3
+4
+6
+5
+7
+8
+10
+9
+11
+12
+
+F2.5:
+Lathe Features (3/4 side view) Detail C - Coolant Tank Assembly
+1.
+Standard Coolant Pump
+2.
+High-Pressure Coolant Pump (Optional)
+3.
+Coolant Level Sensor
+4.
+Chip Strainer
+5.
+Strainer Basket
+1
+2
+3
+4
+5
+
+F2.6:
+Toolroom Lathe (front view)
+1.
+Spindle assembly
+2.
+eHandwheel
+3.
+Air Gun
+4.
+Coolant Tank
+5.
+Tailstock
+6.
+Control Pendant
+6
+5
+4
+3
+2
+1</content></result><result file_id='' filename='004__L1__Chapter_4_Operation__pp103-138__L2__15__4.14_More_Information_Online__pp137-138.pdf'><content>3.
+The control gives the message Jog Away. Use the jog handle or jog keys to move 
+the tool away from the part. You can command coolant with [AUX CLNT] or 
+[COOLANT]. You can start or stop the spindle with the spindle override keys. You 
+can also release the tool to change inserts.
+CAUTION:
+When you start the program again, the control uses the previous
+offsets for the return position. Therefore, it is unsafe and not
+recommended to change tools and offsets when you interrupt a
+program.
+4.
+Jog to a position as close as possible to the stored position, or to a position where 
+there is an unobstructed rapid path back to the stored position.
+5.
+Press [MEMORY] or [MDI] to return to run mode. The control continues only if you 
+return to the mode that was in effect when you stopped the program.
+6.
+Press [CYCLE START]. The control gives the message Jog Return and rapids Y 
+and Z at 5% to the position where you pressed [FEED HOLD]. It then returns the X 
+Axis. If you press [FEED HOLD] during this motion, axis motion pauses and the 
+control gives the message Jog Return Hold. Press [CYCLE START] to resume 
+the Jog Return motion. The control goes into a feed hold state again when the motion 
+is finished.
+CAUTION:
+The control does not follow the same path that you used to jog away.
+7.
+Press [CYCLE START] again and the program resumes operation.
+4.14
+More Information Online
+For updated and supplemental information, including tips, tricks, maintenance procedures,
+and more, visit the Haas Service page at www.HaasCNC.com. You can also scan the code
+below with your mobile device to go directly to the Haas Service page:</content></result><result file_id='' filename='006__L1__Chapter_6_Options_Programming__pp193-278__L2__11__6.10_Y_Axis__pp272-275.pdf'><content>5.
+Type a value for the highlighted variable and press [ENTER]. The control will display 
+an asterisk (*) next to variable if the default value is changed. To set the variable back 
+to default press the [ORIGIN] button.
+6.
+Press the [DOWN] cursor arrow key to move to the next variable.
+7.
+With all of the variables entered, you can press [CYCLE START] to immediately run 
+the program in MDI, or [F4] to output the code to either the clipboard or MDI without 
+running the program.
+6.10
+Y Axis
+The Y Axis moves tools perpendicular to the spindle center line. This motion is achieved by
+compound motion of the X- and Y-Axis ballscrews.
+Refer to G17 and G18, starting on page 275, for programming information.
+F6.16:
+Y-Axis Motion: [1] Y-Axis compound motion, [2] Horizontal plane.
++
++
++
+Y
+X
++
+Z
+C1
+X
+1
+2
+
+6.10.1
+Y-Axis Travel Envelopes
+You can find detailed work and travel envelope information for your machine at
+data.haascnc.com/install. 
+TIP:
+This site can be accessed through www.haascnc.com, by clicking on
+Owners&gt; New Machine/ PRE-INSTALLATION.
+Select your machine model, and then click on &quot;Download Detailed Layout Drawings for
+the... PDF&quot;.
+When you set up tooling for the Y Axis, consider these factors:
+•
+Work piece diameter
+•
+Tool extension (radial tools)
+•
+Required Y-Axis travel from the centerline
+6.10.2
+Y-Axis Lathe with VDI Turret
+The position of the work envelope shifts when using radial live tools. The length the cutting
+tool extends from the centerline of the tool pocket is the distance the envelope shifts.
+You can find detailed work and travel envelope information for your machine at
+data.haascnc.com/install. 
+TIP:
+This site can be accessed through www.haascnc.com, by clicking on
+Owners&gt; New Machine/ PRE-INSTALLATION.
+Select your machine model, and then click on &quot;Download Detailed Layout Drawings for
+the.. PDF&quot;.
+6.10.3
+Operation and Programming
+The Y Axis is an additional axis on the lathes (if so equipped) that can be commanded and
+behaves in the same manner as the standard X and Z Axes. There is no activation
+command necessary for Y Axis.
+The lathe automatically returns the Y Axis to spindle centerline after a tool change. Make
+sure the turret is correctly positioned before commanding rotation.
+Standard Haas G-codes and M-codes are available when programming with the Y Axis.
+
+Mill type cutter compensation can be applied in both G17 and G19 planes when performing
+live tool operations. Cutter compensation rules must be followed to avoid unpredictable
+motion when applying and canceling the compensation. The Radius value of the Tool being
+used must be entered in the RADIUS column of the tool geometry page for that tool. The
+tool tip is assumed as “0” and no value should be entered.
+Programming recommendations:
+•
+Command Axes home or to a safe tool change location in rapids using G53 which
+moves all axes at the same rate simultaneously. Regardless of the positions of the Y
+Axis and X Axis in relation to each other, both move at the MAX possible speed
+towards commanded position and usually do not finish at the same time. For
+example:
+G53 X0 (command for home) ;
+G53 X-2.0 (command for X to be 2&quot; from home) ;
+G53 X0 Y0 (command for home) ;
+Refer to G53 on page 282.
+If commanding the Y and X Axes home using G28 the following conditions must be
+met and the described behavior expected:
+–
+Address identification for G28:
+X = U
+Y = Y
+Z = W
+B = B
+C = H
+Example:
+G28 U0 (U Zero) ; sends the X Axis to home position.
+G28 U0 ; is okay with Y Axis below spindle centerline.
+G28 U0 ; produces a 560 alarm if Y Axis is above spindle centerline. However 
+homing the Y Axis first or utilizing a G28 without a letter address does not 
+generate the 560 alarm.
+G28 ; sequence sends X, Y, and B home first then C and Z
+G28 U0 Y0 ; produces no alarm regardless of the Y-Axis position.
+G28 Y0 ; is okay with Y Axis above spindle centerline.
+G28 Y0 ; is okay with Y Axis below spindle centerline
+Pressing [POWER UP/RESTART] or [HOME G28] produces the message: 
+Function locked.
+
+–
+If X Axis is commanded home while the Y Axis is above spindle centerline 
+(positive Y-Axis coordinates), alarm 560 is generated. Command Y Axis home 
+first, then X Axis.
+–
+If X Axis is commanded home and the Y Axis is below spindle centerline 
+(negative Y-Axis coordinates), the X Axis goes home and Y does not move.
+–
+If both X Axis and Y Axis are commanded home using G28 U0 Y0, the X Axis 
+and Y Axis go home at the same time regardless of Y being above or below 
+the centerline.
+•
+Clamp the main and/or secondary spindles (if so equipped) anytime live tooling
+operations are being performed and C Axis is not being interpolated.
+NOTE:
+The brake unclamps automatically any time C-Axis motion for
+positioning is commanded.
+•
+These canned cycles can be used with the Y Axis. Refer to page 262 for more
+information.
+Axial Only Cycles:
+–
+Drilling: G74, G81, G82, G83,
+–
+Boring: G85, G89,
+–
+Tapping: G95, G186,
+Radial Only Cycles:
+–
+Drilling: G75 (a grooving cycle), G241, G242, G243,
+–
+Boring: G245, G246, G247, G248
+–
+Tapping: G195, G196
+Program Example of Y-Axis Milling:
+F6.17:
+Y-axis Milling Program Example: [1] Feed, [2] Rapid.
+o50004 (Y AXIS MILLING) ;
+Y
+X
+Z
+1
+2</content></result><result file_id='' filename='005__L1__Chapter_5_Programming__pp139-192__L2__03__5.3_Tips_and_Tricks__pp147-150.pdf'><content>F5.5:
+Reverse Plus and Minus Signs Menu
+•
+Reverse X And Y: Changes the X address codes in the program to Y address
+codes, and changes Y address codes to X address codes.
+5.3
+Tips and Tricks
+The following sections provide insight into efficiently programming your Haas Turning
+Center.
+5.3.1
+Tips and Tricks - Programming
+Short programs looped many times do not reset the chip conveyor if the intermittent feature
+is activated. The conveyor continues to start and stop at the commanded times. Refer to
+page 388 for information on the conveyor interval settings.
+The screen displays the spindle and axis loads, the current feed and speed, positions, and
+the currently active codes while a program runs. Different display modes change the
+information that is displayed.
+
+To clear all offsets and macro variables, press [ORIGIN] at the Active Work Offset
+screen. The control displays a popup menu. Pick Clear Work Offsets for the displayed
+message Are you sure you want to Zero(Y/N). If Y is entered, all the work offsets
+(macros) in the area being displayed are set to zero. The values in the Current
+Commands display pages can be cleared as well. The Tool Life, Tool Load, and Timer
+registers are cleared by selecting the one to clear and pressing [ORIGIN]. To clear
+everything in a column, scroll to the top of the column onto the title and press [ORIGIN].
+To select another program enter the program number (Onnnnn) and press the arrow up or
+down. The machine must be in either Memory or Edit mode. To search for a specific
+command in a program, use Memory or Edit mode. Enter the address code (A, B, C etc.),
+or the address code and the value (A1.23), and press the up or down arrow key. If the
+address code is entered without a value, the search stops at the next use of that letter.
+To transfer or save a program in MDI to the list of programs position the cursor at the
+beginning of the MDI program, enter a program number (Onnnnn), and press [ALTER].
+Program Review - Program Review allows the operator to move the cursor and review a
+copy of the active program on the right side of the display screen, and view the same
+program as it runs on the left side of the screen. To display a copy of the active program in
+the Inactive Program display, press [F4] while the Edit pane contains the active
+program.
+Background Edit - This feature edits while a program runs. Press [EDIT] until the
+background Edit pane (on the right side of the screen) is active. Select a program to edit
+from the list and press [ENTER]. Press [SELECT PROGRAM] from this pane to select
+another program. Edits are possible as the program runs, however, edits to the running
+program will not take effect until the program ends with an M30 or [RESET].
+Graphics Zoom Window - [F2] activates the zoom window when in Graphics mode.
+[PAGE DOWN] zooms in and page up expands the view. Use the arrow keys to move the
+window over the desired area of the part and press [ENTER]. Press [F2] and [HOME] to
+see full table view.
+To Copy Programs - InEdit mode, a program can be copied into another program, a line,
+or a block of lines in a program. Define a block with the [F2] key, then move the cursor to
+the last program line to define, press [F2] or [ENTER] to highlight the block. Select another
+program to copy the selection to. Move the cursor to the point where the copied block is
+moved and press [INSERT].
+To Load Files - Select multiple files in the device manager, then press [F2] to select a
+destination.
+To Edit Programs - Press [F4] while in Edit mode to display another version of the
+current program in the right-hand pane. Different portions of the programs can be edited
+alternately by pressing [EDIT] to switch from one side to the other. The program is updated
+once switched to the other program.
+
+To Duplicate a Program - An existing program can be duplicated in List Program mode.
+To do this, select the program number to duplicate, type in a new program number
+(Onnnnn) and press [F2]. This can also be done through the popup help menu. Press [F1],
+then select the option from the list. Type the new program name and press [ENTER].
+Several programs can be sent to the serial port. Highlight the desired programs from the
+program list to select them and press [ENTER]. Press [SEND] to transfer the files.
+5.3.2
+Offsets
+To enter offsets:
+1.
+Press [OFFSET] to toggle between the Tool Geometry and Work Zero Offset 
+panes.
+2.
+Press [ENTER] to add the entered number to the cursor-selected value.
+3.
+Press [F1] to overwrite the cursor selected offset register with the entered number.
+4.
+Press [F2] to enter the negative value into the offset.
+5.3.3
+Settings
+The [HANDLE JOG] control is used to scroll through settings and tabs, when not in jog
+mode. Enter a known setting number and press the up or down arrow key to jump to the
+entered setting.
+The Haas control can power off the machine using settings. These settings are: Setting 1
+turns off power after machine is idle for nn minutes, and Setting 2 turns off power when M30
+is executed.
+Memory Lock (Setting 8) when On, memory edit functions are locked out. When Off,
+memory can be modified.
+Dimensioning (Setting 9) changes from Inch to MM. This changes all offset values too.
+Reset Program Pointer (Setting 31) turns on and off the program pointer returning to the
+program beginning.
+Scale Integer F (Setting 77) changes the interpretation of a feed rate. A feed rate can be
+misinterpreted if there is not a decimal point in the Fnn command. The selections for this
+setting are Default, to recognize a 4 place decimal. Another selection is Integer which
+recognizes a feed rate for a selected decimal position, for a feed rate that does not have a
+decimal.
+Max Corner Rounding (Setting 85) is used to set the corner rounding accuracy required by
+the user. Any feed rate up to the maximum can be programmed without the errors getting
+above that setting. The control slows at corners only when needed.
+Reset Resets Override (Setting 88) turns on and off the Reset key setting the overrides
+back to 100%.
+
+Cycle Start/Feed hold (Setting 103) when On, [CYCLE START] must be pressed and held
+to run a program. Releasing [CYCLE START] generates a Feed Hold condition.
+Jog Handle to Single Block (Setting 104) allows the [HANDLE JOG] control to be used to
+step through a program. Reverse the [HANDLE JOG] control to generate a Feed Hold
+condition.
+Offset Lock (Setting 119) prevents the operator from altering any of the offsets.
+Macro Variable Lock (Setting 120) prevents the operator from altering any of the macro
+variables.
+5.3.4
+Operation
+[MEMORY LOCK] key switch - prevents the operator from editing programs and from
+altering settings when in the locked position.
+[HOME G28] - Returns all axes to machine zero. To send just one axis to machine home,
+enter the axis letter and press [HOME G28]. To zero out all axes on the Distance-To-Go
+display, while in Jog mode, press any other operation mode ([EDIT], [MEMORY],
+[MDI/DNC], etc.) then press [HANDLE JOG]. Each axis can be zeroed independently to
+show a position relative to the selected zero. To do this go to the Position Operator
+page, press [HANDLE JOG], position the axes to the desired position and press [ORIGIN]
+to zero that display. In addition a number can be entered for the axis position display. To
+do this, enter an axis and number, for example, X2.125 then [ORIGIN].
+Tool Life - Within the Current Commands page there is a Tool Life window
+displaying tool usage. This register counts each time the tool is used. The tool life monitor
+stops the machine once the tool reaches the value in the alarms column.
+Tool Overload - Tool load can be defined by the Tool Load monitor; this changes normal
+machine operation if it reaches the tool load defined for that tool. When a tool overload
+condition is encountered, one of four actions occurs depending on Setting 84:
+•
+Alarm - Generate an alarm
+•
+Feedhold - Stop the feed
+•
+Beep - Sounds an audible alarm
+•
+Autofeed - Automatically increase or decrease the feed rate
+Spindle speed is verified by checking the Current Commands All Active Codes
+display (also displayed in the Main Spindle window). Live tooling spindle axis RPM is also
+displayed on this page.
+To select an axis for jogging, enter the axis name on the input line and press [HANDLE
+JOG].
+The Help display has all the G and M codes listed. They are available within the first tab of
+the Help tabbed menu.</content></result></sources>",resp_0e3f3a7e691b4cde006943a4504ef8819088591a376376a4e3,gpt-5-nano-2025-08-07,completed,1766040656,6325,44,6369,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoidmFuaWxsYSIsImVmZm9ydCI6Im1pbmltYWwiLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LW5hbm8tMjAyNS0wOC0wNyIsInJlYXNvbmluZ19lZmZvcnQiOiJtaW5pbWFsIiwidG9wX2siOjd9LCJydW5fdXVpZCI6Ijc1ZmM5YWZlLTYwNGQtNDhkNi1iOTdkLWZmODBjMTkyMDEyZCJ9X092E8JDckU,2025-12-18 01:50:53 EST,2025-12-18 01:50:57 EST,3.97 Seconds,3000,vanilla,gpt-5-nano-2025-08-07,5000,minimal,7,A,A,1,What are the three typical parts of a CNC program on a HAAS Lathe?,"Preparation, cutting, and completion","The sources do not explicitly list three typical parts of a CNC program for a Haas lathe. From the provided excerpts, there is no direct statement identifying three parts. [All provided files]",006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf;009__L1__Chapter_9_Settings__pp387-450__L2__09__10.4_Toolroom_Lathe__pp449-449.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__02__7.2_More_Information_Online__pp363-364.pdf;002__L1__Chapter_2_Introduction__pp41-88__L2__01__2.1_Lathe_Overview__pp41-46.pdf;004__L1__Chapter_4_Operation__pp103-138__L2__15__4.14_More_Information_Online__pp137-138.pdf;006__L1__Chapter_6_Options_Programming__pp193-278__L2__11__6.10_Y_Axis__pp272-275.pdf;005__L1__Chapter_5_Programming__pp139-192__L2__03__5.3_Tips_and_Tricks__pp147-150.pdf,"<sources><result file_id='' filename='006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf'><content>(G54 X0 Y0 is at the center of rotation) ;
+(Z0 is on face of the part) ;
+(T1 is an end mill) ;
+(BEGIN PREPARATION BLOCKS) ;
+T101 (Select tool and offset 1) ;
+G00 G18 G20 G40 G80 G99 (Safe startup) ;
+G19 (Call YZ plane) ;
+G98 (Feed per min) ;
+M154 (Engage C-Axis) ;
+G00 G54 X4. C90. Y0. Z0.1 ;
+(Rapid to clear position) ;
+M14 (Spindle brake on) ;
+P1500 M133 (Live tool CW at 1500 RPM) ;
+M08 (Coolant on) ;
+(BEGIN CUTTING BLOCKS) ;
+G00 X3.25 Y-1.75 Z0. (Rapid move) ;
+G00 X2.25 (Rapid approach) ;
+G01 Y1.75 F22. (Linear feed) ;
+G00 X3.25 (Rapid retract) ;
+G00 Y-1.75 Z-0.375 (Rapid move) ;
+G00 X2.25 (Rapid approach) ;
+G01 Y1.75 F22. (Linear feed) ;
+G00 X3.25 (Rapid retract) ;
+G00 Y-1.75 Z-0.75 (Rapid move) ;
+G00 X2.25 (Rapid approach) ;
+G01 Y1.75 F22. (Linear feed) ;
+(BEGIN COMPLETION BLOCKS) ;
+G00 X3.25 M09 (Rapid retract, Coolant off) ;
+M15 (Spindle brake off) ;
+M155 (Disengage C axis) ;
+M135 (Live tool off) ;
+G18 (Return to XZ plane) ;
+G53 X0 Y0 (X &amp; Y Home) ;
+G53 Z0 (Z Home) ;
+M30 (End program) ;
+6.11
+More Information Online
+You can find programming information for other optional equipment in the online WORK ON
+YOUR HAAS section, including:
+•
+High Pressure Coolant (HPC)
+•
+Automatic Tool Setting Probe
+•
+Servo Auto Door
+To access the site, go to www.HaasCNC.com and select Owners.
+
+You can also scan this QR code with your mobile device to go directly to the options
+programming section of the Resource Center.</content></result><result file_id='' filename='009__L1__Chapter_9_Settings__pp387-450__L2__09__10.4_Toolroom_Lathe__pp449-449.pdf'><content>Chapter 10: Other Equipment
+10.1
+Chucker Lathe
+The Haas Chucker Lathe is ideal for dedicated small-part production, second-op parts, or
+short runs and prototyping. The 8-station tool turret provides fast tool changes for short
+cycle times.
+10.2
+Dual-Spindle Lathes
+The DS-30Y Y-axis turning center combines dual-spindle turning with Y axis, C axis, and
+live tooling to create a powerful “done-in-one” machining solution for any shop. Off-center
+milling, drilling, and tapping operations are possible for increased machining capabilities. It
+comes standard with a 12-station BMT65 turret and synchronized C axis for versatile 4-axis
+capability. The opposed spindles support fully synchronized turning, and allow on-the-fly
+part pass-off to reduce cycle times. The DS-30Y has a medium footprint, yet provides a
+generous work envelope. This machine offers the best performance for the money – the
+best value – in it’s class.
+10.3
+Haas Bar feeder
+The Haas Bar Feeder provides a simple and efficient way to automate part production on
+Haas lathes. It features a heavy-duty, compact design that boosts productivity and
+streamlines turning operations
+10.4
+Toolroom Lathe
+The Toolroom Lathe includes features aimed at a machinist used to a manually positioned
+lathe. The lathe uses familiar manual handles, while giving full CNC capabilities.</content></result><result file_id='' filename='007__L1__Chapter_7_G-codes__pp279-364__L2__02__7.2_More_Information_Online__pp363-364.pdf'><content>(BEGIN CUTTING BLOCKS) ;
+G249 X2.1 Y0.125 Z-1.3 C35. R4. P1.35 F20. ;
+(Bore to X2.1) ;
+X1.85 Y-0.255 Z-0.865 C-75. P1.65 (next position) ;
+(BEGIN COMPLETION BLOCKS) ;
+G00 Z1. M09 (Rapid retract, Coolant off) ;
+M155 (Disengage C Axis) ;
+M135 (Live tool off) ;
+G53 X0 Y0 (X &amp; Y home) ;
+G53 Z0 (Z home) ;
+M30 (End program) ;
+%
+7.2
+More Information Online
+For updated and supplemental information, including tips, tricks, maintenance procedures,
+and more, visit the Haas Service page at www.HaasCNC.com. You can also scan the code
+below with your mobile device to go directly to the Haas Service page:</content></result><result file_id='' filename='002__L1__Chapter_2_Introduction__pp41-88__L2__01__2.1_Lathe_Overview__pp41-46.pdf'><content>Chapter 2: Introduction
+2.1
+Lathe Overview
+These figures show some of the standard and optional features of your Haas lathe. Some
+of the features shown are highlighted in their appropriate sections. Note that these figures
+are representative only; your machine’s appearance may vary depending on the model and
+installed options.
+F2.1:
+Lathe Features (front view)
+1.
+2X High Intensity Lights (Optional)
+2.
+Work Light (2X)
+3.
+Chip Conveyor (Optional)
+4.
+Oil Drain Container
+5.
+Chip Container
+6.
+Air Gun
+7.
+Foot Pedal
+8.
+Parts Catcher (Optional)
+9. Hydraulic Power Unit (HPU)
+10. Coolant Collector
+11. Spindle Motor
+12. Servo Auto Door (Optional)
+A. Control Pendant
+B. Lubrication Panel Assembly
+C. Coolant Tank
+1
+2
+B
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+A
+C
+
+F2.2:
+Lathe Features (front view with covers removed)
+1.
+Spindle Motor
+2.
+Tool Turret Assembly
+3.
+Tailstock (Optional)
+4.
+Parts Catcher (Optional)
+5.
+LTP Arm (Optional)
+6. Chuck
+7. C-Axis Drive Assembly (Optional)
+8. Hydraulic Power Unit (HPU)
+9. Spindle Head Assembly
+A Control Cabinet
+B Control Cabinet Side Panel
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+F2.3:
+Lathe Features (front view) Detail A - Control Pendant with Cabinet
+1.
+Work Beacon
+2.
+Clipboard
+3.
+Operator’s Manual and Assembly Data (stored 
+behind pendant)
+4.
+Side panel Controls
+5.
+Tool Holder (also shown, tool holder for thin 
+pendant)
+6.
+Storage Tray
+7.
+G- and M-code Reference List
+8.
+Remote Jog Handle
+2
+1
+3
+6
+8
+5
+7
+4
+
+F2.4:
+Lathe Features Detail B - Lubrication Panel Example
+1.
+Min Lubrication Grease Solenoid
+2.
+Air Pressure Gauge
+3.
+Air Relief Valve
+4.
+Rotary Table Air Supply
+5.
+Air/Water Separator
+6.
+Air Shut Off Valve
+7.
+Purge Solenoid
+8.
+Air Inlet Port
+9.
+Spindle Lubrication Reservoir
+10. Spindle Lubrication Sight Glass (2)
+11. Axis Lubrication Grease Reservoir
+12. Grease Pressure Gauge
+NOTE:
+More details are shown on the 
+decals inside of the access door.
+1
+2
+3
+4
+6
+5
+7
+8
+10
+9
+11
+12
+
+F2.5:
+Lathe Features (3/4 side view) Detail C - Coolant Tank Assembly
+1.
+Standard Coolant Pump
+2.
+High-Pressure Coolant Pump (Optional)
+3.
+Coolant Level Sensor
+4.
+Chip Strainer
+5.
+Strainer Basket
+1
+2
+3
+4
+5
+
+F2.6:
+Toolroom Lathe (front view)
+1.
+Spindle assembly
+2.
+eHandwheel
+3.
+Air Gun
+4.
+Coolant Tank
+5.
+Tailstock
+6.
+Control Pendant
+6
+5
+4
+3
+2
+1</content></result><result file_id='' filename='004__L1__Chapter_4_Operation__pp103-138__L2__15__4.14_More_Information_Online__pp137-138.pdf'><content>3.
+The control gives the message Jog Away. Use the jog handle or jog keys to move 
+the tool away from the part. You can command coolant with [AUX CLNT] or 
+[COOLANT]. You can start or stop the spindle with the spindle override keys. You 
+can also release the tool to change inserts.
+CAUTION:
+When you start the program again, the control uses the previous
+offsets for the return position. Therefore, it is unsafe and not
+recommended to change tools and offsets when you interrupt a
+program.
+4.
+Jog to a position as close as possible to the stored position, or to a position where 
+there is an unobstructed rapid path back to the stored position.
+5.
+Press [MEMORY] or [MDI] to return to run mode. The control continues only if you 
+return to the mode that was in effect when you stopped the program.
+6.
+Press [CYCLE START]. The control gives the message Jog Return and rapids Y 
+and Z at 5% to the position where you pressed [FEED HOLD]. It then returns the X 
+Axis. If you press [FEED HOLD] during this motion, axis motion pauses and the 
+control gives the message Jog Return Hold. Press [CYCLE START] to resume 
+the Jog Return motion. The control goes into a feed hold state again when the motion 
+is finished.
+CAUTION:
+The control does not follow the same path that you used to jog away.
+7.
+Press [CYCLE START] again and the program resumes operation.
+4.14
+More Information Online
+For updated and supplemental information, including tips, tricks, maintenance procedures,
+and more, visit the Haas Service page at www.HaasCNC.com. You can also scan the code
+below with your mobile device to go directly to the Haas Service page:</content></result><result file_id='' filename='006__L1__Chapter_6_Options_Programming__pp193-278__L2__11__6.10_Y_Axis__pp272-275.pdf'><content>5.
+Type a value for the highlighted variable and press [ENTER]. The control will display 
+an asterisk (*) next to variable if the default value is changed. To set the variable back 
+to default press the [ORIGIN] button.
+6.
+Press the [DOWN] cursor arrow key to move to the next variable.
+7.
+With all of the variables entered, you can press [CYCLE START] to immediately run 
+the program in MDI, or [F4] to output the code to either the clipboard or MDI without 
+running the program.
+6.10
+Y Axis
+The Y Axis moves tools perpendicular to the spindle center line. This motion is achieved by
+compound motion of the X- and Y-Axis ballscrews.
+Refer to G17 and G18, starting on page 275, for programming information.
+F6.16:
+Y-Axis Motion: [1] Y-Axis compound motion, [2] Horizontal plane.
++
++
++
+Y
+X
++
+Z
+C1
+X
+1
+2
+
+6.10.1
+Y-Axis Travel Envelopes
+You can find detailed work and travel envelope information for your machine at
+data.haascnc.com/install. 
+TIP:
+This site can be accessed through www.haascnc.com, by clicking on
+Owners&gt; New Machine/ PRE-INSTALLATION.
+Select your machine model, and then click on &quot;Download Detailed Layout Drawings for
+the... PDF&quot;.
+When you set up tooling for the Y Axis, consider these factors:
+•
+Work piece diameter
+•
+Tool extension (radial tools)
+•
+Required Y-Axis travel from the centerline
+6.10.2
+Y-Axis Lathe with VDI Turret
+The position of the work envelope shifts when using radial live tools. The length the cutting
+tool extends from the centerline of the tool pocket is the distance the envelope shifts.
+You can find detailed work and travel envelope information for your machine at
+data.haascnc.com/install. 
+TIP:
+This site can be accessed through www.haascnc.com, by clicking on
+Owners&gt; New Machine/ PRE-INSTALLATION.
+Select your machine model, and then click on &quot;Download Detailed Layout Drawings for
+the.. PDF&quot;.
+6.10.3
+Operation and Programming
+The Y Axis is an additional axis on the lathes (if so equipped) that can be commanded and
+behaves in the same manner as the standard X and Z Axes. There is no activation
+command necessary for Y Axis.
+The lathe automatically returns the Y Axis to spindle centerline after a tool change. Make
+sure the turret is correctly positioned before commanding rotation.
+Standard Haas G-codes and M-codes are available when programming with the Y Axis.
+
+Mill type cutter compensation can be applied in both G17 and G19 planes when performing
+live tool operations. Cutter compensation rules must be followed to avoid unpredictable
+motion when applying and canceling the compensation. The Radius value of the Tool being
+used must be entered in the RADIUS column of the tool geometry page for that tool. The
+tool tip is assumed as “0” and no value should be entered.
+Programming recommendations:
+•
+Command Axes home or to a safe tool change location in rapids using G53 which
+moves all axes at the same rate simultaneously. Regardless of the positions of the Y
+Axis and X Axis in relation to each other, both move at the MAX possible speed
+towards commanded position and usually do not finish at the same time. For
+example:
+G53 X0 (command for home) ;
+G53 X-2.0 (command for X to be 2&quot; from home) ;
+G53 X0 Y0 (command for home) ;
+Refer to G53 on page 282.
+If commanding the Y and X Axes home using G28 the following conditions must be
+met and the described behavior expected:
+–
+Address identification for G28:
+X = U
+Y = Y
+Z = W
+B = B
+C = H
+Example:
+G28 U0 (U Zero) ; sends the X Axis to home position.
+G28 U0 ; is okay with Y Axis below spindle centerline.
+G28 U0 ; produces a 560 alarm if Y Axis is above spindle centerline. However 
+homing the Y Axis first or utilizing a G28 without a letter address does not 
+generate the 560 alarm.
+G28 ; sequence sends X, Y, and B home first then C and Z
+G28 U0 Y0 ; produces no alarm regardless of the Y-Axis position.
+G28 Y0 ; is okay with Y Axis above spindle centerline.
+G28 Y0 ; is okay with Y Axis below spindle centerline
+Pressing [POWER UP/RESTART] or [HOME G28] produces the message: 
+Function locked.
+
+–
+If X Axis is commanded home while the Y Axis is above spindle centerline 
+(positive Y-Axis coordinates), alarm 560 is generated. Command Y Axis home 
+first, then X Axis.
+–
+If X Axis is commanded home and the Y Axis is below spindle centerline 
+(negative Y-Axis coordinates), the X Axis goes home and Y does not move.
+–
+If both X Axis and Y Axis are commanded home using G28 U0 Y0, the X Axis 
+and Y Axis go home at the same time regardless of Y being above or below 
+the centerline.
+•
+Clamp the main and/or secondary spindles (if so equipped) anytime live tooling
+operations are being performed and C Axis is not being interpolated.
+NOTE:
+The brake unclamps automatically any time C-Axis motion for
+positioning is commanded.
+•
+These canned cycles can be used with the Y Axis. Refer to page 262 for more
+information.
+Axial Only Cycles:
+–
+Drilling: G74, G81, G82, G83,
+–
+Boring: G85, G89,
+–
+Tapping: G95, G186,
+Radial Only Cycles:
+–
+Drilling: G75 (a grooving cycle), G241, G242, G243,
+–
+Boring: G245, G246, G247, G248
+–
+Tapping: G195, G196
+Program Example of Y-Axis Milling:
+F6.17:
+Y-axis Milling Program Example: [1] Feed, [2] Rapid.
+o50004 (Y AXIS MILLING) ;
+Y
+X
+Z
+1
+2</content></result><result file_id='' filename='005__L1__Chapter_5_Programming__pp139-192__L2__03__5.3_Tips_and_Tricks__pp147-150.pdf'><content>F5.5:
+Reverse Plus and Minus Signs Menu
+•
+Reverse X And Y: Changes the X address codes in the program to Y address
+codes, and changes Y address codes to X address codes.
+5.3
+Tips and Tricks
+The following sections provide insight into efficiently programming your Haas Turning
+Center.
+5.3.1
+Tips and Tricks - Programming
+Short programs looped many times do not reset the chip conveyor if the intermittent feature
+is activated. The conveyor continues to start and stop at the commanded times. Refer to
+page 388 for information on the conveyor interval settings.
+The screen displays the spindle and axis loads, the current feed and speed, positions, and
+the currently active codes while a program runs. Different display modes change the
+information that is displayed.
+
+To clear all offsets and macro variables, press [ORIGIN] at the Active Work Offset
+screen. The control displays a popup menu. Pick Clear Work Offsets for the displayed
+message Are you sure you want to Zero(Y/N). If Y is entered, all the work offsets
+(macros) in the area being displayed are set to zero. The values in the Current
+Commands display pages can be cleared as well. The Tool Life, Tool Load, and Timer
+registers are cleared by selecting the one to clear and pressing [ORIGIN]. To clear
+everything in a column, scroll to the top of the column onto the title and press [ORIGIN].
+To select another program enter the program number (Onnnnn) and press the arrow up or
+down. The machine must be in either Memory or Edit mode. To search for a specific
+command in a program, use Memory or Edit mode. Enter the address code (A, B, C etc.),
+or the address code and the value (A1.23), and press the up or down arrow key. If the
+address code is entered without a value, the search stops at the next use of that letter.
+To transfer or save a program in MDI to the list of programs position the cursor at the
+beginning of the MDI program, enter a program number (Onnnnn), and press [ALTER].
+Program Review - Program Review allows the operator to move the cursor and review a
+copy of the active program on the right side of the display screen, and view the same
+program as it runs on the left side of the screen. To display a copy of the active program in
+the Inactive Program display, press [F4] while the Edit pane contains the active
+program.
+Background Edit - This feature edits while a program runs. Press [EDIT] until the
+background Edit pane (on the right side of the screen) is active. Select a program to edit
+from the list and press [ENTER]. Press [SELECT PROGRAM] from this pane to select
+another program. Edits are possible as the program runs, however, edits to the running
+program will not take effect until the program ends with an M30 or [RESET].
+Graphics Zoom Window - [F2] activates the zoom window when in Graphics mode.
+[PAGE DOWN] zooms in and page up expands the view. Use the arrow keys to move the
+window over the desired area of the part and press [ENTER]. Press [F2] and [HOME] to
+see full table view.
+To Copy Programs - InEdit mode, a program can be copied into another program, a line,
+or a block of lines in a program. Define a block with the [F2] key, then move the cursor to
+the last program line to define, press [F2] or [ENTER] to highlight the block. Select another
+program to copy the selection to. Move the cursor to the point where the copied block is
+moved and press [INSERT].
+To Load Files - Select multiple files in the device manager, then press [F2] to select a
+destination.
+To Edit Programs - Press [F4] while in Edit mode to display another version of the
+current program in the right-hand pane. Different portions of the programs can be edited
+alternately by pressing [EDIT] to switch from one side to the other. The program is updated
+once switched to the other program.
+
+To Duplicate a Program - An existing program can be duplicated in List Program mode.
+To do this, select the program number to duplicate, type in a new program number
+(Onnnnn) and press [F2]. This can also be done through the popup help menu. Press [F1],
+then select the option from the list. Type the new program name and press [ENTER].
+Several programs can be sent to the serial port. Highlight the desired programs from the
+program list to select them and press [ENTER]. Press [SEND] to transfer the files.
+5.3.2
+Offsets
+To enter offsets:
+1.
+Press [OFFSET] to toggle between the Tool Geometry and Work Zero Offset 
+panes.
+2.
+Press [ENTER] to add the entered number to the cursor-selected value.
+3.
+Press [F1] to overwrite the cursor selected offset register with the entered number.
+4.
+Press [F2] to enter the negative value into the offset.
+5.3.3
+Settings
+The [HANDLE JOG] control is used to scroll through settings and tabs, when not in jog
+mode. Enter a known setting number and press the up or down arrow key to jump to the
+entered setting.
+The Haas control can power off the machine using settings. These settings are: Setting 1
+turns off power after machine is idle for nn minutes, and Setting 2 turns off power when M30
+is executed.
+Memory Lock (Setting 8) when On, memory edit functions are locked out. When Off,
+memory can be modified.
+Dimensioning (Setting 9) changes from Inch to MM. This changes all offset values too.
+Reset Program Pointer (Setting 31) turns on and off the program pointer returning to the
+program beginning.
+Scale Integer F (Setting 77) changes the interpretation of a feed rate. A feed rate can be
+misinterpreted if there is not a decimal point in the Fnn command. The selections for this
+setting are Default, to recognize a 4 place decimal. Another selection is Integer which
+recognizes a feed rate for a selected decimal position, for a feed rate that does not have a
+decimal.
+Max Corner Rounding (Setting 85) is used to set the corner rounding accuracy required by
+the user. Any feed rate up to the maximum can be programmed without the errors getting
+above that setting. The control slows at corners only when needed.
+Reset Resets Override (Setting 88) turns on and off the Reset key setting the overrides
+back to 100%.
+
+Cycle Start/Feed hold (Setting 103) when On, [CYCLE START] must be pressed and held
+to run a program. Releasing [CYCLE START] generates a Feed Hold condition.
+Jog Handle to Single Block (Setting 104) allows the [HANDLE JOG] control to be used to
+step through a program. Reverse the [HANDLE JOG] control to generate a Feed Hold
+condition.
+Offset Lock (Setting 119) prevents the operator from altering any of the offsets.
+Macro Variable Lock (Setting 120) prevents the operator from altering any of the macro
+variables.
+5.3.4
+Operation
+[MEMORY LOCK] key switch - prevents the operator from editing programs and from
+altering settings when in the locked position.
+[HOME G28] - Returns all axes to machine zero. To send just one axis to machine home,
+enter the axis letter and press [HOME G28]. To zero out all axes on the Distance-To-Go
+display, while in Jog mode, press any other operation mode ([EDIT], [MEMORY],
+[MDI/DNC], etc.) then press [HANDLE JOG]. Each axis can be zeroed independently to
+show a position relative to the selected zero. To do this go to the Position Operator
+page, press [HANDLE JOG], position the axes to the desired position and press [ORIGIN]
+to zero that display. In addition a number can be entered for the axis position display. To
+do this, enter an axis and number, for example, X2.125 then [ORIGIN].
+Tool Life - Within the Current Commands page there is a Tool Life window
+displaying tool usage. This register counts each time the tool is used. The tool life monitor
+stops the machine once the tool reaches the value in the alarms column.
+Tool Overload - Tool load can be defined by the Tool Load monitor; this changes normal
+machine operation if it reaches the tool load defined for that tool. When a tool overload
+condition is encountered, one of four actions occurs depending on Setting 84:
+•
+Alarm - Generate an alarm
+•
+Feedhold - Stop the feed
+•
+Beep - Sounds an audible alarm
+•
+Autofeed - Automatically increase or decrease the feed rate
+Spindle speed is verified by checking the Current Commands All Active Codes
+display (also displayed in the Main Spindle window). Live tooling spindle axis RPM is also
+displayed on this page.
+To select an axis for jogging, enter the axis name on the input line and press [HANDLE
+JOG].
+The Help display has all the G and M codes listed. They are available within the first tab of
+the Help tabbed menu.</content></result></sources>",resp_0e3f3a7e691b4cde006943a4504ef8819088591a376376a4e3,gpt-5-nano-2025-08-07,completed,1766040656,6325,44,6369,
