@@ -1,0 +1,6 @@
+question,gold_answer 
+What safety modes does the robot arm have?,"The robot arm has three safety modes. Normal mode, reduced mode, and recovery mode. "
+What happens if my robot stopped in 1000ms when my stopping time safety limit is set to 200ms?,The robot arm will enter recovery mode because the safety limits have been violated. 
+What mode do I need to be in to load a program?,"You need to be in Automatic Mode to load and execute a program, but you need to be in manual mode to modify and create new programs."
+How can I set up my active program so that I only need to modify 1 or 2 variables each run?,"If you only want to modify 1 or 2 variables during each run of a program, you can favorite specific program variables so you can access them easier and not go through other variables. "
+What are the network configuration requirements to use the network features of the robot?,"The network requirements suggest that only trusted devices should be connected to the local area network. There must be no inbound connections from adjacent networks to the robot, outgoing connections from the robot are to be restricted to allow the smallest relevant set of specific ports, protocols and addresses. Only URCaps and magic scripts from trusted partners can be used and only after verifying their authenticity and integrity. "
