@@ -21,7 +21,8 @@ class Approaches(IntFlag):
     GRAPH_EAGER = auto()
     GRAPH_MMR = auto()
     VANILLA = auto()
-    
+    LONG_CONTEXT = auto()
+
     def to_str_list(self):
         """
         Converts the currently enabled flags into lowercase string identifiers
@@ -48,6 +49,8 @@ class Approaches(IntFlag):
                         str_list.append("graph_mmr")
                     case Approaches.VANILLA:
                         str_list.append("vanilla")
+                    case Approaches.LONG_CONTEXT:
+                        str_list.append("long_context")
         return str_list
 
 

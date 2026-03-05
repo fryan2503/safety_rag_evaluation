@@ -147,6 +147,8 @@ def retrieve_and_answer(
         hits = retrievers._retrieve_graph_retriever(question=question, top_k=top_k, strategy="MMR")
     elif approach == "vanilla":
         hits = retrievers._retrieve_vanilla_astradb(question=question, top_k=top_k)
+    elif approach == "long_context":
+        hits = retrievers._retrieve_long_context()
     else:
         raise ValueError(f"Unknown approach '{approach}'.")
 

@@ -40,6 +40,7 @@ class ApproachRetrievers:
         self.ASTRA_DB_API_ENDPOINT = config.ASTRA_DB_API_ENDPOINT
         self.ASTRA_DB_APPLICATION_TOKEN = config.ASTRA_DB_APPLICATION_TOKEN
         self.EMBED_MODEL = config.EMBED_MODEL
+        self._long_context_texts: Dict[str, str] = {}
 
     # -------------------------------------------------------------------
     # Retrieval implementations
@@ -164,7 +165,7 @@ class ApproachRetrievers:
         vector_store = self._load_astradb_vector_store()
         retriever = vector_store.as_retriever(search_kwargs={"k": top_k})
         docs = retriever.invoke(question)
-        
+
         hits: List[Dict[str, Any]] = []
         for d in docs[:top_k]:
             meta = getattr(d, "metadata", {}) or {}
@@ -175,3 +176,19 @@ class ApproachRetrievers:
                 "text": getattr(d, "page_content", "") or "",
             })
         return hits
+
+    # -------------------------------------------------------------------
+    # Long-context retrieval
+    # -------------------------------------------------------------------
+    def set_long_context_texts(self, texts: Dict[str, str]) -> None:
+        """Store full document texts keyed by source name for long-context retrieval."""
+        self._long_context_texts = texts
+
+    def _retrieve_long_context(self) -> List[Dict[str, Any]]:
+        """Return all stored full documents as hits (no chunking or search)."""
+        if not self._long_context_texts:
+            raise ValueError("No long-context texts set. Call set_long_context_texts() first.")
+        return [
+            {"filename": name, "file_id": None, "score": None, "text": text}
+            for name, text in self._long_context_texts.items()
+        ]
