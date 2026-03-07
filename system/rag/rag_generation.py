@@ -56,13 +56,32 @@ class RAGExperimentRunner:
         max_concurrent: int = 1,
         max_chars_per_content: int = 25_000,
         min_words_for_subsplit: int = 3000,
+        include_hits_text: bool = True,
     ):
-        """
-        Stores experimental configuration and initializes runner.
-         View each possible setting as a dimension in an experiment grid.
-         The experiment will generate one output row for each permutation.
+        """Initialize the experiment runner with a configuration grid.
+
+        Each parameter defines a dimension in the experiment grid.
+        The runner generates one output row per unique permutation.
+
+        Args:
+            retrievers: Retrieval engine wrapping all approach implementations.
+            num_replicates: Number of times to repeat each permutation.
+            approaches: Retrieval strategies to evaluate (OR-able IntFlag).
+            models: LLM models to evaluate (OR-able IntFlag).
+            max_tokens_list: Max output token limits to sweep over.
+            efforts: Reasoning effort levels to sweep (e.g. ``["low", "high"]``).
+            topk_list: Top-k retrieval counts to sweep.
+            ans_instr_A: Primary answer instruction prompt text.
+            fewshot_A: Primary few-shot preamble prompt text.
+            ans_instr_B: Optional second answer instruction variant.
+            fewshot_B: Optional second few-shot preamble variant.
+            max_concurrent: Max parallel tasks per batch.
+            max_chars_per_content: Character limit per retrieved chunk in the prompt.
+            min_words_for_subsplit: Recorded in output CSV for traceability.
+            include_hits_text: If False, omit the ``meta_hits_text`` column from output.
         """
         self.retrievers = retrievers
+        self.include_hits_text = include_hits_text
         self.max_concurrent = max_concurrent
         self.max_chars_per_content = max_chars_per_content
         self.min_words_for_subsplit = min_words_for_subsplit
@@ -76,22 +95,42 @@ class RAGExperimentRunner:
         self.ans_instr_B = ans_instr_B
         self.fewshot_A = fewshot_A
         self.fewshot_B = fewshot_B
-        
+
+    def __str__(self) -> str:
+        """Return a human-readable summary of the experiment configuration."""
+        ai_ids = ["A"] if not (self.ans_instr_B and self.ans_instr_B.strip()) else ["A", "B"]
+        fs_ids = ["A"] if not (self.fewshot_B and self.fewshot_B.strip()) else ["A", "B"]
+        lines = [
+            "RAGExperimentRunner Configuration",
+            "=" * 40,
+            f"  Approaches       : {self.approaches}",
+            f"  Models           : {self.models}",
+            f"  Max tokens       : {self.max_tokens_list}",
+            f"  Efforts          : {self.efforts}",
+            f"  Top-k            : {self.topk_list}",
+            f"  Answer instr IDs : {ai_ids}",
+            f"  Few-shot IDs     : {fs_ids}",
+            f"  Replicates       : {self.num_replicates}",
+            f"  Max concurrent   : {self.max_concurrent}",
+            f"  Max chars/content: {self.max_chars_per_content:,}",
+            f"  Include hits text: {self.include_hits_text}",
+            f"  Min words subsplit: {self.min_words_for_subsplit}",
+        ]
+        return "\n".join(lines)
 
     async def run(
         self,
         input_csv: Path,
         out_csv: Path,
     ) -> pd.DataFrame:
-        """
-        Main experiment execution.
+        """Run the full experiment grid and append results to *out_csv*.
 
-        Conceptually:
-        1. Load a dataset of (question, gold answer)
-        2. Iterate over all model & retrieval configurations
-        3. For each combination:
-            Perform retrieval + LLM answer generation
-            Record output and metadata into CSV
+        Args:
+            input_csv: Path to a CSV with ``question`` and ``gold_answer`` columns.
+            out_csv: Path where result rows are appended (created if missing).
+
+        Returns:
+            The last batch of result dicts written.
         """
 
         if self.num_replicates < 1:
@@ -122,7 +161,11 @@ class RAGExperimentRunner:
             * len(df)
             * int(self.num_replicates)
         )
-        print(f"Total permutations: {total_loop_count}")
+        print(str(self))
+        print("-" * 40)
+        print(f"  Questions        : {len(df)}")
+        print(f"  Total permutations: {total_loop_count}")
+        print("=" * 40)
 
         async def process_one(
             q: str,
@@ -136,22 +179,9 @@ class RAGExperimentRunner:
             fs_id: str,
             rep: int,
         ):
-            """
-            Execute a single experiment trial.
-
-            This is one point in the configuration grid
-            Retrieves sources
-            Generates final answer
-            Returns a structured output record
-            """            
+            """Execute a single experiment trial and return the result row."""
             def sync_task():
-                """
-                Synchronous execution body run inside a thread.
-
-                This ensures that any blocking operations
-                (HTTP API calls, model execution, etc.)
-                do not halt the entire asyncio event loop.
-                """
+                """Run retrieval + generation synchronously inside a thread."""
                 ans = self.ans_instr_A if ai_id == "A" else (self.ans_instr_B or "")
                 fs = self.fewshot_A if fs_id == "A" else (self.fewshot_B or "")
 
@@ -173,6 +203,9 @@ class RAGExperimentRunner:
 
                 elapsed = time.time() - start
                 end_et = now_et()
+
+                if not self.include_hits_text:
+                    meta.pop("hits_text", None)
 
                 perm_meta = {
                     "approach": approach,
