@@ -16,6 +16,7 @@ class LLM(IntFlag):
     """
     GPT_5_MINI_2025_08_07 = auto()
     GPT_5_NANO_2025_08_07 = auto()
+    GPT_5_4_2025_08_07 = auto()
     
     def to_str_list(self):
         """
@@ -33,6 +34,8 @@ class LLM(IntFlag):
                         str_list.append("gpt-5-mini-2025-08-07")
                     case LLM.GPT_5_NANO_2025_08_07:
                         str_list.append("gpt-5-nano-2025-08-07")
+                    case LLM.GPT_5_4_2025_08_07:
+                        str_list.append("gpt-5.4-2025-08-07")
         return str_list
 
 
