@@ -13,6 +13,7 @@ to perform the entire retrieval-and-generation process.
 import html
 from typing import Any, Dict, List, Tuple
 
+import anthropic
 from openai import OpenAI
 
 from .approach_retrievers import ApproachRetrievers
@@ -107,6 +108,50 @@ def _ask_with_sources(
     return (getattr(resp, "output_text", "") or ""), meta
 
 
+def _ask_with_sources_anthropic(
+    question: str,
+    hits: List[Dict[str, Any]],
+    model: str,
+    max_tokens: int,
+    answer_instructions: str,
+    few_shot_preamble: str,
+    max_chars_per_content: int,
+) -> Tuple[str, Dict[str, Any]]:
+    """
+    Invoke a Claude model using the Anthropic SDK.
+
+    Mirrors _ask_with_sources but uses anthropic.Anthropic().messages.create().
+    The OpenAI-specific `reasoning/effort` parameter is not applicable here.
+    """
+    sources_xml = _format_sources_xml(hits, max_chars_per_content)
+    client = anthropic.Anthropic()
+    resp = client.messages.create(
+        model=model,
+        max_tokens=max_tokens,
+        system=few_shot_preamble.strip(),
+        messages=[
+            {"role": "user", "content": answer_instructions.strip()},
+            {"role": "user", "content": f"Sources: {sources_xml}\n\nQuery: '{question}'"},
+        ],
+    )
+    usage = getattr(resp, "usage", None)
+    meta = {
+        "hits_text": sources_xml,
+        "resp_id": getattr(resp, "id", None),
+        "model": getattr(resp, "model", None),
+        "status": getattr(resp, "stop_reason", None),
+        "created": None,
+        "input_tokens": getattr(usage, "input_tokens", None) if usage else None,
+        "output_tokens": getattr(usage, "output_tokens", None) if usage else None,
+        "total_tokens": (
+            (usage.input_tokens + usage.output_tokens) if usage else None
+        ),
+        "reason": None,
+    }
+    answer = resp.content[0].text if resp.content else ""
+    return answer, meta
+
+
 def retrieve_and_answer(
     retrievers: ApproachRetrievers,
     question: str,
@@ -147,18 +192,31 @@ def retrieve_and_answer(
         hits = retrievers._retrieve_graph_retriever(question=question, top_k=top_k, strategy="MMR")
     elif approach == "vanilla":
         hits = retrievers._retrieve_vanilla_astradb(question=question, top_k=top_k)
+    elif approach == "long_context":
+        hits = retrievers._retrieve_long_context()
     else:
         raise ValueError(f"Unknown approach '{approach}'.")
 
-    answer, meta = _ask_with_sources(
-        client,
-        question=question,
-        hits=hits,
-        model=model,
-        effort=effort,
-        max_tokens=max_tokens,
-        answer_instructions=answer_instructions,
-        few_shot_preamble=few_shot_preamble,
-        max_chars_per_content=max_chars_per_content,
-    )
+    if model.startswith("claude-"):
+        answer, meta = _ask_with_sources_anthropic(
+            question=question,
+            hits=hits,
+            model=model,
+            max_tokens=max_tokens,
+            answer_instructions=answer_instructions,
+            few_shot_preamble=few_shot_preamble,
+            max_chars_per_content=max_chars_per_content,
+        )
+    else:
+        answer, meta = _ask_with_sources(
+            client,
+            question=question,
+            hits=hits,
+            model=model,
+            effort=effort,
+            max_tokens=max_tokens,
+            answer_instructions=answer_instructions,
+            few_shot_preamble=few_shot_preamble,
+            max_chars_per_content=max_chars_per_content,
+        )
     return answer, hits, meta

@@ -297,17 +297,59 @@ class PDFPreprocessor:
             csv_path=self.config.summary_csv_final,
         )
 
-    def _crop_pdf(self, source: Path, dest: Path) -> None:
+    @staticmethod
+    def crop_pdf(
+        source: Path,
+        dest: Path,
+        crop_percent: float = 0.075,
+        crop_top: float | None = None,
+        crop_bottom: float | None = None,
+        crop_left: float | None = None,
+        crop_right: float | None = None,
+    ) -> None:
+        """Crop margins from all pages of a PDF and save to *dest*.
+
+        Applies a uniform margin crop controlled by *crop_percent* (fraction
+        of page width for left/right, fraction of page height for top/bottom).
+        Individual sides can be overridden with the ``crop_top``,
+        ``crop_bottom``, ``crop_left``, and ``crop_right`` parameters; when
+        any of these is not ``None`` it takes precedence over *crop_percent*
+        for that side.
+
+        Args:
+            source: Path to the input PDF file.
+            dest: Path where the cropped PDF will be saved.
+            crop_percent: Default fraction applied to all four sides
+                (0.075 = 7.5 %).  Ignored for any side that has an
+                explicit override.
+            crop_top: Fraction of page height to remove from the top.
+            crop_bottom: Fraction of page height to remove from the bottom.
+            crop_left: Fraction of page width to remove from the left.
+            crop_right: Fraction of page width to remove from the right.
+
+        Example::
+
+            # Uniform 7.5 % crop on all sides
+            PDFPreprocessor.crop_pdf(src, dst)
+
+            # 7.5 % top/bottom, no side crop
+            PDFPreprocessor.crop_pdf(src, dst, crop_top=0.075,
+                                     crop_bottom=0.075,
+                                     crop_left=0.0, crop_right=0.0)
+        """
         with fitz.open(source) as doc:
             for page in doc:
                 rect = page.rect
-                lm = rect.width * self.config.crop_percent
-                rm = rect.width * self.config.crop_percent
-                tm = rect.height * self.config.crop_percent
-                bm = rect.height * self.config.crop_percent
+                lm = rect.width * (crop_left if crop_left is not None else crop_percent)
+                rm = rect.width * (crop_right if crop_right is not None else crop_percent)
+                tm = rect.height * (crop_top if crop_top is not None else crop_percent)
+                bm = rect.height * (crop_bottom if crop_bottom is not None else crop_percent)
                 new_rect = fitz.Rect(rect.x0 + lm, rect.y0 + tm, rect.x1 - rm, rect.y1 - bm)
                 page.set_cropbox(new_rect)
             doc.save(dest, deflate=True, garbage=4)
+
+    def _crop_pdf(self, source: Path, dest: Path) -> None:
+        self.crop_pdf(source, dest, self.config.crop_percent)
 
     @staticmethod
     def _safe(name: str, max_len: int = 80) -> str:

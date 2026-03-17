@@ -1,0 +1,3 @@
+question,gold_answer
+What should I do to avoid a pinching hazard?,"Remove obstacles in the area around the robot. Set up stricter safety planes and joint limits, and check the recommended special needs for your robot arm. "
+Can I use bleach as a cleaning agent? What should I use instead?,"You should not use bleach as a cleaning solution for this arm. The recommended agents you can use include water, 70% isopropyl alcohol, 10% ethanol alcohol, and 10% naphtha to remove grease."

@@ -13,6 +13,9 @@ langchain-community
 langchain-openai
 openai
 
+# Anthropic 
+anthropic
+
 # BM25
 rank_bm25
 

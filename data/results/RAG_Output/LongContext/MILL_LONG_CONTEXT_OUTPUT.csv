@@ -1,0 +1,61 @@
+permutation_id,time_started,time_ended,total_elapsed_time,min_words_for_subsplit,approach,model,max_tokens,reasoning_effort,top_k,answer_instructions_id,few_shot_id,replicate,question,gold_answer,generated_answer,retrieved_files,meta_resp_id,meta_model,meta_status,meta_created,meta_input_tokens,meta_output_tokens,meta_total_tokens,meta_reason
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS1taW5pLTIwMjUtMDgtMDciLCJyZWFzb25pbmdfZWZmb3J0IjoibG93IiwidG9wX2siOjF9LCJydW5fdXVpZCI6IjllNmNhOGJjLTlkZDgtNGQ4MC04YjdkLWI1NTJiYmNjMTIzNiJ9p-EHkKsEQt4,2026-03-06 09:40:39 EST,2026-03-06 09:40:47 EST,8.19 Seconds,3000,long_context,gpt-5-mini-2025-08-07,5000,low,1,A,A,1,What are the 5 main categories of safety labeling used in the manual of the bridgeport mill?,"DANGER
+DANGER indicates a hazardous situation that, if not avoided, will result in death or serious injury.
+
+WARNING
+WARNING indicates a hazardous situation that, if not avoided, could result in death or serious injury.
+
+CAUTION
+CAUTION indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.
+
+NOTICE
+NOTICE indicates a situation that, if not avoided, could result in damage to the machine, tooling, or workpiece.
+
+NOTES
+Notes contain supplemental information.","The manual uses these safety-label categories: WARNING, CAUTION, NOTE, NOTICE, and general SAFETY / SAFETY RECOMMENDATIONS. [Mill (Bridgeport)]
+
+- WARNING, CAUTION and NOTE are defined under “WARNINGS, CAUTIONS, AND NOTES.” [Mill (Bridgeport)]  
+- “- NOTICE -” appears as a separate label in the manual (e.g., Ordering/installation sections). [Mill (Bridgeport)]  
+- The manual also groups overall SAFETY guidance under “SAFETY” and “SAFETY RECOMMENDATIONS.” [Mill (Bridgeport)]",Mill (Bridgeport);UR5e Cobot,resp_0fc64267df5a91bb0069aae767af5081a2a2f5a942f59d2aad,gpt-5-mini-2025-08-07,completed,1772808039.0,105923,503,106426,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS1uYW5vLTIwMjUtMDgtMDciLCJyZWFzb25pbmdfZWZmb3J0IjoibG93IiwidG9wX2siOjF9LCJydW5fdXVpZCI6IjgwMzA0OWExLTQxNjgtNGE5Mi04OWE3LWY5Y2NkZjllNmI1ZSJ9MkbeQ5CGThk,2026-03-06 09:40:47 EST,2026-03-06 09:40:54 EST,7.30 Seconds,3000,long_context,gpt-5-nano-2025-08-07,5000,low,1,A,A,1,What are the 5 main categories of safety labeling used in the manual of the bridgeport mill?,"DANGER
+DANGER indicates a hazardous situation that, if not avoided, will result in death or serious injury.
+
+WARNING
+WARNING indicates a hazardous situation that, if not avoided, could result in death or serious injury.
+
+CAUTION
+CAUTION indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.
+
+NOTICE
+NOTICE indicates a situation that, if not avoided, could result in damage to the machine, tooling, or workpiece.
+
+NOTES
+Notes contain supplemental information.","The Bridgeport mill safety labeling uses four categories: WARNING, CAUTION, NOTICE, and NOTE. [Mill (Bridgeport)]",Mill (Bridgeport);UR5e Cobot,resp_0bf9361ce042eb930069aae76fcb94819cbe33b2b072e45423,gpt-5-nano-2025-08-07,completed,1772808047.0,105923,628,106551,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS1taW5pLTIwMjUtMDgtMDciLCJyZWFzb25pbmdfZWZmb3J0IjoibG93IiwidG9wX2siOjF9LCJydW5fdXVpZCI6IjI1ZDM3OWRjLTMzN2EtNGM1Ny04NmZmLTNiMTMyZTFiMjA5ZiJ9ZHKo3MrNgLU,2026-03-07 18:01:15 EST,2026-03-07 18:01:24 EST,8.77 Seconds,3000,long_context,gpt-5-mini-2025-08-07,5000,low,1,A,A,1,What are the 5 main categories of safety labeling used in the manual of the bridgeport mill?,"DANGER
+DANGER indicates a hazardous situation that, if not avoided, will result in death or serious injury.
+
+WARNING
+WARNING indicates a hazardous situation that, if not avoided, could result in death or serious injury.
+
+CAUTION
+CAUTION indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.
+
+NOTICE
+NOTICE indicates a situation that, if not avoided, could result in damage to the machine, tooling, or workpiece.
+
+NOTES
+Notes contain supplemental information.","The manual uses these five safety/alert categories: WARNING, CAUTION, NOTE, NOTICE, and SAFETY RECOMMENDATIONS. [Mill (Bridgeport)]",Mill (Bridgeport);UR5e Cobot,resp_01269bf4f021a93d0069acae3d59ac8193a269146ddc70de8b,gpt-5-mini-2025-08-07,completed,1772924477.0,105923,392,106315,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS1uYW5vLTIwMjUtMDgtMDciLCJyZWFzb25pbmdfZWZmb3J0IjoibG93IiwidG9wX2siOjF9LCJydW5fdXVpZCI6IjBmNzQ4N2VhLTk5OTYtNGY5Yi1hZjUzLTUwYWZkNzZkNTE2NSJ9soTtYD_x3Ck,2026-03-07 18:01:24 EST,2026-03-07 18:01:35 EST,10.56 Seconds,3000,long_context,gpt-5-nano-2025-08-07,5000,low,1,A,A,1,What are the 5 main categories of safety labeling used in the manual of the bridgeport mill?,"DANGER
+DANGER indicates a hazardous situation that, if not avoided, will result in death or serious injury.
+
+WARNING
+WARNING indicates a hazardous situation that, if not avoided, could result in death or serious injury.
+
+CAUTION
+CAUTION indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.
+
+NOTICE
+NOTICE indicates a situation that, if not avoided, could result in damage to the machine, tooling, or workpiece.
+
+NOTES
+Notes contain supplemental information.","The manual uses four safety label categories: WARNING, CAUTION, NOTICE, and NOTE. [Mill (Bridgeport)]",Mill (Bridgeport);UR5e Cobot,resp_04d9600073a566de0069acae45da1881a1bdd2034f1df9edbd,gpt-5-nano-2025-08-07,completed,1772924485.0,105923,649,106572,
