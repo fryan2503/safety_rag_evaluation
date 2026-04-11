@@ -1,0 +1,32 @@
+{
+  "approach": "long_context",
+  "batch_ids": {},
+  "canonical_outputs": {
+    "analysis": [
+      "data/results/final_merged/analysis_mill_comparison"
+    ],
+    "batchprocess": [],
+    "merged": [],
+    "rag": []
+  },
+  "created_date": "2026-04-11",
+  "dataset": "comparison",
+  "manual": "Long-context comparison outputs",
+  "models": [
+    "gpt-5-mini-2025-08-07",
+    "gpt-5-nano-2025-08-07",
+    "gpt-5.4-2026-03-05",
+    "claude-opus-4-6"
+  ],
+  "notebook_or_script": "system/analysis.ipynb",
+  "prompt_variant": {
+    "answer_instructions_id": "A",
+    "few_shot_id": "A"
+  },
+  "run_id": "2026-04-11_long_context_comparison",
+  "source_input_csvs": [
+    "data/QA/MILL/Mill Feedback Accepted.csv",
+    "data/QA/COBOT/Final_COBOT_QA.csv",
+    "data/QA/synthetic_qa_cobot_mill.csv"
+  ]
+}

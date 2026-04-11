@@ -1,0 +1,45 @@
+{
+  "approach": "long_context",
+  "batch_ids": {},
+  "canonical_outputs": {
+    "analysis": [
+      "data/results/final_merged/analysis_synthetic_mill_lc",
+      "data/results/final_merged/analysis_synthetic_ur5e_lc"
+    ],
+    "batchprocess": [
+      "data/results/batchprocess/BatchJsonLongContext/SYNTHETIC_LONG_CONTEXT_BATCH.jsonl",
+      "data/results/batchprocess/BatchJsonLongContext/synthetic_lc_raw.jsonl",
+      "data/results/batchprocess/BatchJsonLongContext/synthetic_lc.json",
+      "data/results/batchprocess/BatchJsonLongContext/synthetic_lc.csv",
+      "data/results/batchprocess/BatchJsonLongContext/synthetic_lc_wide.csv"
+    ],
+    "merged": [
+      "data/results/final_merged/synthetic_long_context.csv",
+      "data/results/final_merged/synthetic_mill_long_context.csv",
+      "data/results/final_merged/synthetic_ur5e_long_context.csv"
+    ],
+    "rag": [
+      "data/results/RAG_Output/LongContext/SYNTHETIC_LONG_CONTEXT_OUTPUT.csv",
+      "data/results/RAG_Output/LongContext/SYNTHETIC_LONG_CONTEXT_OUTPUT_with_metrics.csv"
+    ]
+  },
+  "created_date": "2026-04-11",
+  "dataset": "synthetic",
+  "manual": "Synthetic COBOT + Mill QA",
+  "models": [
+    "gpt-5-mini-2025-08-07",
+    "gpt-5-nano-2025-08-07",
+    "gpt-5.4-2026-03-05",
+    "claude-opus-4-6"
+  ],
+  "notebook_or_script": "system/main_long_context.ipynb",
+  "prompt_variant": {
+    "answer_instructions_id": "A",
+    "few_shot_id": "A"
+  },
+  "run_id": "2026-04-11_synthetic_long_context",
+  "source_input_csvs": [
+    "data/QA/synthetic_qa_cobot_mill.csv",
+    "data/QA/synthetic_qa_cobot_mill_tail.csv"
+  ]
+}

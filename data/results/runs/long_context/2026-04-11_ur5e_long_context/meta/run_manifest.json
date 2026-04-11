@@ -1,0 +1,41 @@
+{
+  "approach": "long_context",
+  "batch_ids": {
+    "UR5E_LONG_CONTEXT_BATCH": "batch_69b9eb0f18b48190b07e1853c712f27b"
+  },
+  "canonical_outputs": {
+    "analysis": [],
+    "batchprocess": [
+      "data/results/batchprocess/BatchJsonLongContext/UR5E_LONG_CONTEXT_BATCH.jsonl",
+      "data/results/batchprocess/BatchJsonLongContext/ur5e_lc_raw.jsonl",
+      "data/results/batchprocess/BatchJsonLongContext/ur5e_lc.json",
+      "data/results/batchprocess/BatchJsonLongContext/ur5e_lc.csv",
+      "data/results/batchprocess/BatchJsonLongContext/ur5e_lc_wide.csv"
+    ],
+    "merged": [
+      "data/results/final_merged/ur5e_long_context.csv"
+    ],
+    "rag": [
+      "data/results/RAG_Output/LongContext/UR5E_LONG_CONTEXT_OUTPUT.csv",
+      "data/results/RAG_Output/LongContext/UR5E_LONG_CONTEXT_OUTPUT_with_metrics.csv"
+    ]
+  },
+  "created_date": "2026-04-11",
+  "dataset": "ur5e",
+  "manual": "UR5e Cobot",
+  "models": [
+    "gpt-5-mini-2025-08-07",
+    "gpt-5-nano-2025-08-07",
+    "gpt-5.4-2026-03-05",
+    "claude-opus-4-6"
+  ],
+  "notebook_or_script": "system/main_long_context.ipynb",
+  "prompt_variant": {
+    "answer_instructions_id": "A",
+    "few_shot_id": "A"
+  },
+  "run_id": "2026-04-11_ur5e_long_context",
+  "source_input_csvs": [
+    "data/QA/COBOT/Final_COBOT_QA.csv"
+  ]
+}

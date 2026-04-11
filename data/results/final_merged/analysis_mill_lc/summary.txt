@@ -1,0 +1,54 @@
+Model Evaluation Summary
+================================================================================
+Generated: 2026-03-16T23:24:51
+
+Raw rows: 204
+Raw columns: 35
+Unique (approach, model, effort, top_k) combinations: 4
+
+Full Aggregated Table:
+    approach                 model effort  top_k  avg_meta_total_tokens  avg_cosine  avg_rougeL  avg_bleu  avg_price_usd  avg_latency_sec  true_correctness_count  total_correctness_count  true_helpfulness_count  total_helpfulness_count  pct_correctness_true  pct_helpfulness_true  score_correctness  score_helpfulness  score_price
+long_context       claude-opus-4-6    low      1          118645.372549    0.472255    0.239509  0.067552       0.118645        47.134314                      37                       51                      43                       51             72.549020             84.313725           1.000000           1.000000     0.552190
+long_context gpt-5-mini-2025-08-07    low      1          106254.235294    0.406670    0.254217  0.073899       0.212508         7.242549                      36                       51                      42                       51             70.588235             82.352941           0.909091           0.923077     0.000000
+long_context gpt-5-nano-2025-08-07    low      1          106313.039216    0.362004    0.251042  0.070350       0.042525         4.798039                      26                       51                      30                       51             50.980392             58.823529           0.000000           0.000000     1.000000
+long_context    gpt-5.4-2026-03-05    low      1          106089.823529    0.435720    0.276206  0.093667       0.106090         4.793333                      37                       51                      38                       51             72.549020             74.509804           1.000000           0.615385     0.626054
+================================================================================
+Helpfulness Ranked Table:
+    approach                 model effort  top_k  avg_meta_total_tokens  avg_cosine  avg_rougeL  avg_bleu  avg_price_usd  avg_latency_sec  true_correctness_count  total_correctness_count  true_helpfulness_count  total_helpfulness_count  pct_correctness_true  pct_helpfulness_true  score_correctness  score_helpfulness  score_price  help_rank
+long_context       claude-opus-4-6    low      1          118645.372549    0.472255    0.239509  0.067552       0.118645        47.134314                      37                       51                      43                       51             72.549020             84.313725           1.000000           1.000000     0.552190          1
+long_context gpt-5-mini-2025-08-07    low      1          106254.235294    0.406670    0.254217  0.073899       0.212508         7.242549                      36                       51                      42                       51             70.588235             82.352941           0.909091           0.923077     0.000000          2
+long_context    gpt-5.4-2026-03-05    low      1          106089.823529    0.435720    0.276206  0.093667       0.106090         4.793333                      37                       51                      38                       51             72.549020             74.509804           1.000000           0.615385     0.626054          3
+long_context gpt-5-nano-2025-08-07    low      1          106313.039216    0.362004    0.251042  0.070350       0.042525         4.798039                      26                       51                      30                       51             50.980392             58.823529           0.000000           0.000000     1.000000          4
+================================================================================
+Correctness Ranked Table:
+    approach                 model effort  top_k  avg_meta_total_tokens  avg_cosine  avg_rougeL  avg_bleu  avg_price_usd  avg_latency_sec  true_correctness_count  total_correctness_count  true_helpfulness_count  total_helpfulness_count  pct_correctness_true  pct_helpfulness_true  score_correctness  score_helpfulness  score_price  help_rank
+long_context       claude-opus-4-6    low      1          118645.372549    0.472255    0.239509  0.067552       0.118645        47.134314                      37                       51                      43                       51             72.549020             84.313725           1.000000           1.000000     0.552190          1
+long_context    gpt-5.4-2026-03-05    low      1          106089.823529    0.435720    0.276206  0.093667       0.106090         4.793333                      37                       51                      38                       51             72.549020             74.509804           1.000000           0.615385     0.626054          2
+long_context gpt-5-mini-2025-08-07    low      1          106254.235294    0.406670    0.254217  0.073899       0.212508         7.242549                      36                       51                      42                       51             70.588235             82.352941           0.909091           0.923077     0.000000          3
+long_context gpt-5-nano-2025-08-07    low      1          106313.039216    0.362004    0.251042  0.070350       0.042525         4.798039                      26                       51                      30                       51             50.980392             58.823529           0.000000           0.000000     1.000000          4
+================================================================================
+Latency Ranked Table:
+    approach                 model effort  top_k  avg_meta_total_tokens  avg_cosine  avg_rougeL  avg_bleu  avg_price_usd  avg_latency_sec  true_correctness_count  total_correctness_count  true_helpfulness_count  total_helpfulness_count  pct_correctness_true  pct_helpfulness_true  score_correctness  score_helpfulness  score_price  help_rank
+long_context    gpt-5.4-2026-03-05    low      1          106089.823529    0.435720    0.276206  0.093667       0.106090         4.793333                      37                       51                      38                       51             72.549020             74.509804           1.000000           0.615385     0.626054          1
+long_context gpt-5-nano-2025-08-07    low      1          106313.039216    0.362004    0.251042  0.070350       0.042525         4.798039                      26                       51                      30                       51             50.980392             58.823529           0.000000           0.000000     1.000000          2
+long_context gpt-5-mini-2025-08-07    low      1          106254.235294    0.406670    0.254217  0.073899       0.212508         7.242549                      36                       51                      42                       51             70.588235             82.352941           0.909091           0.923077     0.000000          3
+long_context       claude-opus-4-6    low      1          118645.372549    0.472255    0.239509  0.067552       0.118645        47.134314                      37                       51                      43                       51             72.549020             84.313725           1.000000           1.000000     0.552190          4
+================================================================================
+
+Top combinations by % Correctness TRUE:
+  - long_context | claude-opus-4-6 | effort=low | top_k=1 -> 72.55% correctness
+  - long_context | gpt-5.4-2026-03-05 | effort=low | top_k=1 -> 72.55% correctness
+  - long_context | gpt-5-mini-2025-08-07 | effort=low | top_k=1 -> 70.59% correctness
+  - long_context | gpt-5-nano-2025-08-07 | effort=low | top_k=1 -> 50.98% correctness
+
+Top combinations by % Helpfulness TRUE:
+  - long_context | claude-opus-4-6 | effort=low | top_k=1 -> 84.31% helpfulness
+  - long_context | gpt-5-mini-2025-08-07 | effort=low | top_k=1 -> 82.35% helpfulness
+  - long_context | gpt-5.4-2026-03-05 | effort=low | top_k=1 -> 74.51% helpfulness
+  - long_context | gpt-5-nano-2025-08-07 | effort=low | top_k=1 -> 58.82% helpfulness
+
+Top combinations by avg_latency_sec:
+  - long_context | gpt-5.4-2026-03-05 | effort=low | top_k=1 -> 4.79 secs latency
+  - long_context | gpt-5-nano-2025-08-07 | effort=low | top_k=1 -> 4.80 secs latency
+  - long_context | gpt-5-mini-2025-08-07 | effort=low | top_k=1 -> 7.24 secs latency
+  - long_context | claude-opus-4-6 | effort=low | top_k=1 -> 47.13 secs latency
