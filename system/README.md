@@ -7,7 +7,6 @@ Safety-focused RAG evaluation framework for preprocessing documents, running ret
 ```
 system/
 ├── main.py                    # Main entry point for the full pipeline
-├── main_long_context.py       # Long-context token analysis script
 ├── main_long_context.ipynb    # Interactive notebook for context window exploration
 ├── analysis/                  # Result aggregation, visualization, and reporting
 ├── evaluation/                # Judge-based evaluation and batch processing
@@ -26,8 +25,10 @@ system/
 ### `main.py`
 Main async entry point that orchestrates the full pipeline end-to-end: PDF preprocessing, corpus building, RAG experiment execution, judge batch creation/submission, results parsing, and analysis. Contains per-manual preprocessing functions (`preprocess_robot_arm`, `preprocess_bridgeport_lathe`, `preprocess_haas_lathe`, `preprocess_legacy_manual`) and pipeline orchestration in `main()`.
 
-### `main_long_context.py` / `main_long_context.ipynb`
-Scripts for analyzing whether source PDFs fit within LLM context windows. Uses PyMuPDF (`fitz`) and `tiktoken` to compute page/character/token counts for documents like the Mill manual (~46K tokens) and UR5e manual (~68K tokens). The notebook also explores OCR with Mistral and Anthropic APIs.
+### `main_long_context.ipynb`
+Notebook for analyzing whether source PDFs fit within LLM context windows and for running accepted long-context experiments. Uses PyMuPDF (`fitz`) and `tiktoken` to compute page/character/token counts for documents like the Mill manual (~46K tokens) and UR5e manual (~68K tokens). The notebook also explores OCR with Mistral and Anthropic APIs.
+
+Accepted long-context outputs should be archived per run under `data/results/runs/long_context/<run_id>/` while the latest promoted outputs remain in the canonical tracked paths under `data/results/RAG_Output/LongContext`, `data/results/batchprocess/BatchJsonLongContext`, and `data/results/final_merged`.
 
 ---
 
