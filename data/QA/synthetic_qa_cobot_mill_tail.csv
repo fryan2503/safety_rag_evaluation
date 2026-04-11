@@ -1,0 +1,21 @@
+machine,question,gold_answer
+Bridgeport Mill,"What should you do if the Bridgeport mill shows unusual heat, noise, smoke, or vibration during operation?","Do not operate the equipment. Report any excessive or unusual vibration, sounds, smoke, heat, or damaged parts."
+Bridgeport Mill,What personal items or clothing are specifically prohibited while operating the milling machine?,"Do not wear rings, watches, jewelry, loose clothing, neckties, or long hair not contained by a net or shop cap. Do not wear gloves while operating equipment."
+Bridgeport Mill,"When cleaning the machine after uncrating, what cleaning agent must not be used?",Do not use gasoline or any other flammable cleaning agent to clean the machine.
+Bridgeport Mill,"Before moving the table, saddle, knee, or any movable part during initial cleaning, what must be done?",All ways must be well cleaned and lubricated before any movable part is moved.
+Bridgeport Mill,Which chemicals in coolants or cutting oils can harm the polycarbonate chip and coolant shield?,"Mono-ethanolamine, Di-ethanolamine, Tri-ethanolamine, and combinations of these chemicals. Their use can reduce shield impact strength, void the warranty, and could cause injury."
+Bridgeport Mill,What information must be provided when ordering replacement parts for the Series I milling machine?,"Provide the complete machine serial number from the serial number tag on the power case door, plus: Manual Number (M-450), page number, item number, part description, part number, quantity required, and how and where to ship."
+Bridgeport Mill,"What should be done if the spindle brake is worn out, and can it be adjusted?","When the spindle brake is worn out, it must be replaced. There are no adjustments to be made."
+Bridgeport Mill,How is spindle speed changed within the selected range?,"Start the spindle first, then turn handwheel “A” to select the required speed. Do not change speed when the spindle is stationary; change speed only when the spindle is running."
+Bridgeport Mill,What are the steps for engaging automatic quill feed?,"1. Ensure quill lock “G” is off.
+2. Set micrometer dial “H” to the required depth.
+3. Engage auto quill feed “D” when the motor has stopped.
+4. Select feed rate “I”.
+5. Select feed direction “F”.
+6. Engage feed trip lever “E”."
+Bridgeport Mill,"What feed rates can be selected with the quill feed selector, and how is the selector shifted?","The quill feed selector provides .0015"", .003"", and .006"" per revolution. It is shifted by pulling the knob out and turning it from one position to another."
+Bridgeport Mill,"When doing heavy milling work on the Bridgeport mill, where should the head be positioned for maximum rigidity?",Keep the head as close to the column as possible. The manual states this gives maximum rigidity on heavy milling work.
+Bridgeport Mill,"If I am milling with longitudinal table feed only, what parts should be clamped to reduce vibration and allow heavier cuts?",Clamp the knee to the column and the saddle to the knee. This adds rigidity and allows heavier cuts with minimum vibration.
+Bridgeport Mill,What is the proper way to set the X-axis power feed quick-release safety handle?,"Grip the handle and turn it either left or right until the spring-loaded plunger engages in position. Do not tamper with the ball crank handle assembly, as it is a safety device."
+Bridgeport Mill,What fuse rating is specified for the Power Feed X-Axis control assembly?,"The specified fuse is 10 Amp, code no. 11632606."
+Bridgeport Mill,What caution is given before loosening the four locknuts for E-Head swivel adjustment?,Support the unit to prevent free fall before loosening the four locknuts.
