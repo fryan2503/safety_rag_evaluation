@@ -17,6 +17,8 @@ class LLM(IntFlag):
     GPT_5_MINI_2025_08_07 = auto()
     GPT_5_NANO_2025_08_07 = auto()
     GPT_5_4_2025_08_07 = auto()
+    GPT_5_4_MINI_2026_03_17 = auto()
+    GPT_5_4_NANO_2026_03_17 = auto()
     CLAUDE_OPUS_4_6 = auto()
 
     def to_str_list(self):
@@ -37,6 +39,10 @@ class LLM(IntFlag):
                         str_list.append("gpt-5-nano-2025-08-07")
                     case LLM.GPT_5_4_2025_08_07:
                         str_list.append("gpt-5.4-2026-03-05")
+                    case LLM.GPT_5_4_MINI_2026_03_17:
+                        str_list.append("gpt-5.4-mini-2026-03-17")
+                    case LLM.GPT_5_4_NANO_2026_03_17:
+                        str_list.append("gpt-5.4-nano-2026-03-17")
                     case LLM.CLAUDE_OPUS_4_6:
                         str_list.append("claude-opus-4-6")
         return str_list
