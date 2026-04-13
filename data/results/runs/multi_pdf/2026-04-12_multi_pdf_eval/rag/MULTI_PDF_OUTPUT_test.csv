@@ -1,0 +1,128 @@
+permutation_id,time_started,time_ended,total_elapsed_time,min_words_for_subsplit,approach,model,max_tokens,reasoning_effort,top_k,answer_instructions_id,few_shot_id,replicate,question,gold_answer,generated_answer,retrieved_files,meta_resp_id,meta_model,meta_status,meta_created,meta_input_tokens,meta_output_tokens,meta_total_tokens,meta_reason
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX2tleXdvcmQiLCJlZmZvcnQiOiJsb3ciLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LjQtbWluaS0yMDI2LTAzLTE3IiwicmVhc29uaW5nX2VmZm9ydCI6ImxvdyIsInRvcF9rIjozfSwicnVuX3V1aWQiOiJjZDQzZDAzNC0xMzhkLTRhZTAtOGMyOC1iNzBkZThhZDQ4MmIifU0LFop9Ssrw,2026-04-12 18:45:38 EDT,2026-04-12 18:45:43 EDT,5.79 Seconds,3000,openai_keyword,gpt-5.4-mini-2026-03-17,5000,low,3,A,A,1,I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool.","Before setting tool offsets with G211/G212, the Automatic Tool Probe must be calibrated, and the probe arm must be lowered. For G211, you also need the tool tip jogged into position about 0.25 in from the corner of the part, and for G212 a tool and offset must already be called with Tnnn. [006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf]",006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf;006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf,resp_0ff7ac5f19ddfa8b0069dc2095c6608191a6d5304cf14e4566,gpt-5.4-mini-2026-03-17,completed,1776033941.0,8872,219,9091,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX2tleXdvcmQiLCJlZmZvcnQiOiJsb3ciLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LjQtbWluaS0yMDI2LTAzLTE3IiwicmVhc29uaW5nX2VmZm9ydCI6ImxvdyIsInRvcF9rIjozfSwicnVuX3V1aWQiOiI4ZWQzZWRkNi0xODhhLTQ2YTgtODRhMC1jM2U5MzMxYThiYmYiffF1tIRsU9GO,2026-04-12 18:45:38 EDT,2026-04-12 18:45:45 EDT,6.99 Seconds,3000,openai_keyword,gpt-5.4-mini-2026-03-17,5000,low,3,A,A,1,How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate","Thoroughly clean the protective coating from the machine with a suitable cleaning solution, and do not use gasoline or any other flammable cleaning agent. Do not move the table, saddle, knee, or any movable part until all ways have been well cleaned and lubricated. [006__L1__Chapter_1_-_Installation__pp17-26.pdf]
+
+Initial cleaning steps are:
+- Move the table, saddle, and knee by hand to one limit stop, then clean and lubricate the exposed ways.
+- Move each unit to the opposite limit stop and repeat the cleaning and lubrication.
+- Loosen the ram bolts, move the ram forward and backward through its full length, and clean and lubricate it. [006__L1__Chapter_1_-_Installation__pp17-26.pdf]",006__L1__Chapter_1_-_Installation__pp17-26.pdf;008__L1__Chapter_3_-_Maintenance__pp49-62.pdf;001__L1__Chapter_1_Safety__pp23-40__L2__01__1.1_General_Safety_Notes__pp23-29.pdf,resp_00be7f446be6ee210069dc2095a3a4819089813cc399585cfc,gpt-5.4-mini-2026-03-17,completed,1776033941.0,7882,210,8092,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX2tleXdvcmQiLCJlZmZvcnQiOiJsb3ciLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LjQtbmFuby0yMDI2LTAzLTE3IiwicmVhc29uaW5nX2VmZm9ydCI6ImxvdyIsInRvcF9rIjozfSwicnVuX3V1aWQiOiI5YTEzMWJkYS0zZDQ3LTRkMTEtYTI1ZC0wNmZhNjc3ZjUxMGEifZ_CuX7tJlEk,2026-04-12 18:45:45 EDT,2026-04-12 18:45:49 EDT,3.93 Seconds,3000,openai_keyword,gpt-5.4-nano-2026-03-17,5000,low,3,A,A,1,I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool.","To start setting tool offsets on the HAAS Lathe using the tool-setting/probing functions described here, you need:
+
+- **The Automatic Tool Probe must be calibrated before using G211 / G212** (otherwise you can’t safely perform those tool-setting cycles). [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]
+- **A tool and offset must be called with `Tnnn` before running `G212`** (if you don’t, an alarm will be generated). [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]
+- **Your probe arm must be lowered** to use `G211` (manual tool setting). [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]
+- **`Hnnn` must be provided with `G211`**, and **`G212` requires `Hnnn` on the same line**. [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]",006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf;006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf,resp_02d2d48911b47e180069dc209ab8dc81a0ad160ad28ee42ea3,gpt-5.4-nano-2026-03-17,completed,1776033946.0,8872,293,9165,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX2tleXdvcmQiLCJlZmZvcnQiOiJsb3ciLCJmZXdfc2hvdF9pZCI6IkEiLCJtYXhfdG9rZW5zIjo1MDAwLCJtb2RlbCI6ImdwdC01LjQtbmFuby0yMDI2LTAzLTE3IiwicmVhc29uaW5nX2VmZm9ydCI6ImxvdyIsInRvcF9rIjozfSwicnVuX3V1aWQiOiI0MmYxMmY0OC0zMTE3LTQ2ODUtODNjYy0zZTRmMjg0OGU3YzkifZErsmhfk5gK,2026-04-12 18:45:45 EDT,2026-04-12 18:45:50 EDT,5.25 Seconds,3000,openai_keyword,gpt-5.4-nano-2026-03-17,5000,low,3,A,A,1,How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate","When you first receive the Bridgeport mill, carefully remove the protective crating and skids so the machine and parts aren’t marred or scratched, then **thoroughly clean the protective coating from the machine with a suitable cleaning solution**. [006__L1__Chapter_1_-_Installation__pp17-26.pdf]
+
+- **Do not use gasoline or any other flammable cleaning agent** to clean the machine. [006__L1__Chapter_1_-_Installation__pp17-26.pdf]  
+- After initial cleaning, **move the table, saddle, and knee by hand in one direction to the limit stop**, then clean and lubricate the exposed ways; repeat for the opposite limit stop, and clean/lubricate the ram by moving it forward/backward to full length. [006__L1__Chapter_1_-_Installation__pp17-26.pdf]  
+- **Do not move the table, saddle, knee, or any moveable part until all ways have been well cleaned and lubricated.** [006__L1__Chapter_1_-_Installation__pp17-26.pdf]",006__L1__Chapter_1_-_Installation__pp17-26.pdf;008__L1__Chapter_3_-_Maintenance__pp49-62.pdf;001__L1__Chapter_1_Safety__pp23-40__L2__01__1.1_General_Safety_Notes__pp23-29.pdf,resp_0e37c087b97b25230069dc209ac5b881939f81d96475d0ccb3,gpt-5.4-nano-2026-03-17,completed,1776033946.0,7882,237,8119,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX3NlbWFudGljIiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW1pbmktMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiNTAxZjc5ZjctMzYyMC00YjJiLWFjMWYtODcwNGExODJkZjI0In3V94f_ca3M0Q,2026-04-12 18:45:50 EDT,2026-04-12 18:46:03 EDT,13.34 Seconds,3000,openai_semantic,gpt-5.4-mini-2026-03-17,5000,low,3,A,A,1,I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool.","Before you start setting tool offsets with G211/G212, the **Automatic Tool Probe must be calibrated**. [006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf]
+
+Also:
+- For **G211 Manual Tool Setting**, the **probe arm must be lowered** and the tool tip should be jogged to about **0.25 in from the corner** that matches the desired tip direction. [006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf]
+- For **G212 Auto Tool Setting**, a **tool and offset must be called with Tnnn before running G212**, or an alarm will be generated. [006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf]
+
+If you want, I can also summarize the exact G211 vs. G212 setup steps from the same source.",006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf;006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf,resp_0379aa9078e86a900069dc20a0ab1481a2916ad643f227e019,gpt-5.4-mini-2026-03-17,completed,1776033952.0,8872,334,9206,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX3NlbWFudGljIiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW1pbmktMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiZTkzZDljNDUtOTI0OS00YWFkLTk0MTAtNWIzNzRlNzZlMjM5In2sYVl-yS0NpA,2026-04-12 18:45:50 EDT,2026-04-12 18:45:53 EDT,3.25 Seconds,3000,openai_semantic,gpt-5.4-mini-2026-03-17,5000,low,3,A,A,1,How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate","When you first receive the mill, thoroughly clean the protective coating from the machine with a suitable cleaning solution, and do not use gasoline or any other flammable cleaning agent. Do not move the table, saddle, knee, or any movable part until all ways have been well cleaned and lubricated. [006__L1__Chapter_1_-_Installation__pp17-26.pdf]",006__L1__Chapter_1_-_Installation__pp17-26.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf;008__L1__Chapter_3_-_Maintenance__pp49-62.pdf,resp_01c00bbd16bbdd5a0069dc20a02ca881a2b6231b298a6d4f44,gpt-5.4-mini-2026-03-17,completed,1776033952.0,7756,94,7850,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX3NlbWFudGljIiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW5hbm8tMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiNWZhOTI5ZWMtZjM2Ny00Mzc0LWEzOTItYmQzMGNjZDhiNjUwIn3mmpJ601nKbw,2026-04-12 18:46:03 EDT,2026-04-12 18:46:08 EDT,4.72 Seconds,3000,openai_semantic,gpt-5.4-nano-2026-03-17,5000,low,3,A,A,1,I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool.","To set tool offsets with **G211 / G212** on the Haas lathe, the documentation indicates you need the following before you can start:
+
+- **Automatic Tool Probe calibration (required for G211 / G212):** “The Automatic Tool Probe must be calibrated before using G211 / G212.” [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]  
+- **A tool call with tool number and offset (required before G212):** “A tool and offset must be called **Tnnn** before running **G212**, or an alarm will be generated.” [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]  
+- **Correct tool tip direction / Hnnn code (required):** “The G211 code also requires an **Hnnn** code. The G212 code only requires an **Hnnn** code on the same line but a **Tnnn** tool call is required prior.” [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]
+
+Additionally, for **G211 (manual tool setting)** specifically:
+- **Probe arm lowered**: “To use the probe arm must be lowered.” [007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf]",006__L1__Chapter_6_Options_Programming__pp193-278__L2__12__6.11_More_Information_Online__pp276-278.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf;006__L1__Chapter_6_Options_Programming__pp193-278__L2__07__6.7_Macros_(Optional)__pp218-245_part01.pdf,resp_011089dd0a3180000069dc20ad778481919ea8e0bbac74b8e2,gpt-5.4-nano-2026-03-17,completed,1776033965.0,8872,349,9221,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoib3BlbmFpX3NlbWFudGljIiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW5hbm8tMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiNDM1OTk0MTItODRkOS00ZGQ0LWI4MjktYTM3Mzc0OGQ0ZTE1In3srutg77N4fg,2026-04-12 18:46:03 EDT,2026-04-12 18:46:11 EDT,8.19 Seconds,3000,openai_semantic,gpt-5.4-nano-2026-03-17,5000,low,3,A,A,1,How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate","When you first receive the Bridgeport mill, **thoroughly clean the protective coating** from the machine using a suitable cleaning solution. **Do not use gasoline or any other flammable cleaning agent** to clean the machine. [006__L1__Chapter_1_-_Installation__pp17-26.pdf]
+
+After initial cleaning, **move the table, saddle, and knee in one direction by hand to limit stop**, then **clean and lubricate the exposed ways**; move each unit to the opposite limit stop and repeat the **clean and lubricate exposed ways** steps (including moving each unit back again). [006__L1__Chapter_1_-_Installation__pp17-26.pdf]",006__L1__Chapter_1_-_Installation__pp17-26.pdf;008__L1__Chapter_3_-_Maintenance__pp49-62.pdf;007__L1__Chapter_7_G-codes__pp279-364__L2__01__7.1_Introduction__pp279-362_part02.pdf,resp_04712b38e9f5e9390069dc20adb23081939c004dd36ac25635,gpt-5.4-nano-2026-03-17,completed,1776033965.0,7756,148,7904,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW1pbmktMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiOGE3MGUzNDEtMWEwOS00YjE0LTg5MGMtMmIwOWNlMzhiMjVhIn3LjYOxSW-NUw,2026-04-12 18:46:11 EDT,2026-04-12 18:46:16 EDT,4.42 Seconds,3000,long_context,gpt-5.4-mini-2026-03-17,5000,low,3,A,A,1,I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool.","Before you start setting tool offsets, you need an O.D. turning tool, a workpiece that fits in the chuck jaws, and a measuring tool to inspect the workpiece diameter. [Lathe (TL1)]",Mill (Bridgeport);Lathe (TL1);UR5e Cobot,resp_00e19d7d9f8a40cc0069dc20b47104819eb007ca0aa03b25d8,gpt-5.4-mini-2026-03-17,completed,1776033972.0,247756,136,247892,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW1pbmktMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiM2EyYmY3M2QtZjVkNy00ODM0LWI0NzQtMTE4MWIzMzdkZDc0In1-PER5ZtinlA,2026-04-12 18:46:11 EDT,2026-04-12 18:46:15 EDT,3.76 Seconds,3000,long_context,gpt-5.4-mini-2026-03-17,5000,low,3,A,A,1,How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate","Thoroughly clean the protective coating from the machine with a suitable cleaning solution, and do not use gasoline or any other flammable cleaning agent. Do not move the table, saddle, knee, or any movable part until all ways have been well cleaned and lubricated. [Mill (Bridgeport)]",Mill (Bridgeport);Lathe (TL1);UR5e Cobot,resp_05dbb852b4f514ba0069dc20b4754c819f80112187496bcf6a,gpt-5.4-mini-2026-03-17,completed,1776033972.0,247745,77,247822,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW5hbm8tMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiM2Q2NDU1ODUtYzE5Ny00ZDY3LWJkNjUtOTYxMWUzYzZmYTg3In0HYxqTqVgUrQ,2026-04-12 18:46:16 EDT,2026-04-12 18:46:23 EDT,7.53 Seconds,3000,long_context,gpt-5.4-nano-2026-03-17,5000,low,3,A,A,1,I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool.","To set tool offsets on the Haas lathe, you first need the items required by the tool offset procedure in the Haas lathe manual:
+
+- **Tooling for the offset setup**: you need an **O.D. turning tool** (for the documented “Setting the Tool Offset” procedure) ([Lathe (TL1) Haas Lathe Operator’s Manual, “Setting the Tool Offset” section]).
+- **A workpiece to touch off against**: a **workpiece that fits in the chuck jaws** ([Lathe (TL1) Haas Lathe Operator’s Manual, “Setting the Tool Offset” section]).
+- **A measuring tool**: used to **inspect the workpiece diameter** after the small cut ([Lathe (TL1) Haas Lathe Operator’s Manual, “Setting the Tool Offset” section]).
+
+If you want a more specific list (e.g., for live tooling, probing/tool setter, or tool change setup), I can’t determine that from the provided excerpts beyond what’s stated above.",Mill (Bridgeport);Lathe (TL1);UR5e Cobot,resp_04db34526d69e3ae0069dc20b8ec18819d9065b39d8dd1d946,gpt-5.4-nano-2026-03-17,completed,1776033976.0,247756,212,247968,
+eyJtZXRhZGF0YSI6eyJhbnN3ZXJfaW5zdHJ1Y3Rpb25zX2lkIjoiQSIsImFwcHJvYWNoIjoibG9uZ19jb250ZXh0IiwiZWZmb3J0IjoibG93IiwiZmV3X3Nob3RfaWQiOiJBIiwibWF4X3Rva2VucyI6NTAwMCwibW9kZWwiOiJncHQtNS40LW5hbm8tMjAyNi0wMy0xNyIsInJlYXNvbmluZ19lZmZvcnQiOiJsb3ciLCJ0b3BfayI6M30sInJ1bl91dWlkIjoiZjI1MTI5NjQtNGUxZS00NWYwLWFiMDAtZGE4OTgyZDZlMWJiIn0uO2WuqKISJA,2026-04-12 18:46:16 EDT,2026-04-12 18:46:24 EDT,8.47 Seconds,3000,long_context,gpt-5.4-nano-2026-03-17,5000,low,3,A,A,1,How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate","When you first receive the Bridgeport Series I milling machine, you should:
+
+1. **Uncrate carefully** to avoid marring or damaging the machine and parts during transit. [Mill (Bridgeport)]  
+2. **Clean the protective coating** thoroughly from the machine using a suitable cleaning solution. **Do not use gasoline or any other flammable cleaning agent.** [Mill (Bridgeport)]  
+3. **After initial cleaning, clean and lubricate the machine’s ways/exposed surfaces**:  
+   - Move the **table, saddle, and knee** by hand in one direction to a limit stop to help “limit stop,” then clean and lubricate the exposed ways; repeat by moving each unit to the opposite limit stop and again once more. [Mill (Bridgeport)]  
+   - Loosen bolts to unlock the **ram**, then move it fully forward and backward to clean and lubricate. [Mill (Bridgeport)]  
+
+Also, **do not move the table, saddle, knee, or any movable part until all ways have been well cleaned and lubricated.** [Mill (Bridgeport)]",Mill (Bridgeport);Lathe (TL1);UR5e Cobot,resp_0cdb29854df7c05e0069dc20b8d064819ea80de599becfc37a,gpt-5.4-nano-2026-03-17,completed,1776033976.0,247745,257,248002,

@@ -1,0 +1,15 @@
+machine,question,gold_answer
+Lathe (HAAS),I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool."
+Mill (Bridgeport),How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate"
