@@ -5,6 +5,9 @@ pandas
 # PDF processing
 PyMuPDF
 
+# Token counting
+tiktoken
+
 # LangChain core
 langchain-core
 langchain-community
@@ -13,7 +16,7 @@ langchain-community
 langchain-openai
 openai
 
-# Anthropic 
+# Anthropic
 anthropic
 
 # BM25
@@ -23,19 +26,17 @@ rank_bm25
 langchain-graph-retriever
 graph-retriever
 
-# Vector store (choose ONE of the following based on what works):
+# Vector store
 langchain-astradb
-
-# Pandas
-pandas
 
 # Evaluations
 langsmith
 nltk
 rouge-score
 scikit-learn
-
 seaborn
 matplotlib
 
-pymupdf
+# OCR (ocr.ipynb)
+ollama-ocr
+mistralai
