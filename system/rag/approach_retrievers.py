@@ -5,6 +5,7 @@ Supports:
  BM25 keyword retrieval
  Graph-based retrieval over AstraDB
  Vanilla AstraDB similarity search
+ Long-context retrieval (full documents without chunking)
 
 This class provides modular retrieval methods that return standardized hit dictionaries.
 """
