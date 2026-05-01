@@ -1,0 +1,24 @@
+{
+  "run_id": "2026-04-17_multi_pdf_eval",
+  "approach": "semantic + keyword + long_context (all 3 PDFs)",
+  "datasets": [
+    "Mill (Bridgeport)",
+    "Lathe (HAAS TL-1)",
+    "UR5e Cobot"
+  ],
+  "models": [
+    "gpt-5.4-mini-2026-03-17",
+    "gpt-5.4-nano-2026-03-17"
+  ],
+  "created_date": "2026-04-17",
+  "source_input_csvs": [
+    "..\\data\\QA\\MILL\\Mill Feedback Accepted.csv",
+    "..\\data\\QA\\HAAS\\Final HAAS Lathe QA.csv",
+    "..\\data\\QA\\COBOT\\Final_COBOT_QA.csv"
+  ],
+  "notebook": "system/main_multi_pdf_eval.ipynb",
+  "canonical_outputs": {
+    "rag": "..\\data\\results\\runs\\multi_pdf\\2026-04-17_multi_pdf_eval\\rag\\MULTI_PDF_OUTPUT_merge_all.csv",
+    "merged": "..\\data\\results\\runs\\multi_pdf\\2026-04-17_multi_pdf_eval\\merged\\multi_pdf_eval.csv"
+  }
+}
