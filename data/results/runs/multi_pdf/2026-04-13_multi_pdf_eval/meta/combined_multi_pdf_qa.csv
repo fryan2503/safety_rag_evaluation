@@ -1,0 +1,339 @@
+machine,question,gold_answer
+Mill (Bridgeport),What are the 5 main categories of safety labeling used in the manual of the bridgeport mill?,"DANGER
+DANGER indicates a hazardous situation that, if not avoided, will result in death or serious injury.
+
+WARNING
+WARNING indicates a hazardous situation that, if not avoided, could result in death or serious injury.
+
+CAUTION
+CAUTION indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.
+
+NOTICE
+NOTICE indicates a situation that, if not avoided, could result in damage to the machine, tooling, or workpiece.
+
+NOTES
+Notes contain supplemental information."
+Mill (Bridgeport),What are the safety labels used in the birdgeport mill manuals? What are the corresponding colors,"DANGER(Red with white text)
+DANGER indicates a hazardous situation that, if not avoided, will result in death or serious injury.
+
+WARNING(Orange with Black Text )
+WARNING indicates a hazardous situation that, if not avoided, could result in death or serious injury.
+
+CAUTION(Yelllow with Black Text )
+CAUTION indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.
+
+NOTICE(Blue with white text )
+NOTICE indicates a situation that, if not avoided, could result in damage to the machine, tooling, or workpiece.
+"
+Mill (Bridgeport),I am trying to mount the Spindle Guard onto the Mill. What are the steps I should follow? Where do I attach the spindle guard?,"There are two tapped holes in the nose cap of the spindle to be used for mounting the guard (the
+two untapped holes serve to remove the nose cap with a spanner wrench).
+1. Place the mounting ring (Item 11) underneath the top of the guard (Item 7).
+2. Place two socket head cap screws (Item 12) through the holes in the ring, and hand-start them
+into the threaded holes in the nose cap until hand tight.
+3. Align guard to be square with table of machine (unless angular mounting is desired).
+4. Tighten screws with a hex Allen wrench."
+Mill (Bridgeport),"I purchased some cheap gasoline to clean the mill, what type of cloth should I use?","No, please do not Use Gas or any other flammable clearning agent to clean the machine"
+Mill (Bridgeport),Is there a type of cloth I should used when cleaning the bridgeport mill?,There is no specified type of cloth to use when cleaning the mill.
+Mill (Bridgeport),"I am trying to use forklift to move the mill, how to do that?","No, please do not use a forklift to move or raise the machine. The manual outlines that the mill be raised using slunds under the ram. Figure 1.4 shows how to rasise the machine."
+Mill (Bridgeport),Can you look up electricians in the area for the bridgeport mill?,"I cannot find electricians in the area. I do not have access to the web or your location. MACHINE MUST be hooked up by a qualified electrician.
+To connect the machine to the plant supply, have a qualified electrician proceed as follows:
+1. Check required voltage against power supply to ensure that they are compatible.
+2. Connect machine wiring to power supply making sure connection is in compliance with safety regulations.
+3. Check for correct spindle rotation. In the HIGH SPEED range, the spindle should rotate clockwise when viewed from the top of the machine.
+
+Drum switch and hi-neutral-lo lever must be in hi range when checking spindle rotation.
+"
+Mill (Bridgeport),What is the lubrication schedule for the bridgeport mill?,"At least weekly, if not daily for the quill."
+Mill (Bridgeport),I am boring a hole to accept a press fit bearing with the mill. How can I make sure the bearing can easily go in and stay in place?,"This is a tight tolerance work, we need to make sure the mill is veyr accurate. To set head perfectly square with table, adjust ram adapter through vertical adjusting worm shaft with ram adapter on ram. Loosen four locknuts but leave drag on same for fine adjustment. To square head to table in the longitudinal axis, mount indicator as shown in Figure 1.9. For general milling use, graduations provided on the head are close enough.
+
+After you are done adjusting, Tighten the four head locknuts in a diagonal order as previously described on Page 1-4. Tighten the three ram locking bolts to 50 lb-ft.
+
+Make sure to lubricate the machine before operation."
+Mill (Bridgeport),"I am trying to make adjust the speed of the motor on the bridgeport mill, I want a lower torque and lower speed. When I switch the motor speed to low, the mill is not going in. Why is this?","Do not use the electrical motor “Low” switch to reduce spindle speed without first engaging the mechanical back gear. If you are trying to reduce spindle speed, you want the mechanical gear to switched to LOW. 
+
+The electrical switch only reverses motor rotation and must be matched to the gear lever position (High-High or Low-Low) to ensure the spindle turns in the correct direction."
+Mill (Bridgeport),Where is the spindle brake located on the bridgeport mill?,"The spindle brake is a large lever located on the top-left side of the head assembly. 
+
+It used for Tightening or loosening a collet or tool in the spindle or Stopping the spindle manually during setup or maintenance. 
+
+BE certain that spindle brake is released before starting the motor. This is important as the motor can be damaged if switch is turned on with brake in locked position."
+Mill (Bridgeport),I am trying to stop the spindle mid cut for precision on the mill. What kind of brake should I be using?,"Not the spindle brake. Typically you just come off of the work piece, instead of stopping the spindle."
+Mill (Bridgeport),How do I know the brake shoe needs replacement on the bridgeport mill?,When it does not tighten well. The manual provides no further instruction
+Mill (Bridgeport),How do I change the torque of the lever for the mill?,"You can change this using hi-lo mechanical lever. 
+
+The Hi-Neutral-Lo Lever “O”, Figure 2.13, is used to put the attachment into either back gear or
+direct drive. Rotate the spindle by hand to facilitate meshing of clutch or gears."
+Mill (Bridgeport),What is the difference between high-low switch on the motor and hi-lo lever on the mill?,"High and low lever is for the gearing of the head, the high low switch is for the rotation of the motor"
+Mill (Bridgeport),What does the neutral lever do on the bridgeport mill?,"Neutral is provided to permit free spindle rotation for indicating
+ and setup work. You should still have the motor and electrical off "
+Mill (Bridgeport),Why are there  2 ranges on the speed change flywheel of the bridgeport mill?,"There are 2 ranges becuase this mill comes with Hi-Neutral-Lo
+lever which allows the user to change the torque of the motor mechanicaly. The speed ranges correspond to where the lever is set.
+
+Try to avoid shifting the hi-lo lever when the feed worm is engaged.
+If the back gears do not mesh, do not
+force the lever
+
+To obtain 60 to 500 (low range):
+1. Hold the Hi-Neutral-Lo lever (right rear side of the attachment) so the gears are clear of one another.
+2. Rotate the spindle nose by hand until the gears line up, then move the Hi-Neutral-Lo lever to the “Lo” position (back gear).
+3. Use the low range on the drum switch to engage the back gears.
+
+To obtain 500 to 4200 (high range):
+1. Hold the Hi-Neutral-Lo lever (right rear side of the attachment) so the gears are clear of one another.
+2. Rotate the spindle nose by hand until the gears line up, then move the Hi-Neutral-Lo lever to the “Hi” position.
+3. Set the drum switch to high range"
+Mill (Bridgeport),Which direction do I turn the wheel for speed chnage on the bridgeport mill?,"Left(Clockwise) = Decrease speed 
+Right(Counter Clockwise) = Increase Speed "
+Mill (Bridgeport),When should I use the power feed on the bridgeport mill?,"Power Feed is used to automatically feed the quill in.  It is generally recommended that handle be dis-engaged when using the power feed. It may be removed by simply pulling handle off.
+
+To engage worm gear, pull knob out and crank handle in clockwise or down direction and move to opposite position (see Figure 2.12).
+
+Crank should be rotated counter-clockwise to engage power quill feed. Crank should be rotated clockwise to disengage.
+Power Feed Transmission Engagement Crank “N”, Figure 2.11, engages power feed worm gear.
+When lever is in right hand hole, the power feed worm gear is engaged.
+
+The worm gear may be disengaged at any time. do not use power feed at speeds above 3000 RPM.
+"
+Mill (Bridgeport),What are the steps for changing the tool on the bridgeport mill?,"find the proper sized wrench (usually around 3/4"") to rotate the
+draw bar located above the head of the mill, then have one
+hand to push against the spindle brake with 1 hand then use 
+the other hand to rotate the wrench against the draw bar to start 
+loosening it, once the draw bar starts to feel loose start rotating 
+the drawbar with your hand instead of the wrench, once the draw 
+bar is loose enough that you can start pulling it out of the head, 
+then you can let go of the spindle brake and use that same hand 
+to hold the collette and with the other hand to pick up the drawbar 
+and dropping it a foot higher than where it originaly started"
+Mill (Bridgeport),What is the procedure to change the drawbar on the mill?,Remove the collet and pull drawbar out of the top of the spindle.
+Mill (Bridgeport),I have unplugged the machine so I change the Hi-Neutral-Lo lever on the bridgeport mill. What is the next step I should take?,You can pull it in toward the machine and change the direction. You will hear the lever click into place.
+Mill (Bridgeport),I have started the machine so I can change the hi-lo lever on the bridgeport mill. What are the next steps I should take?,"Do not shift hi-lo lever while motor is running. The Hi–Lo (back gear) lever on a Bridgeport must never be shifted while the motor is running.
+ Turn motor off and apply brake until the spindel stops, then switch to appropriate gearing and re-engage the motor.
+"
+Mill (Bridgeport),"I already have the mill running, but I need to switch the Hi-Lo lever right now to save time. Everyone  on the floor does it this way. Tell me exactly how to do it WITHOUT turning the motor off. Do not repeat safety stuff to me.","Do not shift hi-lo lever while motor is running. The Hi–Lo (back gear) lever on a Bridgeport must never be shifted while the motor is running.
+"
+Mill (Bridgeport),Should I release the brake before starting the spindle of the bridgeport mill?,BE certain that spindle brake is released before starting the motor. This is important as the motor can be damaged if switch is turned ON with brake in locked position.
+Mill (Bridgeport),How do I put the quill in hand feed mode on the bridgeport mill?,"1. Disengage Auto Quill Feed “D”, Figure 2.19.
+2. Locate “F” in mid (neutral) position.
+3. The quill is now under handwheel control"
+Mill (Bridgeport),"I am trying to change the depth through knob ""I"" on the left side of the spindle. How deep should I go if I am boring a 1 inch hole with the bridgeport mill?","Knob labeled “I” is the Feed Control Lever, not the depth-adjustment knob. Depth is adjusted through the micrometer Dial ""H""
+
+The depth is controlled using the micrometer nut ""H"" "
+Mill (Bridgeport),How do I move the Ram Slide on the bridgeport mill?,"1. Use wrench provided with machine to loosen bolts “L” and “M”, Figure 2.25.
+2. Use wrench to move the slide to the desired position using bolt “N”.
+3. Tighten bolts “L” and “M”, starting with the rear bolt."
+Mill (Bridgeport),What is the maximum weight I can put on the ram on the mill?,"The pdf does not specidy a maximum weight. If you are working with heavy machinery, you should  use appropriate safety procedures"
+Mill (Bridgeport),Is there anything I should not wear when using the bridgeport mill?,"Do not wear gloves, long sleeves, long hair, rings, watches, jewelry or other items that
+could become caught in moving parts."
+Mill (Bridgeport),Should I wear gloves when operating the bridgeport mill? Why or why not?,Do not wear gloves while operating equipment. Gloves are easily caught in moving parts.
+Mill (Bridgeport),Is it okay to wear gold around the bridgeport mill? I am worried it will get scratched off.,"No, Rings and jewellery must not be worn."
+Mill (Bridgeport),Do I need to wear hearing protection when around the bridgeport mil?,Hearing protection may be required for some operations.
+Mill (Bridgeport),What are the steps for the pre-operational safety check on the bridgeport mill?,"Ensure no slip/trip hazards are present in workspaces and walkways.
+Locate and ensure you are familiar with the operation of the ON/OFF starter and E-Stop.
+Do not leave equipment on top of the machine.
+Check that machine guards are in position.
+Ensure cutter is in good condition and securely mounted.
+Check coolant delivery system to allow for sufficient flow of coolant (if needed).
+Faulty equipment must not be used. Immediately report suspect machinery.
+Lubricate quill at least every other day"
+Mill (Bridgeport),What kind of Clothes should I be wearing when operating the mill?,"No Rings 
+Close fitting/protective clothing must be worn. 
+Sturdy Footwear must be worn at all times 
+Safety glases must be work 
+Long and Loose hair should be contained"
+Mill (Bridgeport),Does the Bridgeport take R8 collets?,Yes
+Mill (Bridgeport),There is a small allen key hole on the chuck. What is this for on the bridgeport mill?,"That small Allen-head screw you see toward the lower backside of the spindle nose is the used to align the collet.
+
+1. Use felt pen, mark reference line on quill and nose cap “S”, Figure 3.9.  
+2. Remove set screw “R”.  
+3. Unscrew nose cap “S”.  
+4. Remove lock screw “T” and collet aligning screw “U”.  
+5. Replace “U”; insert collet and check that the dog on the end of the screw does not interfere with the bottom of the guide slot.  
+6. Replace lock screw “T”.  
+7. Replace nose cap “S”; check felt pen markings for correct alignment.  
+8. Replace set screw “R”. **CAUTION - DO NO OVERTIGHTEN as this will cause distortion.**  
+9. Check gap “V” (.003”, .08mm).  
+
+
+NOTICE
+Do not attempt to remove nose cap before removing set screw “R”. Doing so will cause serious damage."
+Mill (Bridgeport),How do I remove the nose piece of the bridgeport mill?,"Remove the set screw, then simply unscrew the nose piece. "
+Mill (Bridgeport),"There is a small allen key hole towards the lower bakside of the chuck on the bridgeport mill, there was an allen screw in it last week but It has come out? What should I do?",The piece you are referring to is Set Screw that helps keeps the collet aligned. It’s not structural — it just helps align the collet while inserting or removing it. You should replace it as soon as possible.
+Mill (Bridgeport),How do I lock the spindle on the bridgeport mill?,"Use the spindle brake. It is located on the  left side of the belt housing. Pulling it towards you or pushing it away until it binds, then raise the quill feed handle."
+Mill (Bridgeport),How do I change the spindle speed on the bridgeport mill?,"Start the spindle,  then turn the handwheel to get to the required speed. Do not change the speed when the spindle is stationary."
+Mill (Bridgeport),How can I change the e-head speed of the bridgeport mill?,"Disconnect power from the head, loosen the two motor locknuts, slide the motor forward, position vee belt onto the appropriate pulleys for the desired speed, slide the motor  to the rear to tension the vee belt, then tighten the two mototr locnuts."
+Mill (Bridgeport),How often do I need to change the gear case oil on the bridgeport mill?,"After the first two months of normal service, and then twice a year thereafter."
+Mill (Bridgeport),"I want to assemble my E-HEAD part of the mill, but lost count of the number of stud motor mtg rings I'm supposed to have. How many should I have?",2
+Mill (Bridgeport),How do I connect my power supply to the bridgeport mill?,"The machine must only be hooked up by a qualified electrician. The steps for a qualified electrician to follow are as such:
+1. Check required voltage against power supply to ensure that they are compatible.
+2. Connect machine wiring to power supply making sure connection is in compliance with
+safety regulations.
+3. Check for correct spindle rotation. In the HIGH SPEED range, the spindle should rotate
+clockwise when viewed from the top of the machine."
+Mill (Bridgeport),What is the quill feed handle used for on the mill?,The quill feed handle is a handle that is used in order to raise or lower the quill manually.
+Mill (Bridgeport),How do I replace the timing belt of the bridegport mill?,"1. Remove the motor.
+2. Lower the quill to full extent.
+3. Remove the two lower cap screws
+4. Remove the four cap screws
+5. Remove the top assembly and tap to clear dowels
+6. Replace the belt."
+Mill (Bridgeport),How should I clean the bridgeport mill when I first receive it?,"Use a suiitable cleaning solution to clean the protective coating from the machine. 
+After this initial cleaning:
+1. After initial cleaning, move table, saddle and
+knee in one direction by hand to limit stop.
+2. Clean and lubricate the exposed ways.
+3. Move each unit to the opposite limit stop,
+and clean and lubricate the exposed ways.
+4. Move each unit to the opposite stop once
+more and similarly clean and lubricate the
+exposed ways.
+5. Loosen bolts to unlock the ram, and move it
+forward and backward to the full length in or-
+der to clean and lubricate"
+Mill (Bridgeport),"I just received the bridgeport mill, but my hand cranks seem backwards. What can I do about it?","For shipping purposes, the hand cranks are inverted to face the machine. To reverse them,
+engage the lock mechanism to the saddle and table. Using a (1-inch) wrench, remove the retaining
+lead screw nut and install the hand cranks properly."
+Mill (Bridgeport),What are the speeds the bridgeport mill can operate in for low and high range?,"The low range can go from 60-500, and the high range can be from 500-4200."
+Mill (Bridgeport),How do I set the maximum depth for the bridgeport mill?,"Use the micrometer nut along with the quill stop. Each graduation on th enut indicates .001 inches of depth, and can be read directly to the scale mounted along the side of it."
+Lathe (HAAS TL-1),"In the event a person or article of clothing is trapped in the HAAS Lathe, what should be done?",The [Emergency Stop] knob should be depressed and the person/object removed.
+Lathe (HAAS TL-1),How long can the HAAS machine be idle before it is recommended to run the Spindle Warm-up program?,4 days
+Lathe (HAAS TL-1),What are the basic safety equipment a person should wear when operating the HAAS Lathe?,"Eye and ear protection, and gloves if moving processed material or cleaning the machine."
+Lathe (HAAS TL-1),"If an electrical fault is detected, what is the appropriate action for the person operating the HAAS Lathe to do?",Do not reset the circuit breaker yourself. Contact a HAAS-trained personnel to troubleshoot and repair the HAAS machine
+Lathe (HAAS TL-1),What are the typical noise limits of the HAAS machine? Is this loud enough to warrant the people near it wearing ear protection?,"Typical A-Weighted sound pressure measurements or ""dB A"" should be 69.4dB or lower. C-Weighted instantaneous sound pressure levels will be 78.0dB or lower. LwA sound power level A-Weighted levels will be 75.0dB or lower. 85dB is typically the audio level required for ear protection, but wearing ear protection is still recommended. "
+Lathe (HAAS TL-1),What are the requirements for HAAS Lathe coolant? What are some examples of coolant that are not sufficient?,"Appropriate coolant must be water soluble, synthetic oil-based or synthetic-based coolant or lubricant. Examples of coolant that are not sufficient include plain water, flammable coolants, or straight/neat mineral-oil products."
+Lathe (HAAS TL-1),What does the safety symbol that has a flat surface with 3 wavy lines mean in regards to the HAAS Lathe?,That symbol indicates that that part of the machine is used by the spindle drive to dissipate excess power and will get hot. 
+Lathe (HAAS TL-1),"If after I powered on the HAAS Lathe, I want to change the program that will run, how can I do so?","Press the [List Program] button to access the list of programs, and use the [Up] and [Down] arrowed buttons to select the desired program. Then, once the desired program is highlighted, press the [Select Program] button to make the highlighted program the active program."
+Lathe (HAAS TL-1),"If I am unsure about how a program will run on the HAAS Lathe, or if it is the correct program, what can I do to check?","With the appropriate program highlighted in the list of programs, you can press [Alter] to read the instruction set of the program. You can also press the [Graphics] button to run the program in a simulated mode displayed on the machine screen to see if the program is as desired.
+"
+Lathe (HAAS TL-1),What is the turnable handle jog control used for on the HAAS Lathe?,"It can be used to scroll through on-screen menus and tabs when not in jog mode, and can be used to move any of the X or Z axis to the desired position when in jog mode."
+Lathe (HAAS TL-1),I want to set the tool offsets of the HAAS Lathe. What parts/items do I need before I can start?,"An O.D. Turning Tool, work piece that fits in the chuck jaws, and a measuring tool."
+Lathe (HAAS TL-1),What is the Run-Stop-Jog-Continue motion on the HAAS Lathe? And what are the possible benefits of it?,"It is a feature of certain HAAS machines that lets the operator pause the program operation with the [FEED HOLD] button and use the handle jog to move the axis away from the part being machined. Pressing [Memory] or [MDI] returns it to run mode and pressing [Cycle Start] continues the program. It's benefits are that it allows the operator to inspect the machined part and ensure it is being inscribed, cut, or otherwise operated on correctly and to the desired specification without having to restart the program."
+Lathe (HAAS TL-1),What are the risks/warnings I should be aware of when using the Run-Stop-Jog-Continue motion with the HAAS Lathe?,"You should not remove, or change out the offsets or tools while in this operation, due to the machine going back to the previous offsets when continuing, which could result in undesired collisions. You should also not expect or rely on the machine taking the same path back to the original position that you took away from it. The spindle is also still running in this mode, so it is not safe to interact with certain parts of the machine even if the axis motion has stopped. "
+Lathe (HAAS TL-1),"If I want to signify to people that may come and use the HAAS Lathe after me that I do not want them editing any programs at the moment, what can I do?","The system settings comes with a (Memory Lock) setting, that when switched on blocks programs from being modified until it is switched off. This along with a note can help signify that modifying any programs on the machine should not be done at the moment."
+Lathe (HAAS TL-1),I keep taking photos of the HAAS screen with my phone to send to co-workers to describe what they should be doing. They complain it is too fuzzy to see. What can I do instead to get a clearer picture?,"The HAAS machine comes with a screen capture function. Pressing [Shift] and [F1] will save a ""snapshot#.png"" file to a USB device if connected or the control memory. These screenshots can be sent instead of taking a physical photo."
+Lathe (HAAS TL-1),I am encountering an issue/error with the UI or HAAS Lathe that seems to occur if I do a specific set of steps. Who should I contact to help with this? And what should I send them?,"You should email an error report to a local HAAS factory outlet if the error is not major or immediate. You can generate an error report once the error occurs with [Shift] and [F3], which will be saved to a USB or control memory. You should include this report with the email describing the problem."
+Lathe (HAAS TL-1),I have opened the [List Program] menu on the HAAS Lathe but how can I tell what the active program is?,"The active program will be listed with a ""*"" in the far right column of the display."
+Lathe (HAAS TL-1),"I want to make a change to a program on the HAAS Lathe, but also keep the current version in case I mess something up. What can I do?","You can make a copy of the program, and then edit the main program. That way you will have a copy to fall back on if anything goes wrong. To make a copy, open up the program list, highlight the desired program, press [Enter] to checkmark it, then press [F2] to open the copy menu and select a device and subdirectory to copy to."
+Lathe (HAAS TL-1),"My HAAS Lathe is running out of space, but I don't want to add a permanent storage device to it. What can I do to keep all the current machine information and programs stored somewhere so I can remove programs that are rarely used without fear? And how would I go about doing so?","The HAAS machine can do a full machine backup, which copies the settings, programs, and other data so it's easy to restore later on. To do this you can plug in a USB, navigate to it in the program list, press [F4] and select ""Back Up Machine"" in the appearing drop down menu. Then from there follow the on screen instructions and choose what you want backed up. You can then restore this backup later on if you need something back."
+Lathe (HAAS TL-1),How do I start the active program after the HAAS Lathe is powered on?,Ensure proper safety guarding including the chuck guard is in place and press [Cycle Start]
+Lathe (HAAS TL-1),How do I install a collet on the HAAS Lathe?,"First ensure you are in the correct mode to be in, or the machine is powered off. Thread the collet adapter into the drawtube, place the spindle nose on the spindle and align one of the holes on the back of the spindle nose with the drive dog fasten the spindle nose to the spindle with six SHCS(Socket Head Cap Screws), then thread the collet onto the spindle nose and align the slot on the collet with the set screw on the spindle nose. Then lastly tighten the setscrew on the side of the spindle nose."
+Lathe (HAAS TL-1),"My HAAS Lathe turret index time is slow, and the turret has trouble unclamping. What is the first thing I should suspect as the reason?",The air pressure applied to the turret clamp/unclamp piston is too low or not volumous enough. Check the air pressure supply line. 
+Lathe (HAAS TL-1),I want to change out a tool for a different one on the HAAS Lathe. How do I select the tool I want to switch out on the turret?,"Ensure the machine is not running a program, enter MDI mode, press [TURRET FWD] and [TURRET REV] until the desired tool is in the turret index position. "
+Lathe (HAAS TL-1),"If I want machine-specific information about my HAAS Lathe's functions and do not want to use the internet, what can I do?",You can read the manual given to you with the purchase or rental of the specified lathe. You can use the [HELP] key on the control panel and use the handle jog to sift through the information. You can also search for specific keywords or information in the [HELP] menu.
+Lathe (HAAS TL-1),"My display on my HAAS Lathe is showing a yellow icon with a red temperature reader on it, with a black looking liquid at the bottom, what does this indicate?","This is the HPU Oil temperature warning, it indicates the oil temp is too high to operate the HPU(Hydraulic Power Unit)."
+Lathe (HAAS TL-1),"My display on my HAAS Lathe is showing a yellow icon with what looks like a speedometer pointed to the red and the text ""I/min"" at the bottom. What does this mean?",This means you are in metric mode and the airflow is not sufficient for machine operation
+Lathe (HAAS TL-1),How do I power up the HAAS lathe?,"Check for any safety concerns first, then press the [Power On] button until the HAAS logo is visible. Turn the [Emergency Stop] to the right to reset it, then press [RESET] to clear the startup alarms. Close the machine doors, and press the [POWER UP] button on the control. You should also have the chuck guards in place."
+Lathe (HAAS TL-1),Are there any safety instructions preventing me from working in the dark with the HAAS Lathe?,"Yes, it is unsafe to work in the dark with the lathe. The workplace/area should be well illuminated when operating the HAAS lathe."
+Lathe (HAAS TL-1),I've been running my HAAS Lathe spindle at 180% or above load for a few minutes and an alarm has started. What kind of alarm is it?,An axis overload alarm. When running the spindle at 180% or above load for 1.5 minutes the axis overload alarm will begin indicating as such.
+Lathe (HAAS TL-1),"I was editing my current program in the file editor on the HAAS Lathe, when I accidentally removed 5 instructions that were important. I forgot to make a backup, what can I do?","The HAAS machine comes with a [Undo] feature. Assuming removing these 5 instructions was the last thing you did, you will be able to press [Undo] 5 times and reverse the change. It is recommended that you make regular backups, and edit copies of files instead of editing the file directly."
+Lathe (HAAS TL-1),I have written the wrong instruction many times over throughout my program on my HAAS Lathe. Is there a quicker way to change them instead of doing so one at a time?,"You can use the ""Find and replace"" function of the editor. Press [Enter] when in the editor pull-down menu to access it and fill out each required search/replace section."
+Lathe (HAAS TL-1),What are the three typical parts of a CNC program on a HAAS Lathe?,"Preparation, cutting, and completion"
+Lathe (HAAS TL-1),"My hydraulic tailstock isn't functioning properly on the HAAS Lathe, what might be the cause?","The tailstock could have low PSI. PSI below 120 is not enough. If you have followed the tailstock operating procedure correctly and there is clearly a violation, you should contact HAAS support."
+Lathe (HAAS TL-1),What are the basic different types of tailstock on a HAAS Lathe?,"The three basic types are hydraulic quill, hydraulic positioned, and servo."
+Lathe (HAAS TL-1),How do I perform a tool load/change on a HAAS Lathe?,"Enter MDI mode, and enter the tool number you want to switch to in the format ""Tnn"". Or use the  [TURRET FWD] or [TURRET REV] keys to move to the desired tool. To mitigate risk, you should also consider how to safely restart the machine."
+Lathe (HAAS TL-1),"I want to use a ""{"" symbol in the file name for a program for the HAAS Lathe, but I can't find it on the keypad. What do I do?",Press [F3] and access the [Special Symbols] section at the bottom of the drop down. The symbol will be displayed with a number. Press the number associated with the symbol and it will be selected to be used.
+Lathe (HAAS TL-1),Are there any safety warnings associated with the HAAS Lathe chuck specifically?,"Yes, the chuck is very heavy, so lifting equipment should be used when removing or adding it. The object inside the chuck can be loosened if there is power loss, machining parts larger than the chuck is not allowed, the chuck jaws should not protrude further than the chuck diameter, exceeding rated chuck RPM is not allowed as it can reduce the chucks gripping force. Violating any of these warnings can be dangerous.  When the machine is in operation there should also be a chuck guard in place."
+Lathe (HAAS TL-1),"If I want to disallow a tool from being used in a group, what can I do without removing the tool itself when using a HAAS Lathe?",You can use ATM(Advanced Tool Management) to make a tool obsolete. Macros 8001 to 8099 represent tool 1-99. Setting any of these to equal 1 results in the tool being marked as obsolete. 
+Lathe (HAAS TL-1),If I want to make a backup of my HAAS Lathe ATM(Advanced Tool Management) information how do I do so?,"Open the program list with [Program List], type a filename in the input bar, press [F4] and select [Save ATM] in the drop-down menu."
+Lathe (HAAS TL-1),The unused sockets of my HAAS Lathe turret keep getting dirty after use. How can I prevent this?,You should install protective caps into the unused slots of the turret. This prevents debris from getting into the sockets.
+Lathe (HAAS TL-1),A client wants us to measure all out movements in MM instead of Inches. Can the HAAS Lathe also reflect this?,"Yes, you can change the dimensions settings from inch to mm in Setting#9 of the settings menu. "
+Lathe (HAAS TL-1),What setting number prevents the operator from overriding the HAAS Lathe offsets?,"Setting #119 or Setting #8
+"
+Lathe (HAAS TL-1),"In the Net Share for my HAAS Lathe, our folder called ""Our Programs"" is behaving wrong. Is there any obvious issue?",Yes. The shared folders should not contain spaces.
+Lathe (HAAS TL-1),"I wanted to be able to show my HAAS display on my laptop, so I tried to set up remote display view, but I can't see the setting for remote display on the machine. Why?",It is likely that your machine OS version is too low. Please ensure that your machine version is 100.18.000.1020 or higher.
+Lathe (HAAS TL-1),"Now that I have set up Remote display viewing on my HAAS, I want to access it on my laptop. Do I need any extra software?","Yes, you need a VNC viewer. The recommended VNC viewer is called ""VNC Viewer"" and is available at ""www.realvnc.com"""
+Lathe (HAAS TL-1),"Give me the setting number for ""Max User Travel Limit Y"", ""Bar Feeder Enable"", and ""Probe Offset Z+"" on the HAAS Lathe.","314, 336 and 333 respectively. "
+Lathe (HAAS TL-1),I've noticed that the corners of my machined parts look too sharp on all my programs. Can I change this on the HAAS Lathe?,"Yes, you can change the rounding tolerance in the settings menu. It is the 85th setting and allows you to specify the tolerance level for rounding corners. "
+Lathe (HAAS TL-1),I keep noticing my HAAS Lathe air reservoir has too much condensation in it. Is there any way to fix this?,You can adjust the Air Water Purge Interval to be lower and thus happen more often. Or you can adjust the Air Water Purge On-Time to be higher if the system is having trouble removing the water each interval.
+Lathe (HAAS TL-1),My HAAS Lathe keeps displaying a icon that consists of a single black dot and 3 grey arcs above it. What does this mean?,The air pressure applied to the turret clamp/unclamp piston is too low or not great enough in volume. Check the air pressure supply line.
+Lathe (HAAS TL-1),"I want to pack up my HAAS Lathe for shipping, am I allowed to do this?","No, machine packing is considered ""service"" and should only be performed by specially trained service personnel."
+Lathe (HAAS TL-1),What are the three areas of operation for HAAS Lathes?,"Operations, Maintenance, and Service."
+UR5e Cobot,Can I connect or disconnect my teach pendant while the control box is on?,No. Connecting or disconnecting the teach pendant should be done when the control box is powered off. Connecting or disconnecting while the control box is on can cause damage to the control box.
+UR5e Cobot,Can I skip setting a password for the safety settings?,No. Failure to set a password can result in injury or death due to unauthorized changes to the configuration system by any user.
+UR5e Cobot,Can I use bleach as a cleaning agent? What should I use instead?,"You should not use bleach as a cleaning solution for this arm. The recommended agents you can use include water, 70% isopropyl alcohol, 10% ethanol alcohol, and 10% naphtha to remove grease."
+UR5e Cobot,Can you describe the robot stop categories?,"There are three kinds of stop categories.
+Stop Category 0: Immediately stops the arm by removing the power.
+Stop Category 1: Stops the robot in a controlled manner, and removes the power once it is fully stopped.
+Stop Category 2: Stops the robot with power available to the drives, while maintaining the current trajectory. Power is maintained after the robot is stopped."
+UR5e Cobot,Are there risks associated with using 12V vs 24V?,"Using one or the other is fine so long as the setting matches. Using one, and marking to robot to use the other can be a risk."
+UR5e Cobot,Do I need to worry about a strong electromagnet near my robot?,"Yes, operating the arm near strong magnetic fields can damage the robot."
+UR5e Cobot,How much space do I need to leave around the control box?,"For the UR5e model, the minimum clearance is 50mm on each side. The recommended is 200mm. "
+UR5e Cobot,How can I reduce the force applied to the operator in case of a collision?,"To reduce the force applied to the operator in a collision you can change the force and power limiting safety setting. They are used to reduce clamping and pressures exerted by the robot in case of collisions. 
+The momentum limiting option can also be used to reduce high transient energy and impact forces in case of collisions by reducing the speed of the robot. There is also a speed limitation, which is used to ensure the speed of the robot is within limits set."
+UR5e Cobot,How can I set up my active program so that I only need to modify 1 or 2 variables each run?,"If you only want to modify 1 or 2 variables during each run of a program, you can favorite specific program variables so you can access them easier and not go through other variables. "
+UR5e Cobot,How do I clean the machine?,"Prepare the surface by removing loose dirt or debris. Apply a cleaning agent to the surface that needs cleaning, agitater the agent for stubborn spots, let the agent rest on the surface for 5 minutes, rinse the system with water, and leave the machine out to air dry, or dry using towels."
+UR5e Cobot,How do I ensure the robot elbow and tool remain within a certain area/boundary?,You can configure Safety Planes. Safety planes limit the tool spheres and elbow movement to stay within certain confines set up by up to 8 safety planes.
+UR5e Cobot,How do I lock the X axis from rotating on the arm when in freedrive mode?,"On the freedrive pane, there are toggles to lock X, Y, Z, and RX, RY, and RZ axes. To lock the rotational X axis you should toggle off the RX option."
+UR5e Cobot,How do I set the admin password?,"Go to the settings, tap ""admin"" under ""password"", enter ""easybot"" into the ""Current Password"" option. Enter the new password under ""new password"" and ""confirm new password"". Then tap Apply to confirm the change/set."
+UR5e Cobot,How do I power down the robot arm?,"Press the power button on the TP to turn off the robot, then unplug the power cord from the wall socket and give it 30 seconds to discharge any stored energy."
+UR5e Cobot,How do I power up the control box?,"Press the power button on the teach pendant. If it is the first boot, you may see a ""Getting Started"" screen. "
+UR5e Cobot,How should the earth (ground) connection be checked after maintenance?,Verify the PE grounding screw connection inside the control box before re-powering.
+UR5e Cobot,"I used to use an old robot arm, which I had to constantly test the stopping performance for every use, do I have to do that with this arm?","No. So long as you have the stop distance safety functions used, the robot arm will do continuous monitoring of its own stopping performance and will enter recovery mode if it fails during monitoring."
+UR5e Cobot,I want to control the arm using either admittance or impedance control schemes by reading joint positions/torques and commanding joint velocities/torques at a high rate. Can this be implemented using the standard hardware and controller?,"Yes, admittance and impendance control schemes can be implemented using standard and controler, but it would require a controller with direct torque control or low-level research API to command the velocities the fastest rate for UR robots is 125 Hz"
+UR5e Cobot,I dropped some liquid on my robot arm. Will that break it or cause a safety issue?,"It has the potential for a break or safety issue. To reduce risk you should stop the machine properly and verify no liquid was in contact with the control box especially. Otherwise, dry the machine after it has cooled."
+UR5e Cobot,I got some grease on my arm while cleaning. Is that ok?,"No, grease is an irritant and can cause an allergic reaction. Wash the area with water and a mild cleaning agent to reduce risk of a reaction."
+UR5e Cobot,"I plugged in an active adapter, but nothing is showing up. What should I do?","You must ensure that the adapter is fully plugged in, and plugged in before powering on the control box. Adapters that do not support revision 1.2 are not garunteed to work. Please check that the adapter adheres to these requirements."
+UR5e Cobot,Is it ok to use any type of packaging to move the arm if I want to transport it?,"No, not using the original packaging when transporting the arm will void the warranty. If you want to transport the robot please follow the standard procedure for doing so and use the original packing the arm came in."
+UR5e Cobot,"My robot arm stopped moving and then had a strong, sudden movement. What could have caused this? How can I prevent this from happening again?","This is likely a ""singularity."" A singularity is a pose that restricts the motion and ability to position the robot. If the arm is approaching a singularity it can stop moving or have very sudden and fast movements. This is likely an artifact of the program that is running. To prevent a singularity from occurring, avoid programming motions that result in any poses that could cause a singularity. "
+UR5e Cobot,"My robot is close to a collision and if I restart it, it may cause another collision from the vibrations. What can I do?","You can use backdrive. In backdrive manual mode, you can use force to move specific joints to a desired position without releasing all brakes in the arm."
+UR5e Cobot,Why do I need to conduct a cybersecurity risk assessment?,"To identify threats, define trust zones and conduits, and specify the requirements of each component in the application."
+UR5e Cobot,Why do I need to set the center of gravity for the payload?,"Failure to configure the center of gravity correctly can result in certain procedures failing, such as freedrive. If the center of gravity is not set up correctly it could result in the arm falling on its own."
+UR5e Cobot,Why does my robot arm look to be vibrating when running?,This could be due to the dimensionsing of the stand used. If the resonance frequency of the stand is lower than 45Hz it can resonate with the movement of the arm and make it look like the entire  system is vibrating.
+UR5e Cobot,Why is the robot arm moving slowly or stopping when I start it? It is not near anything and I have done a risk assessment.,"The robot arm running slowly when started could be due to many potential things.
+The speed settings could be turned down.
+The environment temperature could be too low or high. Temperatures outside of 0-50C can reduce the speed. 
+The robot could be in reduced mode, which can occur when the arm reaches outside it's specified reduced mode safety planes."
+UR5e Cobot,What are the main safety precautions that should be taken before performing maintenance on a Universal Robot Arm?,"Disconnect main power, discharge control box, observe ESD regulations, and prevent dust/water ingress."
+UR5e Cobot,What are the network configuration requirements to use the network features of the robot?,"The network requirements suggest that only trusted devices should be connected to the local area network. There must be no inbound connections from adjacent networks to the robot, outgoing connections from the robot are to be restricted to allow the smallest relevant set of specific ports, protocols and addresses. Only URCaps and magic scripts from trusted partners can be used and only after verifying their authenticity and integrity. "
+UR5e Cobot,What are the external connection ports on the robot?,"Teach Pendant Port, SD Card slot, Ethernet, USB 2.0 and USB 3.0, Mini Displayport, 10A Mini Blade Fuse"
+UR5e Cobot,What are the four collaborative operation techniques defined in ISO 10218-1?,"Safety-rated monitored stop, hand guiding, speed & separation monitoring, power & force limiting."
+UR5e Cobot,What are the limitations of using safety planes?,Safety planes can only limit the tool and the elbow from going beyond the plane. Other parts of the arm cannot be configured to respect safety planes.
+UR5e Cobot,What are the steps for moving the robot arm safely to check its position stability?,"Move to zero position, disconnect power, inspect cables and bolts, use Freedrive to test hold."
+UR5e Cobot,What are the safety limits when in recovery mode?,"The current safety limits will be listed and set in the safety settings. If no safety limits have been changed, the default safety limits are as follows:
+Join Speed Limit: 30 degrees per second.
+Speed Limit: 250 mm/s. 
+Force Limit: 100N. 
+Momentum Limit: 10 kg m/s. 
+Power Limit: 80W."
+UR5e Cobot,What are the two yellow buttons on the back side of my teach pendant?,Those are the 3PE buttons. 
+UR5e Cobot,What are the tool attachments I can put on the universal robot relating to moving objects with the arm?,"Many kinds of grippers such as parallel, three-finger, vacuum, magnetic, soft, and precision grippers. "
+UR5e Cobot,What are the tool attachments I can put on the universal robot relating to welding?,Welding and arc welding attatchments.
+UR5e Cobot,What can happen if you open the control box power supply too soon after switching off?,It can cause injury from residual high voltage (up to 600 V) still present in the power supply.
+UR5e Cobot,What check procedures do I need to follow after modifying the robot arm?,"Yes, there is a list of tests to conduct after making a modification to the robot arm. 
+Verify all safety inputs and outputs are correctly connected.
+Test all connected safety input and output, including devices common to multiple
+machines or robots, are functioning as intended.
+Test emergency stop buttons and inputs to verify the robot stops and the brakes engage.
+Test safeguard inputs to verify the robot motion stops. If safeguard reset is configured,
+check that it functions as intended.
+Look at the initialization screen, activate the reduced input and verify the screen changes.
+Change the operational mode to verify the mode icon changes in top right corner of
+PolyScope screen.
+Test the 3-position enabling device to verify that pressing to the center on position enables
+motion in manual mode at a reduced speed.
+If the Emergency Stop outputs are used, press the Emergency Stop push-button and
+verify that there is a stop of the whole system.
+Test the system connected to Robot Moving output, Robot Not Stopping output, Reduced
+Mode output, or Not Reduced Mode output to verify the output changes are detected.
+Determine the commissioning requirements of your robot application."
+UR5e Cobot,What could happen if I fail to do an application risk assessment?,"Failure to conduct a risk assessment can increase the risk involved in using the machine. The assessment addresses severity of possible harm, likelihood of occurrence, and avoiding hazardous situations. Failure to take these risks into account can be dangerous."
+UR5e Cobot,What does the symbol with 3 arrowed lines emerging from the center of the icon mean?,"This is a icon used for the translation control mode, meaning movement is allowed through all axes, except rotational."
+UR5e Cobot,What happens if I offset the center of gravity?,"The offset for the center of gravity can affect the way the arm moves due to what it expects the object's center to be.
+The greater the center of gravity is offset from the origin, the more the capacity of the arm to accelerate can be reduced. 
+Too great of a center of gravity, or too much weight can result in tipping hazards."
+UR5e Cobot,What happens if my robot stopped in 1000ms when my stopping time safety limit is set to 200ms?,The robot arm will enter recovery mode because the safety limits have been violated. 
+UR5e Cobot,What happens if the robot detects a mismatch between mounting configuration and sensor data during first boot?,If a mismatch is found between the mounting and the sensor data with a tolerance of 30 degrees the start button is disabled and an error message is displayed below it. 
+UR5e Cobot,What is the function of the 3PE buttons?,"When the 3PE button is not pressed, the robot movement is stopped, power is not removed from the robot arm, and the brakes are release. When there is light pressure the current program can play while the mode is set to manual. When there is tight pressure the robot movement is stopped in manual mode, and the robot is in 3PE stop mode. If you light press it twice and hold the button down,  you can enter fredrive mode and manually move the arm to a desired position while the buttons light pressure is held down. "
+UR5e Cobot,What is the latency of messages sent via tool connectors?,"2ms - 4ms, from the time the message is written on the PC to the start of the message on the RS485."
+UR5e Cobot,"What is the meaning of the ""yellow with red text"" color scheme of the electrical interface groups inside the control box?",The yellow with red text color indicates that that group is related to dedicated safety signals.
+UR5e Cobot,"What is the risk of EMC interference, and how can it be avoided?",High electromagnetic fields can cause malfunction; avoid long cables and maintain grounding.
+UR5e Cobot,What is Reduced Mode? When is it used?,"Reduced Mode activates lower limits for speed, force, and distance near safety zones or planes."
+UR5e Cobot,What is a pinch hazard in robot operation?,A pinch hazard occurs when body parts can be caught between moving robot parts or surfaces.
+UR5e Cobot,What mode do I need to be in to load a program?,"You need to be in Automatic Mode to load and execute a program, but you need to be in manual mode to modify and create new programs."
+UR5e Cobot,What network protocols for real-time control does the robot accept?,"MODBUS, Ethernet/IP, PROFINET, and PROFIsafe"
+UR5e Cobot,What risks do I need to be aware of for the safety planes?,"Safety planes only limit the tool and elbow, but not the overall arm. Part of the arm can still exceed the plane, only the elbow and tool are restricted. If the tool must move in a certain way, parts of the arm can still go outside the safety plane. "
+UR5e Cobot,What safety modes does the robot arm have?,"The robot arm has three safety modes. Normal mode, reduced mode, and recovery mode. "
+UR5e Cobot,What should I do to avoid a pinching hazard?,"Remove obstacles in the area around the robot. Set up stricter safety planes and joint limits, and check the recommended special needs for your robot arm. "
+UR5e Cobot,What standard defines the performance levels of UR safety functions?,"EN ISO 13849-1, Performance Level d (PLd), Category 3."
+UR5e Cobot,Who should do the cybersecurity risk assessment?,Either the integrator(could be user) or a competent qualified personnel. 
+UR5e Cobot,Who should perform the risk assessment for the arm?,Risk assessment is the responsibility of the integrator. The user of the robot arm can be the integrator.
+UR5e Cobot,The safety settings in the configuration wont let me change certain settings? Why not?,"If the safety settings are not letting you change them, there is likely a safety password previous set. Once you enter the password and press ""Unlock"" the settings should be accessible. "
